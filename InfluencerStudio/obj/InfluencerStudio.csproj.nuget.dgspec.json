@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\gecse\\suli\\Advanced TW\\el-proyecte-grande-sprint-1-csharp-nagyD88\\InfluencerStudio\\InfluencerStudio.csproj": {}
+    "E:\\projekt\\advence\\el-proyecte-grande-sprint-1-csharp-nagyD88\\InfluencerStudio\\InfluencerStudio.csproj": {}
   },
   "projects": {
-    "C:\\Users\\gecse\\suli\\Advanced TW\\el-proyecte-grande-sprint-1-csharp-nagyD88\\InfluencerStudio\\InfluencerStudio.csproj": {
+    "E:\\projekt\\advence\\el-proyecte-grande-sprint-1-csharp-nagyD88\\InfluencerStudio\\InfluencerStudio.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\gecse\\suli\\Advanced TW\\el-proyecte-grande-sprint-1-csharp-nagyD88\\InfluencerStudio\\InfluencerStudio.csproj",
+        "projectUniqueName": "E:\\projekt\\advence\\el-proyecte-grande-sprint-1-csharp-nagyD88\\InfluencerStudio\\InfluencerStudio.csproj",
         "projectName": "InfluencerStudio",
-        "projectPath": "C:\\Users\\gecse\\suli\\Advanced TW\\el-proyecte-grande-sprint-1-csharp-nagyD88\\InfluencerStudio\\InfluencerStudio.csproj",
-        "packagesPath": "C:\\Users\\gecse\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\gecse\\suli\\Advanced TW\\el-proyecte-grande-sprint-1-csharp-nagyD88\\InfluencerStudio\\obj\\",
+        "projectPath": "E:\\projekt\\advence\\el-proyecte-grande-sprint-1-csharp-nagyD88\\InfluencerStudio\\InfluencerStudio.csproj",
+        "packagesPath": "C:\\Users\\olive\\.nuget\\packages\\",
+        "outputPath": "E:\\projekt\\advence\\el-proyecte-grande-sprint-1-csharp-nagyD88\\InfluencerStudio\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\gecse\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\olive\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -40,6 +40,10 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.1, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.2.3, )"
@@ -51,8 +55,7 @@
             "net47",
             "net471",
             "net472",
-            "net48",
-            "net481"
+            "net48"
           ],
           "assetTargetFallback": true,
           "warn": true,
@@ -64,7 +67,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.202\\RuntimeIdentifierGraph.json"
         }
       }
     }

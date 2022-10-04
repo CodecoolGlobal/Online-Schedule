@@ -12,6 +12,10 @@ namespace InfluencerStudio.Services
     {
         private readonly IFacebookClient _facebookClient;
 
+        public FacebookService()
+        {
+        }
+
         public FacebookService(IFacebookClient facebookClient)
         {
             _facebookClient = facebookClient;
@@ -32,10 +36,9 @@ namespace InfluencerStudio.Services
                 Id = result.id,
                 Email = result.email,
                 Name = result.name,
-                UserName = result.username,
                 FirstName = result.first_name,
                 LastName = result.last_name,
-                Locale = result.locale
+                Location = result.location
             };
 
             return account;
