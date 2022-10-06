@@ -27,27 +27,27 @@ namespace CodecoolAvence.Model
         {
             if (Branch == Branch.C_sharp)
             {
-                Progresess = ProgressLists.Instance.cSharp[ActualWeek];
+                Progresess = ProgressLists.Instance.cSharp[ActualWeek/2];
             }
             else if (Branch == Branch.Java)
             {
-                Progresess = ProgressLists.Instance.java[ActualWeek];
+                Progresess = ProgressLists.Instance.java[ActualWeek/2];
             }
             else if (Branch == Branch.PHP)
             {
-                Progresess = ProgressLists.Instance.php[ActualWeek];
+                Progresess = ProgressLists.Instance.php[ActualWeek/2];
             }
             else if (Branch == Branch.PHP)
             {
-                Progresess = ProgressLists.Instance.php[ActualWeek];
+                Progresess = ProgressLists.Instance.php[ActualWeek/2];
             }
             else if (Branch == Branch.DevOps)
             {
-                Progresess = ProgressLists.Instance.devOps[ActualWeek];
+                Progresess = ProgressLists.Instance.devOps[ActualWeek/2];
             }
             else if (Branch == Branch.TestAutomation)
             {
-                Progresess = ProgressLists.Instance.TestAutomation[ActualWeek];
+                Progresess = ProgressLists.Instance.TestAutomation[ActualWeek/2];
             }
         }
 
