@@ -15,10 +15,6 @@ namespace CodecoolAvence.Model {
             _startDate = DateTime.Now;
             _branchProgress = new BranchProgress(student.BranchProgress.Branch);
         }
-
-        public void CourentWeek() {
-			throw new System.NotImplementedException("Not implemented");
-		}
 		public bool AddStudent(Student student) {
 			return _students.Add(student);
 		}
