@@ -1,3 +1,5 @@
+using CodecoolAvence.Model;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -8,6 +10,9 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
+Student student = new Student("alma", Branch.Java);
+Team team = new Team(student, "almak");
+var inmemorydata = TeamCollector.Instance.AddTeam(team);
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
