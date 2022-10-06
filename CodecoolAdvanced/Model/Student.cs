@@ -10,10 +10,6 @@ namespace CodecoolAvence.Model {
 
         public BranchProgress BranchProgress { get; set; }
 
-		public void AutoSetCurrentWeek() {
-			throw new System.NotImplementedException("Not implemented");
-		}
-
 	}
 
 }
