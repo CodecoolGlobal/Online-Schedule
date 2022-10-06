@@ -6,7 +6,7 @@ namespace CodecoolAvence.Model {
 		public Mentor _mentor { get; set; }
 		private string _name;
 		private DateTime _startDate;
-		private BranchProgress _branchProgress;
+		public BranchProgress _branchProgress { get; }
 
         protected Team(Student student, string name)
         {
