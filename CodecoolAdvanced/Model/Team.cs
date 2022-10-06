@@ -14,8 +14,8 @@ namespace CodecoolAvence.Model {
 		public bool AddStudent(Student student) {
 			return _students.Add(student);
 		}
-		public bool RemoveStudent() {
-			throw new System.NotImplementedException("Not implemented");
+		public bool RemoveStudent(Student student) {
+			return _students.Remove(student);
 		}
 		public void SetMentor() {
 			throw new System.NotImplementedException("Not implemented");
