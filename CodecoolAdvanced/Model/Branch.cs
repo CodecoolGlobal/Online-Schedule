@@ -2,7 +2,7 @@ using System;
 
 namespace CodecoolAvence.Model {
 	public enum Branch {
-		C#,
+		C_sharp,
 		Java,
 		PHP,
 		DevOps,
