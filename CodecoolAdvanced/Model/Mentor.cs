@@ -2,20 +2,23 @@ using System;
 
 namespace CodecoolAvence.Model {
 	public class Mentor : User {
-		public HashSet<Branch> _Specialisation { get; }
-		public HashSet<Team> _Teams {get; }
+        public Mentor(string name) : base(name)
+        {
+        }
 
-		public bool AddSpecialisation() {
-			throw new System.NotImplementedException("Not implemented");
+        public HashSet<Branch> _Specialisation { get; }
+		public HashSet<Team> _Teams {get; }
+		public bool AddSpecialisation(Branch branch) {
+			return _Specialisation.Add(branch);
 		}
-		public bool RemoveSpecialisation() {
-			throw new System.NotImplementedException("Not implemented");
+		public bool RemoveSpecialisation(Branch branch) {
+			return _Specialisation.Remove(branch);
 		}
-		public bool AddTeam() {
-			throw new System.NotImplementedException("Not implemented");
+		public bool AddTeam(Team team) {
+			return _Teams.Add(team);
 		}
-		public bool RemoveTeam() {
-			throw new System.NotImplementedException("Not implemented");
+		public bool RemoveTeam(Team team) {
+			return _Teams.Remove(team);
 		}
 	}
 }
