@@ -3,7 +3,7 @@ using System;
 namespace CodecoolAvence.Model {
 	public abstract class Team {
 		private HashSet<Student> _students;
-		private Mentor _mentor;
+		public Mentor _mentor { get; set; }
 		private string _name;
 		private DateTime _startDate;
 		private BranchProgress _branchProgress;
@@ -16,9 +16,6 @@ namespace CodecoolAvence.Model {
 		}
 		public bool RemoveStudent(Student student) {
 			return _students.Remove(student);
-		}
-		public void SetMentor() {
-			throw new System.NotImplementedException("Not implemented");
 		}
 	}
 
