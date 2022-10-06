@@ -8,14 +8,20 @@ namespace CodecoolAvence.Model
         {
             Branch = branch;
             ActualWeek = 1;
+            _weekChanged = 0;
         }
         public Branch Branch { get; }
         public string Progresess { get; private set; }
         public int ActualWeek { get; set; }
+        private int _weekChanged;
 
-        public void AutoSetActualWeek()
+        public void AutoSetActualWeek(DateTime start)
         {
-            ActualWeek++;
+            ActualWeek = (int)((start - DateTime.Now).TotalDays / 7) + _weekChanged;
+        }
+        public void SetActualWeek(int change)
+        {
+            _weekChanged += change;
         }
         public void SetProgress()
         {
