@@ -11,8 +11,8 @@ namespace CodecoolAvence.Model {
 		public void CourentWeek() {
 			throw new System.NotImplementedException("Not implemented");
 		}
-		public bool AddStudent() {
-			throw new System.NotImplementedException("Not implemented");
+		public bool AddStudent(Student student) {
+			return _students.Add(student);
 		}
 		public bool RemoveStudent() {
 			throw new System.NotImplementedException("Not implemented");
