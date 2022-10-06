@@ -1,17 +1,17 @@
 using System;
 
 namespace CodecoolAvence.Model {
-	public abstract class Team {
+	public class Team {
 		private HashSet<Student> _students;
-		public Mentor _mentor { get; set; }
-		private string _name;
+		public Mentor? Mentor { get; set; }
+		public string Name { get; }
 		public DateTime StartDate { get; }
 		public BranchProgress _branchProgress { get; }
 
-        protected Team(Student student, string name)
+        public Team(Student student, string name)
         {
             _students.Add(student);
-            _name = name;
+            Name = name;
             StartDate = DateTime.Now;
             _branchProgress = new BranchProgress(student.BranchProgress.Branch);
         }
