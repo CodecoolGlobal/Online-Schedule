@@ -8,7 +8,15 @@ namespace CodecoolAvence.Model {
 		private DateTime _startDate;
 		private BranchProgress _branchProgress;
 
-		public void CourentWeek() {
+        protected Team(Student student, string name)
+        {
+            _students.Add(student);
+            _name = name;
+            _startDate = DateTime.Now;
+            _branchProgress = new BranchProgress(student.BranchProgress.Branch);
+        }
+
+        public void CourentWeek() {
 			throw new System.NotImplementedException("Not implemented");
 		}
 		public bool AddStudent(Student student) {
