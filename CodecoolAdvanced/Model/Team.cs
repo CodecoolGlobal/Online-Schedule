@@ -5,14 +5,14 @@ namespace CodecoolAvence.Model {
 		private HashSet<Student> _students;
 		public Mentor _mentor { get; set; }
 		private string _name;
-		private DateTime _startDate;
+		public DateTime StartDate { get; }
 		public BranchProgress _branchProgress { get; }
 
         protected Team(Student student, string name)
         {
             _students.Add(student);
             _name = name;
-            _startDate = DateTime.Now;
+            StartDate = DateTime.Now;
             _branchProgress = new BranchProgress(student.BranchProgress.Branch);
         }
 		public bool AddStudent(Student student) {

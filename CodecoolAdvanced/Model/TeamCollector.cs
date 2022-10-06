@@ -4,8 +4,11 @@ namespace CodecoolAvence.Model {
 	public class TeamCollector {
 		private HashSet<Team> _teams;
 
-		public void SetCourentWeekTeam() {
-			throw new System.NotImplementedException("Not implemented");
+		public void SetCourentWeekForAllTeam() {
+			foreach (Team team in _teams)
+            {
+				team._branchProgress.AutoSetActualWeek(team.StartDate);
+            };
 		}
 		public bool AddTeam(Team team) {
 			return _teams.Add(team);
