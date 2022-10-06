@@ -4,6 +4,24 @@ using System.Collections.Generic;
 namespace CodecoolAvence.Model {
 	public class ProgressLists {
 
+		private static ProgressLists instance = null;
+
+		private ProgressLists()
+		{
+		}
+
+		public static ProgressLists Instance
+		{
+			get
+			{
+				if (instance == null)
+				{
+					instance = new ProgressLists();
+				}
+				return instance;
+			}
+		}
+
 		public List<string> cSharp = new List<string> {	"React, Web API, MVC",
 														"Identity, security",
 														"CD/CI + Docker",
