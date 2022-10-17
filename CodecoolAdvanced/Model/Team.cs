@@ -2,6 +2,8 @@ using System;
 
 namespace CodecoolAvence.Model {
 	public class Team {
+		private static int counter=0;
+		public int Id { get; set; }
 		private HashSet<Student> _students;
 		public Mentor? Mentor { get; set; }
 		public string Name { get; }
@@ -10,11 +12,13 @@ namespace CodecoolAvence.Model {
 
         public Team(Student student, string name)
         {
+			Id = counter;
 			_students = new HashSet<Student>();
             _students.Add(student);
             Name = name;
             StartDate = DateTime.Now;
             _branchProgress = new BranchProgress(student.BranchProgress.Branch);
+			counter++;
         }
 		public bool AddStudent(Student student) {
 			return _students.Add(student);
