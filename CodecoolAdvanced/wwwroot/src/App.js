@@ -15,6 +15,9 @@ function App() {
         <Route path="teams">
           <Route index element={<Teams />} />
         </Route>
+        <Route path="demos">
+          <Route index element={<Demos />} />
+        </Route>
         <Route path="about" element={<About />} />
         <Route path="*" element={<Missing />} />
       </Route>
