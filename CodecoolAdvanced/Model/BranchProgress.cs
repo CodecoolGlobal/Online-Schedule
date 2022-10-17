@@ -7,7 +7,7 @@ namespace CodecoolAvence.Model
         public BranchProgress(Branch branch)
         {
             Branch = branch;
-            ActualWeek = 1;
+            ActualWeek = 2;
             _weekChanged = 0;
         }
         public Branch Branch { get; }

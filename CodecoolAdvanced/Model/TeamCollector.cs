@@ -2,13 +2,33 @@ using System;
 
 namespace CodecoolAvence.Model {
 	public class TeamCollector {
+		private static TeamCollector instance = null;
+
+		private TeamCollector()
+		{
+			_teams = new HashSet<Team> ();
+		}
+
+		public static TeamCollector Instance
+		{
+			get
+			{
+				if (instance == null)
+				{
+					instance = new TeamCollector();
+				}
+				return instance;
+			}
+		}
+
+
 		private HashSet<Team> _teams;
 
 		public void SetCourentWeekForAllTeam() {
 			foreach (Team team in _teams)
             {
 				team._branchProgress.AutoSetActualWeek(team.StartDate);
-            };
+            }
 		}
 		public bool AddTeam(Team team) {
 			return _teams.Add(team);

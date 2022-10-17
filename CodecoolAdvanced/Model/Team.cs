@@ -10,6 +10,7 @@ namespace CodecoolAvence.Model {
 
         public Team(Student student, string name)
         {
+			_students = new HashSet<Student>();
             _students.Add(student);
             Name = name;
             StartDate = DateTime.Now;
