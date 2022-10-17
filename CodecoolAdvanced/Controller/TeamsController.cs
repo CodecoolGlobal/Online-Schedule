@@ -48,7 +48,7 @@ namespace CodecoolAdvanced.Controller
             TeamCollector.Instance.AddTeam(team);
             return Ok(team);
         }
-
+        
         [HttpPut]
         [Route("{id}")]
         public ActionResult RenameTeam(int id, string newName)
@@ -61,7 +61,7 @@ namespace CodecoolAdvanced.Controller
             team.Name = newName;
             return NoContent();
         }
-
+        
         [HttpPut]
         [Route("{id}/add/{studentid}")]
         public ActionResult AddStudentToTeam(int id, int studentid)
@@ -75,9 +75,9 @@ namespace CodecoolAdvanced.Controller
             team.AddStudent(student);
             return NoContent();
         }
-
+        
         [HttpPut]
-        [Route("{id}/add/{studentid}")]
+        [Route("{id}/remove/{studentid}")]
         public ActionResult RemoveStudentFromTeam(int id, int studentid)
         {
             Team team = TeamCollector.Instance.GetTeamById(id);
@@ -89,7 +89,7 @@ namespace CodecoolAdvanced.Controller
             team.RemoveStudent(student);
             return NoContent();
         }
-
+        
         [HttpDelete]
         [Route("{id}")]
         public ActionResult DeleteTeam(int id)
