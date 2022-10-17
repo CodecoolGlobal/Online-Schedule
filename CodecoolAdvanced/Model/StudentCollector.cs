@@ -23,5 +23,15 @@ namespace CodecoolAdvanced.Model
 				return instance;
 			}
 		}
+
+		public bool AddToSAtudents(Student student)
+        {
+			if (student == null)
+            {
+				return false;
+            }
+			else return _students.Add(student);
+        }
+
 	}
 }
