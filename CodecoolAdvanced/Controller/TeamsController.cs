@@ -1,4 +1,5 @@
-﻿using CodecoolAvence.Model;
+﻿using CodecoolAdvanced.Model;
+using CodecoolAvence.Model;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Web.Helpers;
@@ -38,7 +39,11 @@ namespace CodecoolAdvanced.Controller
         [HttpPost]
         public ActionResult<Team> CreateNewTeam(int studentId, string name)
         {
-            student
+            Student student=StudentCollector.Instance.GetStudentById(studentId);
+            if (student == null)
+            {
+                return NotFound();
+            }
             Team team = new Team(student, name);
             TeamCollector.Instance.AddTeam(team);
             return Ok(team);
