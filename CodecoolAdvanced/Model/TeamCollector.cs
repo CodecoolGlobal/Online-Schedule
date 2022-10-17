@@ -36,6 +36,10 @@ namespace CodecoolAvence.Model {
 		public bool DeleteTeam(Team team) {
 			return _teams.Remove(team);
 		}
+
+		public HashSet<Team> GetTeams() { 
+			return _teams;
+		}
 		public HashSet<Team> GetCurrentWeekTeam() {
 			HashSet<Team> result = new HashSet<Team>();
 			foreach (Team team in _teams) { 
