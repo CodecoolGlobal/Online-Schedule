@@ -1,3 +1,4 @@
+using CodecoolAdvanced.Model;
 using CodecoolAvence.Model;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,7 +13,9 @@ builder.Services.AddSwaggerGen();
 var app = builder.Build();
 Student student = new Student("alma", Branch.Java);
 Team team = new Team(student, "almak");
-var inmemorydata = TeamCollector.Instance.AddTeam(team);
+TeamCollector.Instance.AddTeam(team);
+StudentCollector.Instance.AddToSatudents(student);
+
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
