@@ -36,8 +36,9 @@ namespace CodecoolAdvanced.Controller
         }
 
         [HttpPost]
-        public ActionResult<Team> CreateNewTeam(Student student, string name)
+        public ActionResult<Team> CreateNewTeam(int studentId, string name)
         {
+            student
             Team team = new Team(student, name);
             TeamCollector.Instance.AddTeam(team);
             return Ok(team);
