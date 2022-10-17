@@ -6,7 +6,7 @@ namespace CodecoolAvence.Model {
 		public int Id { get; private set; }
 		private HashSet<Student> _students;
 		public Mentor? Mentor { get; set; }
-		public string Name { get; }
+		public string Name { get; set; }
 		public DateTime StartDate { get; }
 		public BranchProgress _branchProgress { get; }
 
