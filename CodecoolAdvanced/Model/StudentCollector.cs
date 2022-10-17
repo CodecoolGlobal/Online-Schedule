@@ -24,7 +24,7 @@ namespace CodecoolAdvanced.Model
 			}
 		}
 
-		public bool AddToSAtudents(Student student)
+		public bool AddToSatudents(Student student)
         {
 			if (student == null)
             {
@@ -33,5 +33,11 @@ namespace CodecoolAdvanced.Model
 			else return _students.Add(student);
         }
 
-	}
+		public bool RemoveFromStudents(Student student){
+			if (student == null)
+			{
+				return false;
+			}
+			else return _students.Remove(student);
+		}
 }
