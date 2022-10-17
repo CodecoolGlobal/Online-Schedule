@@ -49,6 +49,47 @@ namespace CodecoolAdvanced.Controller
             return Ok(team);
         }
 
+        [HttpPut]
+        [Route("{id}")]
+        public ActionResult RenameTeam(int id, string newName)
+        {
+            Team team = TeamCollector.Instance.GetTeamById(id);
+            if (team == null)
+            {
+                return NotFound();
+            }
+            team.Name = newName;
+            return NoContent();
+        }
+
+        [HttpPut]
+        [Route("{id}/add/{studentid}")]
+        public ActionResult AddStudentToTeam(int id, int studentid)
+        {
+            Team team = TeamCollector.Instance.GetTeamById(id);
+            Student student = StudentCollector.Instance.GetStudentById(studentid);
+            if (team == null || student == null)
+            {
+                return NotFound();
+            }
+            team.AddStudent(student);
+            return NoContent();
+        }
+
+        [HttpPut]
+        [Route("{id}/add/{studentid}")]
+        public ActionResult RemoveStudentFromTeam(int id, int studentid)
+        {
+            Team team = TeamCollector.Instance.GetTeamById(id);
+            Student student = StudentCollector.Instance.GetStudentById(studentid);
+            if (team == null || student == null)
+            {
+                return NotFound();
+            }
+            team.RemoveStudent(student);
+            return NoContent();
+        }
+
         [HttpDelete]
         [Route("{id}")]
         public ActionResult DeleteTeam(int id)
