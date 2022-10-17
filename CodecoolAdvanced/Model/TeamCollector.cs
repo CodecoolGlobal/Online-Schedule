@@ -48,8 +48,8 @@ namespace CodecoolAvence.Model {
 				return null;
             }
 			return teamToReturn;
-
 		}
+
 		public HashSet<Team> GetCurrentWeekTeam() {
 			HashSet<Team> result = new HashSet<Team>();
 			foreach (Team team in _teams) { 
@@ -60,7 +60,5 @@ namespace CodecoolAvence.Model {
 			}
 			return result;
 		}
-
 	}
-
 }
