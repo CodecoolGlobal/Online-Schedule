@@ -14,7 +14,7 @@ var app = builder.Build();
 Student student = new Student("alma", Branch.Java);
 Team team = new Team(student, "almak");
 TeamCollector.Instance.AddTeam(team);
-StudentCollector.Instance.AddToSatudents(student);
+StudentCollector.Instance.AddToStudents(student);
 
 
 // Configure the HTTP request pipeline.

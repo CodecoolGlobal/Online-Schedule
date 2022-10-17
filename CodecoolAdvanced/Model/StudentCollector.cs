@@ -2,8 +2,8 @@
 
 namespace CodecoolAdvanced.Model
 {
-    public class StudentCollector
-    {
+	public class StudentCollector
+	{
 		private static StudentCollector instance = null;
 
 		private HashSet<Student> _students;
@@ -24,20 +24,28 @@ namespace CodecoolAdvanced.Model
 			}
 		}
 
-		public bool AddToSatudents(Student student)
-        {
+		public bool AddToStudents(Student student)
+		{
 			if (student == null)
-            {
+			{
 				return false;
-            }
+			}
 			else return _students.Add(student);
-        }
+		}
 
-		public bool RemoveFromStudents(Student student){
+		public bool RemoveFromStudents(Student student)
+		{
 			if (student == null)
 			{
 				return false;
 			}
 			else return _students.Remove(student);
 		}
+
+		public Student? GetStudentById(int Id)
+        {
+			Student student = _students.FirstOrDefault(s => s.Id == Id);
+			return student;
+        }
+	}
 }
