@@ -42,5 +42,18 @@ namespace CodecoolAdvanced.Controller
             TeamCollector.Instance.AddTeam(team);
             return Ok(team);
         }
+
+        [HttpDelete]
+        [Route("{id}")]
+        public ActionResult DeleteTeam(int id)
+        {
+            Team team = TeamCollector.Instance.GetTeamById(id);
+            if (team == null)
+            {
+                return NotFound();
+            }
+            TeamCollector.Instance.DeleteTeam(team);
+            return NoContent();
+        }
     }
 }
