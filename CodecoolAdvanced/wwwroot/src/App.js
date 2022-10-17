@@ -3,6 +3,7 @@ import Missing from "./Missing";
 import Layout from "./Layout";
 import Teams from "./Teams";
 import Home from "./Home";
+import Demos from "./Demos";
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
 
@@ -18,6 +19,7 @@ function App() {
         <Route path="demos">
           <Route index element={<Demos />} />
         </Route>
+        
         <Route path="about" element={<About />} />
         <Route path="*" element={<Missing />} />
       </Route>
