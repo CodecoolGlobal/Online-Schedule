@@ -19,7 +19,20 @@ namespace CodecoolAdvanced.Controller
         [HttpGet]
         public ActionResult<HashSet<Team>> GetAllTeams()
         {
-            HashSet<Team> allteams = TeamCollector.Instance.;
+            HashSet<Team> allteams = TeamCollector.Instance.GetTeams();
+            return Ok(allteams);
+        }
+
+        [HttpGet]
+        [Route("{id}")]
+        public ActionResult<Team> GetTeamById(int id)
+        {
+            Team team = TeamCollector.Instance.GetTeamById(id);
+            if (team == null)
+            {
+                return NotFound();
+            }
+            return Ok(team);
         }
 
     }
