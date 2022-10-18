@@ -2,23 +2,23 @@
 
 namespace CodecoolAdvanced.Model
 {
-	public class StudentCollector
+	public class UserCollector
 	{
-		private static StudentCollector instance = null;
+		private static UserCollector instance = null;
 
 		private HashSet<Student> _students;
-		private StudentCollector()
+		private UserCollector()
 		{
 			_students = new HashSet<Student>();
 		}
 
-		public static StudentCollector Instance
+		public static UserCollector Instance
 		{
 			get
 			{
 				if (instance == null)
 				{
-					instance = new StudentCollector();
+					instance = new UserCollector();
 				}
 				return instance;
 			}

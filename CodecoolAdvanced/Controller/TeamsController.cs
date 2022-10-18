@@ -39,7 +39,7 @@ namespace CodecoolAdvanced.Controller
         [HttpPost]
         public ActionResult<Team> CreateNewTeam(int studentId, string name)
         {
-            Student student=StudentCollector.Instance.GetStudentById(studentId);
+            Student student=UserCollector.Instance.GetStudentById(studentId);
             if (student == null)
             {
                 return NotFound();
@@ -67,7 +67,7 @@ namespace CodecoolAdvanced.Controller
         public ActionResult AddStudentToTeam(int id, int studentid)
         {
             Team team = TeamCollector.Instance.GetTeamById(id);
-            Student student = StudentCollector.Instance.GetStudentById(studentid);
+            Student student = UserCollector.Instance.GetStudentById(studentid);
             if (team == null || student == null)
             {
                 return NotFound();
@@ -81,7 +81,7 @@ namespace CodecoolAdvanced.Controller
         public ActionResult RemoveStudentFromTeam(int id, int studentid)
         {
             Team team = TeamCollector.Instance.GetTeamById(id);
-            Student student = StudentCollector.Instance.GetStudentById(studentid);
+            Student student = UserCollector.Instance.GetStudentById(studentid);
             if (team == null || student == null)
             {
                 return NotFound();
