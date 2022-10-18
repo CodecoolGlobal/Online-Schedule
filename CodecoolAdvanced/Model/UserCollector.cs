@@ -44,8 +44,8 @@ namespace CodecoolAdvanced.Model
 
 		public User? GetStudentById(int Id)
         {
-			User student = _students.FirstOrDefault(s => s.Id == Id);
-			return student;
+			User user = _students.FirstOrDefault(s => s.Id == Id);
+			return user;
         }
 	}
 }
