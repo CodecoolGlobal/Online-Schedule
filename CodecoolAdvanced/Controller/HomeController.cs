@@ -10,11 +10,13 @@ namespace CodecoolAdvanced.Controller
     public class HomeController : ControllerBase
     {
         [HttpGet]
-        [Route("/actual/teams")]
-        public string GetTeamsForActualWeek()
+        [Route("/teams/actual")]
+        public ActionResult<HashSet<Team>> GetTeamsForActualWeek()
         {
             HashSet<Team> actualTeams = TeamCollector.Instance.GetCurrentWeekTeam();
-            return Newtonsoft.Json.JsonConvert.SerializeObject(actualTeams); 
+            return Ok(actualTeams); 
         }
+
+     
     }
 }
