@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\.github"
+    "\\CodecoolAdvanced",
+    "\\CodecoolAdvanced\\Controller"
   ],
+  "SelectedNode": "\\CodecoolAdvanced\\CodecoolAdvanced.sln",
   "PreviewInSolutionExplorer": false
 }
