@@ -6,10 +6,10 @@ namespace CodecoolAdvanced.Model
 	{
 		private static UserCollector instance = null;
 
-		private HashSet<User> _students;
+		private HashSet<User> _Users;
 		private UserCollector()
 		{
-			_students = new HashSet<User>();
+			_Users = new HashSet<User>();
 		}
 
 		public static UserCollector Instance
@@ -30,7 +30,7 @@ namespace CodecoolAdvanced.Model
 			{
 				return false;
 			}
-			else return _students.Add(user);
+			else return _Users.Add(user);
 		}
 
 		public bool RemoveFromStudents(User user)
@@ -39,15 +39,15 @@ namespace CodecoolAdvanced.Model
 			{
 				return false;
 			}
-			else return _students.Remove(user);
+			else return _Users.Remove(user);
 		}
 		public HashSet<User> GetAllUsers()
         {
-			return _students;
+			return _Users;
         } 
-		public User? GetStudentById(int Id)
+		public User? GetUserById(int Id)
         {
-			User user = _students.FirstOrDefault(s => s.Id == Id);
+			User user = _Users.FirstOrDefault(s => s.Id == Id);
 			return user;
         }
 	}

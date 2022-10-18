@@ -14,7 +14,16 @@ namespace CodecoolAdvanced.Controller
             HashSet<User> users = UserCollector.Instance.GetAllUsers();
             return Ok(users);
         }
-
-
+        [HttpGet]
+        [Route("/{id}")]
+        public ActionResult<User> GetUserById(int id)
+        {
+            User user = UserCollector.Instance.GetUserById(id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+            return Ok(user);
+        }
     }
 }
