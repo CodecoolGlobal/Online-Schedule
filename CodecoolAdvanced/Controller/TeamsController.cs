@@ -38,6 +38,13 @@ namespace CodecoolAdvanced.Controller
             }
             return Ok(team);
         }
+        [HttpGet]
+        [Route("{id}/students")]
+        public ActionResult<HashSet<Student>> GetStudentsFromTeamById(int id)
+        {
+            HashSet<Student> students = TeamCollector.Instance.GetStudentsFromTeamById(id);
+            return Ok(students);
+        }
 
         [HttpPost]
         public ActionResult<Team> CreateNewTeam(int studentId, string name)
