@@ -38,6 +38,7 @@ namespace CodecoolAdvanced.Controller
         public ActionResult<Mentor> CreateNewMentor(string name, string email)
         {
             Mentor mentor = new Mentor(name, email);
+            UserCollector.Instance.AddUsersToCollector(mentor);
             return Ok(mentor);
         }
 
@@ -46,6 +47,7 @@ namespace CodecoolAdvanced.Controller
         public ActionResult<Student> CreateNewStudnet(string name, Branch branch, string email)
         {
             Student student = new Student(name, branch, email);
+            UserCollector.Instance.AddUsersToCollector(student);
             return Ok(student);
         }
 
@@ -62,5 +64,11 @@ namespace CodecoolAdvanced.Controller
             return NoContent();
         }
 
+        [HttpPut]
+        [Route("/{id}")]
+        public AcceptedResult ReNameUser(int id, string newName)
+        {
+
+        }
     }
 }

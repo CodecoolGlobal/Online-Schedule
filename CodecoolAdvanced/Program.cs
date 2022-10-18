@@ -15,8 +15,8 @@ Student student = new Student("alma", Branch.Java, "alama@alama.hu");
 Student student1 = new Student("korte", Branch.C_sharp, "korte@korte.hu");
 Team team = new Team(student, "almak");
 TeamCollector.Instance.AddTeam(team);
-UserCollector.Instance.AddToStudents(student);
-UserCollector.Instance.AddToStudents(student1);
+UserCollector.Instance.AddUsersToCollector(student);
+UserCollector.Instance.AddUsersToCollector(student1);
 
 
 // Configure the HTTP request pipeline.
