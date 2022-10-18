@@ -1,12 +1,20 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using CodecoolAdvanced.Model;
+using CodecoolAvence.Model;
+using Microsoft.AspNetCore.Mvc;
 
 namespace CodecoolAdvanced.Controller
 {
-    public class UsersController : Controller
+    [ApiController]
+    [Route("api/Users")]
+    public class UsersController : ControllerBase
     {
-        public IActionResult Index()
+        [HttpGet]
+        public ActionResult<HashSet<User>> GetAllUsers() 
         {
-            return View();
+            HashSet<User> users = UserCollector.Instance.GetAllUsers();
+            return Ok(users);
         }
+
+
     }
 }

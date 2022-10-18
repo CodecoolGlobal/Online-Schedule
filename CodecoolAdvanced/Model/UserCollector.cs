@@ -41,7 +41,7 @@ namespace CodecoolAdvanced.Model
 			}
 			else return _students.Remove(user);
 		}
-		public HashSet<User> GetUsers()
+		public HashSet<User> GetAllUsers()
         {
 			return _students;
         } 
