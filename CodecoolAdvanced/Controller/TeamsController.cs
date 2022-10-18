@@ -1,5 +1,6 @@
 ﻿using CodecoolAdvanced.Model;
 using CodecoolAvence.Model;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Web.Helpers;
@@ -7,6 +8,7 @@ using System.Web.Helpers;
 namespace CodecoolAdvanced.Controller
 {
     [ApiController]
+    
     [Route("api/teams")]
     public class TeamsController : ControllerBase
     {
@@ -17,6 +19,7 @@ namespace CodecoolAdvanced.Controller
             HashSet<Team> actualTeams = TeamCollector.Instance.GetCurrentWeekTeam();
             return Ok(actualTeams); 
         }
+        
         [HttpGet]
         public ActionResult<HashSet<Team>> GetAllTeams()
         {
