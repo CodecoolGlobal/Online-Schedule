@@ -39,14 +39,18 @@ namespace CodecoolAdvanced.Controller
         [HttpPost]
         public ActionResult<Team> CreateNewTeam(int studentId, string name)
         {
-            Student student=StudentCollector.Instance.GetStudentById(studentId);
-            if (student == null)
+            User user=UserCollector.Instance.GetUserById(studentId);
+            if (user == null)
             {
                 return NotFound();
             }
-            Team team = new Team(student, name);
-            TeamCollector.Instance.AddTeam(team);
-            return Ok(team);
+            if (user is Student)
+            {
+                Team team = new Team((Student)user, name);
+                TeamCollector.Instance.AddTeam(team);
+                return Ok(team);
+            }
+            return NotFound();
         }
         
         [HttpPut]
@@ -67,13 +71,17 @@ namespace CodecoolAdvanced.Controller
         public ActionResult AddStudentToTeam(int id, int studentid)
         {
             Team team = TeamCollector.Instance.GetTeamById(id);
-            Student student = StudentCollector.Instance.GetStudentById(studentid);
-            if (team == null || student == null)
+            User user = UserCollector.Instance.GetUserById(studentid);
+            if (team == null || user == null)
             {
                 return NotFound();
             }
-            team.AddStudent(student);
-            return NoContent();
+            if (user is Student)
+            {
+                team.AddStudent((Student)user);
+                return NoContent();
+            }
+            return NotFound();
         }
         
         [HttpPut]
@@ -81,13 +89,17 @@ namespace CodecoolAdvanced.Controller
         public ActionResult RemoveStudentFromTeam(int id, int studentid)
         {
             Team team = TeamCollector.Instance.GetTeamById(id);
-            Student student = StudentCollector.Instance.GetStudentById(studentid);
-            if (team == null || student == null)
+            User user = UserCollector.Instance.GetUserById(studentid);
+            if (team == null || user == null)
             {
                 return NotFound();
             }
-            team.RemoveStudent(student);
-            return NoContent();
+            if (user is Student)
+            {
+                team.RemoveStudent((Student)user);
+                return NoContent();
+            }
+            return NotFound();
         }
         
         [HttpDelete]
