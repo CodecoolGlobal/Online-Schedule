@@ -41,6 +41,12 @@ namespace CodecoolAdvanced.Controller
             return Ok(mentor);
         }
 
-        
+        [HttpPost]
+        [Route("/Student")]
+        public ActionResult<Student> CreateNewStudnet(string name, Branch branch, string email)
+        {
+            Student student = new Student(name, branch, email);
+            return Ok(student);
+        }
     }
 }
