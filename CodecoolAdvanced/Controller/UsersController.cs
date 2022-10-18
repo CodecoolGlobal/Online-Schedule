@@ -25,5 +25,22 @@ namespace CodecoolAdvanced.Controller
             }
             return Ok(user);
         }
+        [HttpGet]
+        [Route("/actual")]
+        public ActionResult<HashSet<Student>> GetActualStudents()
+        {
+            HashSet<Student> students = UserCollector.Instance.GetActualStudents();
+            return Ok(students);
+        }
+
+        [HttpPost]
+        [Route("/mentor")]
+        public ActionResult<Mentor> CreateNewMentor(string name, string email)
+        {
+            Mentor mentor = new Mentor(name, email);
+            return Ok(mentor);
+        }
+
+        
     }
 }
