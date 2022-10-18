@@ -41,7 +41,10 @@ namespace CodecoolAdvanced.Model
 			}
 			else return _students.Remove(user);
 		}
-
+		public HashSet<User> GetUsers()
+        {
+			return _students;
+        } 
 		public User? GetStudentById(int Id)
         {
 			User user = _students.FirstOrDefault(s => s.Id == Id);
