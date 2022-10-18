@@ -2,7 +2,7 @@ using System;
 
 namespace CodecoolAvence.Model {
 	public class Mentor : User {
-        public Mentor(string name) : base(name)
+        public Mentor(string name, string email) : base(name, email)
         {
         }
 

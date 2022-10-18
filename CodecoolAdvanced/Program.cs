@@ -11,8 +11,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
-Student student = new Student("alma", Branch.Java);
-Student student1 = new Student("korte", Branch.C_sharp);
+Student student = new Student("alma", Branch.Java, "alama@alama.hu");
+Student student1 = new Student("korte", Branch.C_sharp, "korte@korte.hu");
 Team team = new Team(student, "almak");
 TeamCollector.Instance.AddTeam(team);
 UserCollector.Instance.AddToStudents(student);
