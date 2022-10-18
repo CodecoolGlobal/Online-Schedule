@@ -48,5 +48,19 @@ namespace CodecoolAdvanced.Controller
             Student student = new Student(name, branch, email);
             return Ok(student);
         }
+
+        [HttpDelete]
+        [Route("/{id}")]
+        public ActionResult DeleteUser(int id)
+        {
+            User user = UserCollector.Instance.GetUserById(id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+            UserCollector.Instance.RemoveFromStudents(user);
+            return NoContent();
+        }
+
     }
 }
