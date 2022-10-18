@@ -24,7 +24,7 @@ namespace CodecoolAdvanced.Model
 			}
 		}
 
-		public bool AddToStudents(User user)
+		public bool AddUsersToCollector(User user)
 		{
 			if (user == null)
 			{

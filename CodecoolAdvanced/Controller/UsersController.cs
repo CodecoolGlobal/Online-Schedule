@@ -66,8 +66,15 @@ namespace CodecoolAdvanced.Controller
 
         [HttpPut]
         [Route("/{id}")]
-        public AcceptedResult ReNameUser(int id, string newName)
+        public ActionResult ReNameUser(int id, string newName)
         {
+            User user = UserCollector.Instance.GetUserById(id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+            user.Name = newName;
+            return NoContent();
 
         }
     }
