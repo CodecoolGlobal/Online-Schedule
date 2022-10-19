@@ -8,7 +8,7 @@ const Teams = () => {
   console.log(data)
   return (
     <>
-    {data.map(team => <div key={team.id} ><Link to={`/teams/${team.id}`}>{team.name}</Link></div>)
+    {data?.map(team => <div key={team.id} ><Link to={`/teams/${team.id}`}>{team.name}</Link></div>)
 
     }
     </>
