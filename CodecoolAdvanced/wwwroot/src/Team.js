@@ -18,6 +18,11 @@ const Team = () => {
                 {data.students?.map(student=> 
                   <li key={student.id}>{student.name}</li>)}
             </ul></>}
+            <a href={data.repo}>Repository</a>
+            <div>SI review start: {data.siReviewStart==="0001-01-01T00:00:00" ? "not set yet" : data.siReviewStart}</div>
+            <div>SI review finish: {data.siReviewFinish==="0001-01-01T00:00:00" ? "not set yet" : data.siReviewStart}</div>
+            <div>TW review start: {data.twReviewStart==="0001-01-01T00:00:00" ? "not set yet" : data.siReviewStart}</div>
+            <div>TW review finish: {data.twReviewFinish==="0001-01-01T00:00:00" ? "not set yet" : data.siReviewStart}</div>
           </>
   )
 }
