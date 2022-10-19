@@ -13,6 +13,7 @@ namespace CodecoolAdvanced.Controller
             HashSet<EducationalMaterial> materials = EducationMaterialCollector.Instance.GetEducationalMaterials();
             return Ok(materials);
         }
+
         [HttpGet]
         [Route("{id}")]
         public ActionResult<EducationalMaterial> GetMaterialById(int id)
@@ -22,6 +23,14 @@ namespace CodecoolAdvanced.Controller
             {
                 return NotFound();
             }
+            return Ok(material);
+        }
+
+        [HttpPost]
+        public ActionResult<EducationalMaterial> CreateNewEducationMaterial(string name)
+        {
+            EducationalMaterial material = new EducationalMaterial(name);
+            EducationMaterialCollector.Instance.AddToMaterials(material);
             return Ok(material);
         }
     }
