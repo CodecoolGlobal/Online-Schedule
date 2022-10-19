@@ -1,21 +1,21 @@
 ﻿namespace CodecoolAdvanced.Model
 {
-    public class EdducationMaterialColllector
+    public class EducationMaterialCollector
     {
-		private static EdducationMaterialColllector instance = null;
+		private static EducationMaterialCollector instance = null;
 
-		private EdducationMaterialColllector()
+		private EducationMaterialCollector()
 		{
 			_materials = new HashSet<EducationalMaterial>();
 		}
 
-		public static EdducationMaterialColllector Instance
+		public static EducationMaterialCollector Instance
 		{
 			get
 			{
 				if (instance == null)
 				{
-					instance = new EdducationMaterialColllector();
+					instance = new EducationMaterialCollector();
 				}
 				return instance;
 			}
