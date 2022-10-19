@@ -32,27 +32,27 @@ const Team = () => {
       <a href={data.repo}>Repository</a>
       <div>
         SI review start:{' '}
-        {data.siReviewStart === '2021-01-01T00:00:00'
+        {data.siReviewStart === '0001-01-01T00:00:00'
           ? 'not set yet'
-          : data.siReviewStart}
+          : new Date(data.siReviewStart).toLocaleTimeString()}
       </div>
       <div>
         SI review finish:{' '}
-        {data.siReviewFinish === '0001-01-01T00:00:00'
+        {data.siReviewFinish === '0011-01-01T00:00:00'
           ? 'not set yet'
-          : data.siReviewStart}
+          : new Date(data.siReviewStart).toLocaleTimeString()}
       </div>
       <div>
         TW review start:{' '}
         {data.twReviewStart === '0001-01-01T00:00:00'
           ? 'not set yet'
-          : data.siReviewStart}
+          : new Date(data.siReviewStart).toLocaleTimeString()}
       </div>
       <div>
         TW review finish:{' '}
         {data.twReviewFinish === '0001-01-01T00:00:00'
           ? 'not set yet'
-          : data.siReviewStart}
+          : new Date(data.siReviewStart).toLocaleTimeString()}
       </div>
     </>
   );
