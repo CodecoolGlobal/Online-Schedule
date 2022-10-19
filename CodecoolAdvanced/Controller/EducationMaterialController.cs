@@ -33,5 +33,36 @@ namespace CodecoolAdvanced.Controller
             EducationMaterialCollector.Instance.AddToMaterials(material);
             return Ok(material);
         }
+
+        [HttpPut]
+        [Route("{id}/add")]
+        public ActionResult AddMaterialToEducationMaterial(int id,string material)
+        {
+            EducationalMaterial EduMaterial = EducationMaterialCollector.Instance.GetEducationalMaterialById(id);
+            if(EduMaterial == null)
+            {
+                return NotFound();
+            }
+            if (EduMaterial.Material.Add(material))
+            {
+                return NoContent();
+            }
+            return BadRequest();
+        }
+        [HttpPut]
+        [Route("{id}/remove")]
+        public ActionResult RemoveMaterialToEducationMaterial(int id, string material)
+        {
+            EducationalMaterial EduMaterial = EducationMaterialCollector.Instance.GetEducationalMaterialById(id);
+            if (EduMaterial == null)
+            {
+                return NotFound();
+            }
+            if (EduMaterial.Material.Remove(material))
+            {
+                return NoContent();
+            }
+            return BadRequest();
+        }
     }
 }
