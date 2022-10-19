@@ -31,6 +31,11 @@
         {
 			return _materials.FirstOrDefault(x => x.Id == id);
         }
+
+		public bool AddToMaterials(EducationalMaterial material)
+		{
+			return _materials.Add(material);
+		}
 	}
 
 }
