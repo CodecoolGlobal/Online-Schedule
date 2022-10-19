@@ -20,8 +20,12 @@
 				return instance;
 			}
 		}
-
-
 		private HashSet<EducationalMaterial> _materials;
+		
+		public HashSet<EducationalMaterial> GetEducationalMaterials()
+        {
+			return _materials;
+        }
 	}
+
 }
