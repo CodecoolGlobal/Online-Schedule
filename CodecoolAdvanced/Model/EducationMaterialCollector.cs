@@ -26,6 +26,11 @@
         {
 			return _materials;
         }
+
+		public EducationalMaterial GetEducationalMaterialById(int id)
+        {
+			return _materials.FirstOrDefault(x => x.Id == id);
+        }
 	}
 
 }
