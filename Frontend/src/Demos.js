@@ -31,6 +31,8 @@ const Demos = () => {
                     <>{student.name}, </>
                   ))}
                 </td>
+                <td>{team.repo}</td>
+                <td>{time}</td>
               </tr>
             ))}
           </table>
