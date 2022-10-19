@@ -11,17 +11,13 @@ const InterviewPrep = () => {
         {data?.map((material) => (
           <li key={material.id}>
             {material.name}
-            {material.material !== [] ? (
-              <ul>
-                {material.material.map((submaterial) => (
-                  <li>
-                    <a href={submaterial}>{submaterial}</a>
-                  </li>
-                ))}
-              </ul>
-            ) : (
-              <></>
-            )}
+            <ul>
+              {material.material?.map((submaterial) => (
+                <li>
+                  <a href={submaterial}>{submaterial}</a>
+                </li>
+              ))}
+            </ul>
           </li>
         ))}
       </ul>
