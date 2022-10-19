@@ -8,9 +8,13 @@ const Teams = () => {
   console.log(data)
   return (
     <>
+    {isLoading && <p className='statusMsg'>Loading ...</p>}
+      {!isLoading && fetchError && <p className='statusMsg' style={{color: "red"}}>{fetchError}</p>}
+      {!isLoading && !fetchError && <>
     {data?.map(team => <div key={team.id} ><Link to={`/teams/${team.id}`}>{team.name}</Link></div>)
 
     }
+    </>}
     </>
   )
 }
