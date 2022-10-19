@@ -1,5 +1,6 @@
 ﻿using CodecoolAdvanced.Model;
 using CodecoolAvence.Model;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.Web.Helpers;
@@ -7,6 +8,7 @@ using System.Web.Helpers;
 namespace CodecoolAdvanced.Controller
 {
     [ApiController]
+    
     [Route("api/teams")]
     public class TeamsController : ControllerBase
     {
@@ -17,6 +19,7 @@ namespace CodecoolAdvanced.Controller
             HashSet<Team> actualTeams = TeamCollector.Instance.GetCurrentWeekTeam();
             return Ok(actualTeams); 
         }
+        
         [HttpGet]
         public ActionResult<HashSet<Team>> GetAllTeams()
         {
@@ -35,18 +38,29 @@ namespace CodecoolAdvanced.Controller
             }
             return Ok(team);
         }
+        [HttpGet]
+        [Route("{id}/students")]
+        public ActionResult<HashSet<Student>> GetStudentsFromTeamById(int id)
+        {
+            HashSet<Student> students = TeamCollector.Instance.GetStudentsFromTeamById(id);
+            return Ok(students);
+        }
 
         [HttpPost]
-        public ActionResult<Team> CreateNewTeam(int studentId, string name)
+        public ActionResult<Team> CreateNewTeam(int studentId, string name, string repo)
         {
-            Student student=StudentCollector.Instance.GetStudentById(studentId);
-            if (student == null)
+            User user=UserCollector.Instance.GetUserById(studentId);
+            if (user == null)
             {
                 return NotFound();
             }
-            Team team = new Team(student, name);
-            TeamCollector.Instance.AddTeam(team);
-            return Ok(team);
+            if (user is Student)
+            {
+                Team team = new Team((Student)user, name, repo);
+                TeamCollector.Instance.AddTeam(team);
+                return Ok(team);
+            }
+            return NotFound();
         }
         
         [HttpPut]
@@ -67,13 +81,17 @@ namespace CodecoolAdvanced.Controller
         public ActionResult AddStudentToTeam(int id, int studentid)
         {
             Team team = TeamCollector.Instance.GetTeamById(id);
-            Student student = StudentCollector.Instance.GetStudentById(studentid);
-            if (team == null || student == null)
+            User user = UserCollector.Instance.GetUserById(studentid);
+            if (team == null || user == null)
             {
                 return NotFound();
             }
-            team.AddStudent(student);
-            return NoContent();
+            if (user is Student)
+            {
+                team.AddStudent((Student)user);
+                return NoContent();
+            }
+            return NotFound();
         }
         
         [HttpPut]
@@ -81,13 +99,17 @@ namespace CodecoolAdvanced.Controller
         public ActionResult RemoveStudentFromTeam(int id, int studentid)
         {
             Team team = TeamCollector.Instance.GetTeamById(id);
-            Student student = StudentCollector.Instance.GetStudentById(studentid);
-            if (team == null || student == null)
+            User user = UserCollector.Instance.GetUserById(studentid);
+            if (team == null || user == null)
             {
                 return NotFound();
             }
-            team.RemoveStudent(student);
-            return NoContent();
+            if (user is Student)
+            {
+                team.RemoveStudent((Student)user);
+                return NoContent();
+            }
+            return NotFound();
         }
         
         [HttpDelete]

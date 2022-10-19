@@ -21,12 +21,12 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
-Student student = new Student("alma", Branch.Java);
-Student student1 = new Student("korte", Branch.C_sharp);
-Team team = new Team(student, "almak");
+Student student = new Student("alma", Branch.Java, "alama@alama.hu");
+Student student1 = new Student("korte", Branch.C_sharp, "korte@korte.hu");
+Team team = new Team(student, "almak", "https://github.com/CodecoolGlobal/el-proyecte-grande-sprint-1-csharp-nagyD88");
 TeamCollector.Instance.AddTeam(team);
-StudentCollector.Instance.AddToStudents(student);
-StudentCollector.Instance.AddToStudents(student1);
+UserCollector.Instance.AddUsersToCollector(student);
+UserCollector.Instance.AddUsersToCollector(student1);
 
 
 // Configure the HTTP request pipeline.

@@ -10,8 +10,16 @@ namespace CodecoolAvence.Model {
 		public DateTime StartDate { get; }
 		public BranchProgress _branchProgress { get; }
 
-        public Team(Student student, string name)
+		public string Repo { get;}
+		public DateTime SiReviewStart { get;set; }
+		public DateTime SiReviewFinish { get; set; }
+		public DateTime TwReviewStart { get; set; }
+		public DateTime TwReviewFinish { get; set; }
+
+
+		public Team(Student student, string name, string repo)
         {
+			Repo = repo;
 			Id = teamCounter;
 			Students = new HashSet<Student>();
             Students.Add(student);

@@ -49,6 +49,12 @@ namespace CodecoolAvence.Model {
             }
 			return teamToReturn;
 		}
+		
+		public HashSet<Student> GetStudentsFromTeamById(int Id)
+        {
+			Team team = GetTeamById(Id);
+			return team.Students; 
+        }
 
 		public HashSet<Team> GetCurrentWeekTeam() {
 			HashSet<Team> result = new HashSet<Team>();

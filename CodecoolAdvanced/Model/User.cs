@@ -2,12 +2,20 @@ using System;
 
 namespace CodecoolAvence.Model {
 	public abstract class User {
-		private string _name;
+		public string Name { get; set; }
+        private static int studentCounter = 0;
+        
 
-        protected User(string name)
+        public string Email { get; }
+        public int Id { get; private set; }
+        protected User(string name, string email)
         {
-            _name = name;
+            Email = email;
+            Name = name;
+            Id = studentCounter;
+            studentCounter++;
         }
+
     }
 
 }
