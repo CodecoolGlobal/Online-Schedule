@@ -7,20 +7,30 @@ const InterviewPrep = () => {
   console.log(data);
   return (
     <>
-      <ul>
-        {data?.map((material) => (
-          <li key={material.id}>
-            {material.name}
-            <ul>
-              {material.material?.map((submaterial) => (
-                <li key={submaterial}>
-                  <a href={submaterial}>{submaterial}</a>
-                </li>
-              ))}
-            </ul>
-          </li>
-        ))}
-      </ul>
+      {isLoading && <p className="statusMsg">Loading ...</p>}
+      {!isLoading && fetchError && (
+        <p className="statusMsg" style={{ color: 'red' }}>
+          {fetchError}
+        </p>
+      )}
+      {!isLoading && !fetchError && (
+        <>
+          <ul>
+            {data?.map((material) => (
+              <li key={material.id}>
+                {material.name}
+                <ul>
+                  {material.material?.map((submaterial) => (
+                    <li key={submaterial}>
+                      <a href={submaterial}>{submaterial}</a>
+                    </li>
+                  ))}
+                </ul>
+              </li>
+            ))}
+          </ul>
+        </>
+      )}
     </>
   );
 };
