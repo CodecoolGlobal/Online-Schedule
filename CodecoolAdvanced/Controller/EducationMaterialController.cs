@@ -64,5 +64,18 @@ namespace CodecoolAdvanced.Controller
             }
             return BadRequest();
         }
+
+        [HttpDelete]
+        [Route("{id}")]
+        public ActionResult DeleteEducationMaterial(int id)
+        {
+            EducationalMaterial EduMaterial = EducationMaterialCollector.Instance.GetEducationalMaterialById(id);
+            if (EduMaterial == null)
+            {
+                return NotFound();
+            }
+            EducationMaterialCollector.Instance.deleteFromMaterials(EduMaterial);
+            return NoContent();
+        }
     }
 }

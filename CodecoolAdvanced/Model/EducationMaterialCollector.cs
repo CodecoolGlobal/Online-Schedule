@@ -36,6 +36,10 @@
 		{
 			return _materials.Add(material);
 		}
+		public void deleteFromMaterials(EducationalMaterial material)
+        {
+			_materials.Remove(material);
+        }
 	}
 
 }
