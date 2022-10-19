@@ -77,6 +77,58 @@ namespace CodecoolAdvanced.Controller
         }
         
         [HttpPut]
+        [Route("{id}/tw/start")]
+        public ActionResult ChangeTimeOfTwReviewStart(int id ,DateTime twReviewStart)
+        {
+            Team team = TeamCollector.Instance.GetTeamById(id);
+            if (team == null)
+            {
+                return NotFound();
+            }
+            team.TwReviewStart =twReviewStart;
+            return NoContent();
+        }
+
+        [HttpPut]
+        [Route("{id}/tw/finish")]
+        public ActionResult ChangeTimeOfTwReviewFinish(int id, DateTime twReviewFinish)
+        {
+            Team team = TeamCollector.Instance.GetTeamById(id);
+            if (team == null)
+            {
+                return NotFound();
+            }
+            team.TwReviewFinish = twReviewFinish;
+            return NoContent();
+        }
+
+        [HttpPut]
+        [Route("{id}/si/start")]
+        public ActionResult ChangeTimeOfSiReviewStart(int id, DateTime siReviewStart)
+        {
+            Team team = TeamCollector.Instance.GetTeamById(id);
+            if (team == null)
+            {
+                return NotFound();
+            }
+            team.SiReviewStart = siReviewStart;
+            return NoContent();
+        }
+
+        [HttpPut]
+        [Route("{id}/si/finish")]
+        public ActionResult ChangeTimeOfSiReviewFinish(int id, DateTime siReviewFinish)
+        {
+            Team team = TeamCollector.Instance.GetTeamById(id);
+            if (team == null)
+            {
+                return NotFound();
+            }
+            team.SiReviewFinish = siReviewFinish;
+            return NoContent();
+        }
+
+        [HttpPut]
         [Route("{id}/add/{studentid}")]
         public ActionResult AddStudentToTeam(int id, int studentid)
         {
