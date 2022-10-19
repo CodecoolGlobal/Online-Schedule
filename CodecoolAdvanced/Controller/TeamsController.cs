@@ -47,7 +47,7 @@ namespace CodecoolAdvanced.Controller
         }
 
         [HttpPost]
-        public ActionResult<Team> CreateNewTeam(int studentId, string name)
+        public ActionResult<Team> CreateNewTeam(int studentId, string name, string repo)
         {
             User user=UserCollector.Instance.GetUserById(studentId);
             if (user == null)
@@ -56,7 +56,7 @@ namespace CodecoolAdvanced.Controller
             }
             if (user is Student)
             {
-                Team team = new Team((Student)user, name);
+                Team team = new Team((Student)user, name, repo);
                 TeamCollector.Instance.AddTeam(team);
                 return Ok(team);
             }
