@@ -32,7 +32,6 @@ const Demos = () => {
                   ))}
                 </td>
                 <td>{team.repo}</td>
-                <td>{time}</td>
               </tr>
             ))}
           </table>
