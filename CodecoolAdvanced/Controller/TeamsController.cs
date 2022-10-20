@@ -104,7 +104,7 @@ namespace CodecoolAdvanced.Controller
 
         [HttpPut]
         [Route("{id}/si/start")]
-        public ActionResult ChangeTimeOfSiReviewStart(int id,[FromBody]string siReviewStart)
+        public ActionResult ChangeTimeOfSiReviewStart(int id, string siReviewStart)
         {
             Team team = TeamCollector.Instance.GetTeamById(id);
             if (team == null)

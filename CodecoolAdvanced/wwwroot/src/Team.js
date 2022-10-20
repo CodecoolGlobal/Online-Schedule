@@ -17,8 +17,8 @@ const Team = () => {
   const handleSiStart = async (e) => {
     e.preventDefault();
     try {
-      const review = { siReviewStart: siStart };
-      const response = await api.put(`/teams/${id}/si/start`, review);
+      const review = siStart.replace(':', '%3A')
+      const response = await api.put(`/teams/${id}/si/start?siReviewStart=${review}`);
       setSiStart('');
     } catch (err) {
       if (err.response) {
@@ -56,7 +56,7 @@ const Team = () => {
       <a href={data.repo}>Repository</a>
       <div>
         SI review start:{' '}
-        {data.siReviewStart === '0001-01-01T00:00:00'
+        {data.siReviewStart === null
           ? 'not set yet'
           : data.siReviewStart}
       </div>
@@ -65,7 +65,7 @@ const Team = () => {
           SI review start:
           <input
             id="siStart"
-            type="text"
+            type="time"
             required
             value={siStart}
             onChange={(e) => setSiStart(e.target.value)}
@@ -75,7 +75,7 @@ const Team = () => {
       </form>
       <div>
         SI review finish:{' '}
-        {data.siReviewFinish === '0001-01-01T00:00:00'
+        {data.siReviewFinish === null
           ? 'not set yet'
           : data.siReviewFinish}
       </div>
@@ -88,7 +88,7 @@ const Team = () => {
       </form>
       <div>
         TW review start:{' '}
-        {data.twReviewStart === '0001-01-01T00:00:00'
+        {data.twReviewStart === null
           ? 'not set yet'
           : data.twReviewStart}
       </div>
@@ -101,7 +101,7 @@ const Team = () => {
       </form>
       <div>
         TW review finish:{' '}
-        {data.twReviewFinish === '0001-01-01T00:00:00'
+        {data.twReviewFinish === null
           ? 'not set yet'
           : data.twReviewFinish}
       </div>
