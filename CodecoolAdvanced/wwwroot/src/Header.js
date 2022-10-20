@@ -4,7 +4,7 @@ import "./App.css";
 
 const Header = () => {
   return (
-    <div class="header"><div class="logo">Codecool Advanced</div><div class="log"><Link to="login">login</Link></div></div>
+    <div className="header"><div className="logo">Codecool Advanced</div><div className="log"><Link to="login">login</Link></div></div>
   )
 }
 
