@@ -16,10 +16,21 @@ namespace CodecoolAdvanced.Controller
         [Route("actual")]
         public ActionResult<HashSet<Team>> GetTeamsForActualWeek()
         {
+
             HashSet<Team> actualTeams = TeamCollector.Instance.GetCurrentWeekTeam();
             return Ok(actualTeams); 
         }
-        
+
+        [HttpGet]
+        [Route("demos")]
+        public ActionResult<HashSet<Team>> GetDemos()
+        {
+            Demos demo = Demos.Instance ?? throw new ArgumentNullException("Demos.Instance");
+            DateTime time = Demos.Instance.DemoStart;
+            List<Team> actualTeams = Demos.Instance.shafelOrder();
+            return Ok(demo);
+        }
+
         [HttpGet]
         public ActionResult<HashSet<Team>> GetAllTeams()
         {
@@ -163,7 +174,7 @@ namespace CodecoolAdvanced.Controller
             }
             return NotFound();
         }
-        
+
         [HttpDelete]
         [Route("{id}")]
         public ActionResult DeleteTeam(int id)
@@ -173,8 +184,11 @@ namespace CodecoolAdvanced.Controller
             {
                 return NotFound();
             }
+
             TeamCollector.Instance.DeleteTeam(team);
             return NoContent();
         }
+
+        
     }
 }
