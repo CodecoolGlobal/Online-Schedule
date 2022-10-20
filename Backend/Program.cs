@@ -27,6 +27,8 @@ Team team = new Team(student, "almak", "https://github.com/CodecoolGlobal/el-pro
 TeamCollector.Instance.AddTeam(team);
 UserCollector.Instance.AddUsersToCollector(student);
 UserCollector.Instance.AddUsersToCollector(student1);
+EducationalMaterial material = new EducationalMaterial("Books to read");
+EducationMaterialCollector.Instance.AddToMaterials(material);
 
 
 // Configure the HTTP request pipeline.
