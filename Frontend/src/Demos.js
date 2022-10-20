@@ -2,8 +2,11 @@ import React from 'react';
 import useAxiosFetch from './hooks/useAxiosFetch';
 
 const Demos = () => {
-  let url = 'https://localhost:7086/api/teams/actual';
+  let url = 'https://localhost:7086/api/teams/demos';
   const { data, fetchError, isLoading } = useAxiosFetch(url);
+  const demoStart = new Date(
+    `${data.demoStart}`
+  ).toLocaleTimeString();
   console.log(data);
 
   return (
@@ -16,22 +19,26 @@ const Demos = () => {
       )}
       {!isLoading && !fetchError && (
         <>
-          <table>
+          <h1>Demos Start at {demoStart}</h1>
+          <table className="DemoTabel">
             <tr>
+              <th></th>
               <th>Team Name</th>
               <th>Team Members</th>
               <th>Git</th>
-              <th>Start</th>
             </tr>
-            {data?.map((team) => (
+            {data.demoOrder?.map((team, index) => (
               <tr key={team.id}>
+                <td>{(index = index + 1)}</td>
                 <td>{team.name}</td>
                 <td>
                   {team.students?.map((student) => (
                     <>{student.name}, </>
                   ))}
                 </td>
-                <td>{team.repo}</td>
+                <td>
+                  <a href={team.repo}>{team.repo}</a>
+                </td>
               </tr>
             ))}
           </table>
