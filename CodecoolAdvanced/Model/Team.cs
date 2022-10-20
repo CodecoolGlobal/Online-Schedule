@@ -11,10 +11,10 @@ namespace CodecoolAvence.Model {
 		public BranchProgress _branchProgress { get; }
 
 		public string Repo { get;}
-		public DateTime SiReviewStart { get;set; }
-		public DateTime SiReviewFinish { get; set; }
-		public DateTime TwReviewStart { get; set; }
-		public DateTime TwReviewFinish { get; set; }
+		public string SiReviewStart { get;set; }
+		public string SiReviewFinish { get; set; }
+		public string TwReviewStart { get; set; }
+		public string TwReviewFinish { get; set; }
 
 
 		public Team(Student student, string name, string repo)
