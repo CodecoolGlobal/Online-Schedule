@@ -1,26 +1,26 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router';
 import useAxiosFetch from './hooks/useAxiosFetch';
-import api from './hooks/api';
+import api from './api/api';
 
 const Team = () => {
   const { id } = useParams();
   let url = `https://localhost:7086/api/teams/${id}`;
-
-  const { data, fetchError, isLoading } = useAxiosFetch(url);
-  console.log(data);
-
+  
+    const { data, fetchError, isLoading } = useAxiosFetch(url);
+    console.log(data);
+ 
   const [siStart, setSiStart] = useState('');
   const [siFinish, setSiFinish] = useState('');
   const [twStart, setTwStart] = useState('');
   const [twFinish, setTwFinish] = useState('');
-
-  useEffect(() => {
-    setSiStart(data.siReviewStart);
-    setSiFinish(data.siReviewFinish);
-    setTwStart(data.twReviewStart);
-    setTwFinish(data.twReviewFinish);
-  }, [data]);
+  
+  useEffect(()=>{
+    setSiStart(data.siReviewStart)
+    setSiFinish(data.siReviewFinish)
+    setTwStart(data.twReviewStart)
+    setTwFinish(data.twReviewFinish)
+  },[data])
   const handleSiStart = async (e) => {
     e.preventDefault();
     try {
@@ -28,6 +28,7 @@ const Team = () => {
       const response = await api.put(
         `/teams/${id}/si/start?siReviewStart=${review}`
       );
+      
     } catch (err) {
       if (err.response) {
         console.log(err.response.data);
@@ -45,6 +46,7 @@ const Team = () => {
       const response = await api.put(
         `/teams/${id}/si/finish?siReviewFinish=${review}`
       );
+      
     } catch (err) {
       if (err.response) {
         console.log(err.response.data);
@@ -62,6 +64,7 @@ const Team = () => {
       const response = await api.put(
         `/teams/${id}/tw/start?twReviewStart=${review}`
       );
+      
     } catch (err) {
       if (err.response) {
         console.log(err.response.data);
@@ -79,6 +82,7 @@ const Team = () => {
       const response = await api.put(
         `/teams/${id}/tw/finish?twReviewFinish=${review}`
       );
+      
     } catch (err) {
       if (err.response) {
         console.log(err.response.data);
@@ -111,6 +115,8 @@ const Team = () => {
         </>
       )}
       <a href={data.repo}>Repository</a>
+
+      
       <form onSubmit={handleSiStart}>
         <label>
           SI review start:
@@ -124,6 +130,7 @@ const Team = () => {
         </label>
         <input type="submit" value="Submit" />
       </form>
+
       <form onSubmit={handleSiFinish}>
         <label>
           SI review finish:
@@ -137,6 +144,7 @@ const Team = () => {
         </label>
         <input type="submit" value="Submit" />
       </form>
+
       <form onSubmit={handleTwStart}>
         <label>
           TW review start:
@@ -150,6 +158,7 @@ const Team = () => {
         </label>
         <input type="submit" value="Submit" />
       </form>
+      
       <form onSubmit={handleTwFinish}>
         <label>
           TW review finish:
