@@ -78,7 +78,7 @@ namespace CodecoolAdvanced.Controller
         
         [HttpPut]
         [Route("{id}/tw/start")]
-        public ActionResult ChangeTimeOfTwReviewStart(int id ,DateTime twReviewStart)
+        public ActionResult ChangeTimeOfTwReviewStart(int id ,string twReviewStart)
         {
             Team team = TeamCollector.Instance.GetTeamById(id);
             if (team == null)
@@ -91,7 +91,7 @@ namespace CodecoolAdvanced.Controller
 
         [HttpPut]
         [Route("{id}/tw/finish")]
-        public ActionResult ChangeTimeOfTwReviewFinish(int id, DateTime twReviewFinish)
+        public ActionResult ChangeTimeOfTwReviewFinish(int id, string twReviewFinish)
         {
             Team team = TeamCollector.Instance.GetTeamById(id);
             if (team == null)
@@ -104,7 +104,7 @@ namespace CodecoolAdvanced.Controller
 
         [HttpPut]
         [Route("{id}/si/start")]
-        public ActionResult ChangeTimeOfSiReviewStart(int id, DateTime siReviewStart)
+        public ActionResult ChangeTimeOfSiReviewStart(int id,[FromBody]string siReviewStart)
         {
             Team team = TeamCollector.Instance.GetTeamById(id);
             if (team == null)
@@ -117,7 +117,7 @@ namespace CodecoolAdvanced.Controller
 
         [HttpPut]
         [Route("{id}/si/finish")]
-        public ActionResult ChangeTimeOfSiReviewFinish(int id, DateTime siReviewFinish)
+        public ActionResult ChangeTimeOfSiReviewFinish(int id, string siReviewFinish)
         {
             Team team = TeamCollector.Instance.GetTeamById(id);
             if (team == null)
