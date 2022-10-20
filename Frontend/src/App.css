@@ -83,7 +83,11 @@ h2 {
 }
 
 .team{
-background-color: #f1f1f1;
+  background-color: #f1f1f1;
+  margin: 16px 57px;
+  font-size: 28px;
+  text-align: initial;
+  padding: 0px 24px;
 }
 
 p.statusMsg.err {
