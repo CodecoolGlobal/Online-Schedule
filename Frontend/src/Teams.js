@@ -17,7 +17,7 @@ const Teams = () => {
       )}
       {!isLoading && !fetchError && (
         <>
-        <div className='allTeams'>
+        <div className='teamContainer'>
           {data?.map((team) => (
               <Link to={`/teams/${team.id}`}><div key={team.id} className='team' >
                 <p>{team.name}</p>

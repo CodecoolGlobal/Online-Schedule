@@ -63,31 +63,74 @@
 .add {
   float: left;
   position: absolute;
-  background-color: #c2c2c2;
+  background-color: #f1f1f1;
   padding: 0px 9px 7px 9px;
   margin: -32px 0px;
 }
 
 h2 {
-  background-color: #f1f1f1;
+  background-color: cadetblue;
   width: 87%;
   padding: 5px 5px 12px 5px;
   margin: 20px;
 }
 
-.allTeams{
+.teamContainer{
   background-color: #f9f9f9;;
   width: 87%;
   padding: 5px 5px 12px 5px;
-  margin: 20px;
+  margin: 0px 20px 20px 20px;
 }
 
 .team{
-  background-color: #f1f1f1;
+  background-color: #00ee6a;
   margin: 16px 57px;
   font-size: 28px;
   text-align: initial;
   padding: 0px 24px;
+}
+
+.time{
+  background-color: #9fe6f2;
+  width: 45%;
+  margin: 16px 29px;
+  font-size: 20px;
+}
+
+.teamName, .demoTime{
+  background-color: cadetblue;
+  width: 87%;
+  padding: 5px 5px 12px 5px;
+  margin: 20px 20px 0px 20px;
+}
+
+.flex{
+display: flex;
+flex-wrap: wrap;
+}
+
+.sub{
+  background-color: #60eb5d;
+  border: none;
+  margin: 10px;
+  font-size: 17px;
+}
+
+th{
+  background-color: #00ee6a;
+}
+
+table{
+  background-color: #9fe6f2;
+  width: 87%;
+  padding: 5px 5px 8px 0px;
+  margin: 20px 20px 0px 26px;
+}
+
+.repo{
+  background-color: #00ee6a;
+  margin: 0px 20px;
+  font-size: 30px;
 }
 
 p.statusMsg.err {
