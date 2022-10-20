@@ -31,7 +31,57 @@ const Team = () => {
       
     }
   };
-
+  const handleSiFinish = async (e) => {
+    e.preventDefault();
+    try {
+      const review = siFinish.replace(':', '%3A')
+      const response = await api.put(`/teams/${id}/si/finish?siReviewFinish=${review}`);
+      setSiFinish('');
+    } catch (err) {
+      if (err.response) {
+        console.log(err.response.data);
+        console.log(err.response.status);
+        console.log(err.response.headers);
+      } else {
+        console.log(`Error: ${err.message}`);
+      }
+      
+    }
+  };
+  const handleTwStart = async (e) => {
+    e.preventDefault();
+    try {
+      const review = twStart.replace(':', '%3A')
+      const response = await api.put(`/teams/${id}/tw/start?twReviewStart=${review}`);
+      setTwStart('');
+    } catch (err) {
+      if (err.response) {
+        console.log(err.response.data);
+        console.log(err.response.status);
+        console.log(err.response.headers);
+      } else {
+        console.log(`Error: ${err.message}`);
+      }
+      
+    }
+  };
+  const handleTwFinish = async (e) => {
+    e.preventDefault();
+    try {
+      const review = twFinish.replace(':', '%3A')
+      const response = await api.put(`/teams/${id}/tw/finish?twReviewFinish=${review}`);
+      setTwFinish('');
+    } catch (err) {
+      if (err.response) {
+        console.log(err.response.data);
+        console.log(err.response.status);
+        console.log(err.response.headers);
+      } else {
+        console.log(`Error: ${err.message}`);
+      }
+      
+    }
+  };
   return (
     <>
       {' '}
@@ -71,7 +121,7 @@ const Team = () => {
             onChange={(e) => setSiStart(e.target.value)}
           />
         </label>
-        <input type="submit" value="Submit" />
+        <input type="submit" value="Submit" />     
       </form>
       <div>
         SI review finish:{' '}
@@ -79,10 +129,17 @@ const Team = () => {
           ? 'not set yet'
           : data.siReviewFinish}
       </div>
-      <form>
+
+
+      <form onSubmit={handleSiFinish}>
         <label>
           SI review finish:
-          <input type="text" name="name" />
+          <input 
+          id="siFinish"
+            type="time"
+            required
+            value={siFinish}
+            onChange={(e) => setSiFinish(e.target.value)} />
         </label>
         <input type="submit" value="Submit" />
       </form>
@@ -92,10 +149,17 @@ const Team = () => {
           ? 'not set yet'
           : data.twReviewStart}
       </div>
-      <form>
+
+
+      <form onSubmit={handleTwStart}>
         <label>
           TW review start:
-          <input type="text" name="name" />
+          <input 
+            id="twStart"
+            type="time"
+            required
+            value={twStart}
+            onChange={(e) => setTwStart(e.target.value)} />
         </label>
         <input type="submit" value="Submit" />
       </form>
@@ -105,10 +169,17 @@ const Team = () => {
           ? 'not set yet'
           : data.twReviewFinish}
       </div>
-      <form>
+
+
+      <form onSubmit={handleTwFinish}>
         <label>
           TW review finish:
-          <input type="text" name="name" />
+          <input 
+            id="twFinish"
+            type="time"
+            required
+            value={twFinish}
+            onChange={(e) => setTwFinish(e.target.value)} />
         </label>
         <input type="submit" value="Submit" />
       </form>
