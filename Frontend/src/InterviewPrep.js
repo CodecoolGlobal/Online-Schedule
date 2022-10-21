@@ -9,7 +9,7 @@ const InterviewPrep = () => {
     <>
       {isLoading && <p className="statusMsg">Loading ...</p>}
       {!isLoading && fetchError && (
-        <p className="statusMsg" style={{ color: 'red' }}>
+        <p className="statusMsg err" style={{ color: 'red' }}>
           {fetchError}
         </p>
       )}

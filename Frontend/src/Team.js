@@ -98,19 +98,21 @@ const Team = () => {
           {fetchError}
         </p>
       )}
+
+
+
       {!isLoading && !fetchError && (
         <>
-          <h1>{data.name}</h1>
-          <div>Mentor: {data.mentor}</div>
-          <ul>
-            Students:
-            {data.students?.map((student) => (
-              <li key={student.id}>{student.name}</li>
-            ))}
-          </ul>
+          <h1 className='teamName'>{data.name} ({data.students?.map((student) => (
+              student.name + " "
+            ))})</h1>
         </>
       )}
-      <a href={data.repo}>Repository</a>
+      <div className='teamContainer'>
+      <div>Mentor: {data.mentor}</div>
+      <a href={data.repo}><div className='repo'>Repository</div></a>
+      <div className='flex'>
+      <div className='time'>
       <form onSubmit={handleSiStart}>
         <label>
           SI review start:
@@ -122,8 +124,10 @@ const Team = () => {
             onChange={(e) => setSiStart(e.target.value)}
           />
         </label>
-        <input type="submit" value="Submit" />
+        <input type="submit" value="Submit" className='sub' />
       </form>
+      </div>
+      <div className='time'>
       <form onSubmit={handleSiFinish}>
         <label>
           SI review finish:
@@ -135,8 +139,10 @@ const Team = () => {
             onChange={(e) => setSiFinish(e.target.value)}
           />
         </label>
-        <input type="submit" value="Submit" />
+        <input type="submit" value="Submit" className='sub' />
       </form>
+      </div>
+      <div className='time'>
       <form onSubmit={handleTwStart}>
         <label>
           TW review start:
@@ -148,8 +154,10 @@ const Team = () => {
             onChange={(e) => setTwStart(e.target.value)}
           />
         </label>
-        <input type="submit" value="Submit" />
+        <input type="submit" value="Submit" className='sub' />
       </form>
+      </div>
+      <div className='time'>
       <form onSubmit={handleTwFinish}>
         <label>
           TW review finish:
@@ -161,8 +169,11 @@ const Team = () => {
             onChange={(e) => setTwFinish(e.target.value)}
           />
         </label>
-        <input type="submit" value="Submit" />
+        <input type="submit" value="Submit" className='sub'  />
       </form>
+      </div>
+      </div>
+      </div>
     </>
   );
 };
