@@ -85,7 +85,6 @@ h2 {
 }
 
 .teamContainer{
-  background-color: #f9f9f9;;
   width: 87%;
   padding: 5px 5px 12px 5px;
   margin: 0px 20px 20px 20px;
@@ -94,10 +93,10 @@ h2 {
 .team{
   color : white;
   background-color: #3c394f;
-  margin: 16px 57px;
-  font-size: 28px;
+  margin: 3px 3px;
+  font-size: 20px;
   text-align: initial;
-  padding: 0px 24px;
+  padding: 2px 3px 3px 10px;
   border-radius: 8px;
 }
 
@@ -179,7 +178,9 @@ p.statusMsg {
   color: #eae8e8;
 }
 
-
+.educationLink{
+  color:white
+}
 
 
 ul{
@@ -187,7 +188,7 @@ ul{
   background-color: #3c394f;
   color: white;
   border-radius: 8px;
-  padding: 30px;
+  padding: 6px 0px 6px 30px;
   
 }
 @keyframes App-logo-spin {

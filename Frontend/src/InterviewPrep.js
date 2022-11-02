@@ -22,7 +22,7 @@ const InterviewPrep = () => {
                 <ul>
                   {material.material?.map((submaterial) => (
                     <li key={submaterial}>
-                      <a href={submaterial}>{submaterial}</a>
+                      <a className='educationLink' href={submaterial}>{submaterial}</a>
                     </li>
                   ))}
                 </ul>
