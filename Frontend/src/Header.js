@@ -4,7 +4,7 @@ import "./App.css";
 
 const Header = () => {
   return (
-    <div className="header"><div className="logo"><img src='../public/logo192.png'></img>Codecool Advanced</div><div className="log"><Link to="login">login</Link></div></div>
+    <div className="header"><div className="logo"><img src='/SeeSharp_logo.png' width="40" ></img>Codecool Advanced</div><div className="log"><Link to="login">login</Link></div></div>
   )
 }
 
