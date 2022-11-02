@@ -14,6 +14,7 @@
   font-size: 18px;
   line-height: 25px;
   border-radius: 4px;
+  position: relative;
 }
 
 .logo {
@@ -22,13 +23,26 @@
     float: left;
     padding: 5px;
     
+    
+}
+.name{
+
+  display:inline-block;
 }
 
+.Space{
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  
+  
+}
 .log {
-  float: right;
   color: black;
   padding: 5px;
-  
+  float: right;
 }
 
 :link {
