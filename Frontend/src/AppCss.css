@@ -1,0 +1,169 @@
+.App {
+    text-align: center;
+  }
+  
+  .App-logo {
+    height: 40vmin;
+    pointer-events: none;
+  }
+  
+  @media (prefers-reduced-motion: no-preference) {
+    .App-logo {
+      animation: App-logo-spin infinite 20s linear;
+    }
+  }
+  
+  .header {
+    overflow: hidden;
+    background-color: #f1f1f1;
+    padding: 20px 10px;
+    color: black;
+    text-align: center;
+    text-decoration: none;
+    font-size: 18px;
+    line-height: 25px;
+    border-radius: 4px;
+  }
+  
+  .logo {
+      font-size: 25px;
+      font-weight: bold;
+      float: left;
+      padding: 5px;
+      background-color: #b1e4f1;
+  }
+  
+  .log {
+    float: right;
+    color: black;
+    padding: 5px;
+    background-color: #b1e4f1;
+  }
+  
+  :link {
+    text-decoration: none;
+  }
+  
+  .sideNav {
+    height: 100%;
+    width: -moz-fit-content;
+    position: absolute;
+    z-index: 1 !important;
+    right: 0;
+    background-color: #f9f9f9;
+    padding: 10px;
+    cursor: pointer;
+  }
+  
+  .navElement{
+    padding: 5px;
+    cursor: pointer;
+  }
+  
+  .add {
+    float: left;
+    position: absolute;
+    background-color: #f1f1f1;
+    padding: 0px 9px 7px 9px;
+    margin: -32px 0px;
+  }
+  
+  h2 {
+    background-color: cadetblue;
+    width: 87%;
+    padding: 5px 5px 12px 5px;
+    margin: 20px;
+  }
+  
+  .teamContainer{
+    background-color: #f9f9f9;;
+    width: 87%;
+    padding: 5px 5px 12px 5px;
+    margin: 0px 20px 20px 20px;
+  }
+  
+  .team{
+    background-color: #00ee6a;
+    margin: 16px 57px;
+    font-size: 28px;
+    text-align: initial;
+    padding: 0px 24px;
+  }
+  
+  .time{
+    background-color: #9fe6f2;
+    width: 45%;
+    margin: 16px 29px;
+    font-size: 20px;
+  }
+  
+  .teamName, .demoTime{
+    background-color: cadetblue;
+    width: 87%;
+    padding: 5px 5px 12px 5px;
+    margin: 20px 20px 0px 20px;
+  }
+  
+  .flex{
+  display: flex;
+  flex-wrap: wrap;
+  }
+  
+  .sub{
+    background-color: #60eb5d;
+    border: none;
+    margin: 10px;
+    font-size: 17px;
+  }
+  
+  th{
+    background-color: #00ee6a;
+  }
+  
+  table{
+    background-color: #9fe6f2;
+    width: 87%;
+    padding: 5px 5px 8px 0px;
+    margin: 20px 20px 0px 26px;
+  }
+  
+  .repo{
+    background-color: #00ee6a;
+    margin: 0px 20px;
+    font-size: 30px;
+  }
+  
+  p.statusMsg.err {
+    width: 87%;
+    padding: 5px 5px 12px 5px;
+    margin: 20px;
+    border: solid red;
+    color: red;
+    font-size: 25px;
+  }
+  
+  p.statusMsg {
+    width: 87%;
+    padding: 5px 5px 12px 5px;
+    margin: 20px;
+    border: solid rgb(190, 190, 190);
+    color: rgb(0, 0, 0);
+    font-size: 25px;
+  }
+  .active, .navElement:hover {
+    background-color: #b1e4f1;
+  }
+  
+  .App-link {
+    color: #61dafb;
+  }
+  
+  @keyframes App-logo-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  
