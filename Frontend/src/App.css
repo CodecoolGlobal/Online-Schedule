@@ -1,8 +1,11 @@
 .App {
   text-align: center;
-  background-color: #f8f9fa;
+  background-color: #eae8e8;
 }
-
+.mainPart{
+  margin-left: 170px;
+  height: 100vh;
+}
 
 .header {
   overflow: hidden;
@@ -50,12 +53,14 @@
 }
 
 .sideNav {
+
   height: 100%;
+  width: 130px;
   width: -moz-fit-content;
   position: absolute;
   z-index: 1 !important;
   background-color: white;
-  padding: 10px;
+  padding: 0px;
   cursor: pointer;
 }
 
@@ -87,41 +92,48 @@ h2 {
 }
 
 .team{
-  background-color: #00ee6a;
+  color : white;
+  background-color: #3c394f;
   margin: 16px 57px;
   font-size: 28px;
   text-align: initial;
   padding: 0px 24px;
+  border-radius: 8px;
 }
 
 .time{
+  display: inline-block;
   background-color: #9fe6f2;
   width: 45%;
-  margin: 16px 29px;
+  margin: 1px 2px;
   font-size: 20px;
 }
 
 .teamName, .demoTime{
-  background-color: cadetblue;
+  color: White;
+  background-color: #3c394f;
   width: 87%;
   padding: 5px 5px 12px 5px;
   margin: 20px 20px 0px 20px;
 }
 
 .flex{
-display: flex;
+display: block;
 flex-wrap: wrap;
 }
 
 .sub{
-  background-color: #60eb5d;
+  color: white;
+  background-color: #3c394f;
   border: none;
   margin: 10px;
   font-size: 17px;
+  border-radius: 4px;
 }
 
 th{
-  background-color: #00ee6a;
+  color:white;
+  background-color: #3c394f;
 }
 
 table{
@@ -132,9 +144,11 @@ table{
 }
 
 .repo{
-  background-color: #00ee6a;
+  color: white;
+  background-color: #3c394f;
   margin: 0px 20px;
   font-size: 30px;
+  border-radius: 8px;
 }
 
 p.statusMsg.err {
@@ -155,11 +169,11 @@ p.statusMsg {
   font-size: 25px;
 }
 .active, .navElement:hover {
-  background-color: #b1e4f1;
+  background-color: #eae8e8;
 }
 
 .App-link {
-  color: #61dafb;
+  color: #eae8e8;
 }
 
 @keyframes App-logo-spin {
