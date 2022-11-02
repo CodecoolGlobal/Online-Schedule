@@ -8,7 +8,7 @@ const Teams = () => {
   console.log(data);
   return (
     <>
-    <h2>Teams<div className='add'><Link to='add'>+</Link></div></h2>
+    
       {isLoading && <p className="statusMsg">Loading ...</p>}
       {!isLoading && fetchError && (
         <p className="statusMsg err">
@@ -18,6 +18,7 @@ const Teams = () => {
       {!isLoading && !fetchError && (
         <>
         <div className='teamContainer'>
+        <h2>Teams<div className='add'><Link to='add'>+</Link></div></h2>
           {data?.map((team) => (
               <Link to={`/teams/${team.id}`}><div key={team.id} className='team' >
                 <p>{team.name}</p>

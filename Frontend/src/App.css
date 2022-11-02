@@ -85,9 +85,12 @@ h2 {
 }
 
 .teamContainer{
+  background-color: white;
   width: 87%;
   padding: 5px 5px 12px 5px;
-  margin: 0px 20px 20px 20px;
+  margin: 20px 20px 20px 20px;
+  border-radius: 8px;
+
 }
 
 .team{
