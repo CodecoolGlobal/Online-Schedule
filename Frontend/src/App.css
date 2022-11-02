@@ -115,6 +115,7 @@ h2 {
   width: 87%;
   padding: 5px 5px 12px 5px;
   margin: 20px 20px 0px 20px;
+  border-radius: 8px;
 }
 
 .flex{
@@ -135,9 +136,11 @@ th{
   color:white;
   background-color: #3c394f;
 }
-
+tr{
+  background-color: white;
+}
 table{
-  background-color: #9fe6f2;
+  
   width: 87%;
   padding: 5px 5px 8px 0px;
   margin: 20px 20px 0px 26px;
@@ -176,6 +179,17 @@ p.statusMsg {
   color: #eae8e8;
 }
 
+
+
+
+ul{
+  text-align: left;
+  background-color: #3c394f;
+  color: white;
+  border-radius: 8px;
+  padding: 30px;
+  
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
