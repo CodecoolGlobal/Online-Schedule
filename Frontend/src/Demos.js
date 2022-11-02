@@ -13,13 +13,11 @@ const Demos = () => {
     <>
       {isLoading && <p className="statusMsg">Loading ...</p>}
       {!isLoading && fetchError && (
-        <p className="statusMsg err">
-          {fetchError}
-        </p>
+        <p className="statusMsg err">{fetchError}</p>
       )}
       {!isLoading && !fetchError && (
         <>
-          <h1 className='demoTime'>Demos Start at {demoStart}</h1>
+          <h1 className="demoTime">Demos Start at 9:30</h1>
           <table className="DemoTabel">
             <tr>
               <th></th>
