@@ -8,7 +8,7 @@ const Layout = () => {
             <Header title="nasaApi"
             />
             <Nav  />
-            <Outlet />
+            <div className='mainPart'><Outlet /></div>
         </div>
     )
 }
