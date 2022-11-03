@@ -2,7 +2,10 @@ import React from 'react'
 
 const Missing = () => {
   return (
-    <div>Missing</div>
+    <>
+    <div className='design'></div>
+    <h3>Missing</h3>
+    </>
   )
 }
 

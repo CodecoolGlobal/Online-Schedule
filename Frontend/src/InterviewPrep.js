@@ -15,6 +15,7 @@ const InterviewPrep = () => {
       )}
       {!isLoading && !fetchError && (
         <>
+        <div className='design'></div>
         <div className='listContainer'>
           <h2 className='interview'>Interview Preparation</h2>
           <ul>
