@@ -1,21 +1,15 @@
 .App {
   text-align: center;
+  background-color: #eae8e8;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.mainPart{
+  margin-left: 170px;
+  height: 100vh;
 }
 
 .header {
   overflow: hidden;
-  background-color: #f1f1f1;
+  background-color: white;
   padding: 20px 10px;
   color: black;
   text-align: center;
@@ -23,6 +17,7 @@
   font-size: 18px;
   line-height: 25px;
   border-radius: 4px;
+  position: relative;
 }
 
 .logo {
@@ -30,14 +25,27 @@
     font-weight: bold;
     float: left;
     padding: 5px;
-    background-color: #b1e4f1;
+    
+    
+}
+.name{
+
+  display:inline-block;
 }
 
+.Space{
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  
+  
+}
 .log {
-  float: right;
   color: black;
   padding: 5px;
-  background-color: #b1e4f1;
+  float: right;
 }
 
 :link {
@@ -45,13 +53,14 @@
 }
 
 .sideNav {
+
   height: 100%;
+  width: 130px;
   width: -moz-fit-content;
   position: absolute;
   z-index: 1 !important;
-  right: 0;
-  background-color: #f9f9f9;
-  padding: 10px;
+  background-color: white;
+  padding: 0px;
   cursor: pointer;
 }
 
@@ -67,7 +76,7 @@
   padding: 0px 9px 7px 9px;
   margin: -32px 0px;
 }
-
+.main
 h2 {
   background-color: cadetblue;
   width: 87%;
@@ -76,61 +85,74 @@ h2 {
 }
 
 .teamContainer{
-  background-color: #f9f9f9;;
+  background-color: white;
   width: 87%;
   padding: 5px 5px 12px 5px;
-  margin: 0px 20px 20px 20px;
+  margin: 20px 0px 0px 20px;
+  border-radius: 8px;
+
 }
 
 .team{
-  background-color: #00ee6a;
-  margin: 16px 57px;
-  font-size: 28px;
+  color : white;
+  background-color: #3c394f;
+  margin: 3px 3px;
+  font-size: 20px;
   text-align: initial;
-  padding: 0px 24px;
+  padding: 2px 3px 3px 10px;
+  border-radius: 8px;
 }
 
 .time{
+  display: inline-block;
   background-color: #9fe6f2;
   width: 45%;
-  margin: 16px 29px;
+  margin: 1px 2px;
   font-size: 20px;
 }
 
 .teamName, .demoTime{
-  background-color: cadetblue;
+  color: White;
+  background-color: #3c394f;
   width: 87%;
   padding: 5px 5px 12px 5px;
   margin: 20px 20px 0px 20px;
+  border-radius: 8px;
 }
 
 .flex{
-display: flex;
+display: block;
 flex-wrap: wrap;
 }
 
 .sub{
-  background-color: #60eb5d;
+  color: white;
+  background-color: #3c394f;
   border: none;
   margin: 10px;
   font-size: 17px;
+  border-radius: 4px;
 }
 
 th{
-  background-color: #00ee6a;
+  color:white;
+  background-color: #3c394f;
 }
-
-table{
-  background-color: #9fe6f2;
+tr{
+  background-color: white;
+}
+table{  
   width: 87%;
   padding: 5px 5px 8px 0px;
   margin: 20px 20px 0px 26px;
 }
 
 .repo{
-  background-color: #00ee6a;
+  color: white;
+  background-color: #3c394f;
   margin: 0px 20px;
   font-size: 30px;
+  border-radius: 8px;
 }
 
 p.statusMsg.err {
@@ -151,18 +173,30 @@ p.statusMsg {
   font-size: 25px;
 }
 .active, .navElement:hover {
-  background-color: #b1e4f1;
+  background-color: #eae8e8;
 }
 
 .App-link {
-  color: #61dafb;
+  color: #eae8e8;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.educationLink{
+  color:white
+}
+.interview{
+  background-color: white;
+  color: black;
+  padding: 6px; 
+  border-radius: 8px 8px 0px 0px;
+}
+.listContainer{
+  background-color: #3c394f;
+  color: white;
+  padding: 0px 0px 6px 0px ;
+  border-radius: 18px 18px 8px 8px;
+  margin: 30px 30px 0px 0px;
+}
+
+ul{
+  text-align: left; 
 }

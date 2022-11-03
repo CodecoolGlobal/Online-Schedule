@@ -15,6 +15,8 @@ const InterviewPrep = () => {
       )}
       {!isLoading && !fetchError && (
         <>
+        <div className='listContainer'>
+          <h2 className='interview'>Interview Preparation</h2>
           <ul>
             {data?.map((material) => (
               <li key={material.id}>
@@ -22,13 +24,14 @@ const InterviewPrep = () => {
                 <ul>
                   {material.material?.map((submaterial) => (
                     <li key={submaterial}>
-                      <a href={submaterial}>{submaterial}</a>
+                      <a className='educationLink' href={submaterial}>{submaterial}</a>
                     </li>
                   ))}
                 </ul>
               </li>
             ))}
           </ul>
+          </div>
         </>
       )}
     </>
