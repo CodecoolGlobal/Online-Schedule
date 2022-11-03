@@ -21,63 +21,21 @@ const Team = () => {
     setTwStart(data.twReviewStart);
     setTwFinish(data.twReviewFinish);
   }, [data]);
-  const handleSiStart = async (e) => {
+  const handleReviewTime = async (e) => {
     e.preventDefault();
-    try {
-      const review = siStart.replace(':', '%3A');
-      const response = await api.put(
-        `/teams/${id}/si/start?siReviewStart=${review}`
-      );
-    } catch (err) {
-      if (err.response) {
-        console.log(err.response.data);
-        console.log(err.response.status);
-        console.log(err.response.headers);
-      } else {
-        console.log(`Error: ${err.message}`);
-      }
-    }
-  };
-  const handleSiFinish = async (e) => {
-    e.preventDefault();
-    try {
-      const review = siFinish.replace(':', '%3A');
-      const response = await api.put(
-        `/teams/${id}/si/finish?siReviewFinish=${review}`
-      );
-    } catch (err) {
-      if (err.response) {
-        console.log(err.response.data);
-        console.log(err.response.status);
-        console.log(err.response.headers);
-      } else {
-        console.log(`Error: ${err.message}`);
-      }
-    }
-  };
-  const handleTwStart = async (e) => {
-    e.preventDefault();
-    try {
-      const review = twStart.replace(':', '%3A');
-      const response = await api.put(
-        `/teams/${id}/tw/start?twReviewStart=${review}`
-      );
-    } catch (err) {
-      if (err.response) {
-        console.log(err.response.data);
-        console.log(err.response.status);
-        console.log(err.response.headers);
-      } else {
-        console.log(`Error: ${err.message}`);
-      }
-    }
-  };
-  const handleTwFinish = async (e) => {
-    e.preventDefault();
-    try {
-      const review = twFinish.replace(':', '%3A');
-      const response = await api.put(
-        `/teams/${id}/tw/finish?twReviewFinish=${review}`
+      try {
+          var reviewTime = null;
+          if (e.currentTarget.className === "siStart") {
+              reviewTime = siStart.replace(':', '%3A');
+          } else if (e.currentTarget.className === 'siFinish') {
+              reviewTime = siFinish.replace(':', '%3A');
+          } else if (e.currentTarget.className === 'twStart'){
+              reviewTime = twStart.replace(':', '%3A');
+          } else{
+            reviewTime = twFinish.replace(':', '%3A');
+          }
+        const response = await api.put(
+         `/teams/${id}/review?reviewTime=${reviewTime}&type=${e.currentTarget.className}`
       );
     } catch (err) {
       if (err.response) {
@@ -113,10 +71,10 @@ const Team = () => {
       <a href={data.repo}><div className='repo'>Repository</div></a>
       <div className='flex'>
       <div className='time'>
-      <form onSubmit={handleSiStart}>
+      <form onSubmit={handleReviewTime} className='siStart'>
         <label>
           SI review start:
-          <input
+          <input 
             id="siStart"
             type="time"
             required
@@ -128,7 +86,7 @@ const Team = () => {
       </form>
       </div>
       <div className='time'>
-      <form onSubmit={handleSiFinish}>
+      <form onSubmit={handleReviewTime} className='siFinish'>
         <label>
           SI review finish:
           <input
@@ -143,7 +101,7 @@ const Team = () => {
       </form>
       </div>
       <div className='time'>
-      <form onSubmit={handleTwStart}>
+        <form onSubmit={handleReviewTime} className='twStart'>
         <label>
           TW review start:
           <input
@@ -158,7 +116,7 @@ const Team = () => {
       </form>
       </div>
       <div className='time'>
-      <form onSubmit={handleTwFinish}>
+        <form onSubmit={handleReviewTime} className='twFinish'>
         <label>
           TW review finish:
           <input

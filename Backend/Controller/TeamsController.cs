@@ -86,56 +86,24 @@ namespace CodecoolAdvanced.Controller
             team.Name = newName;
             return NoContent();
         }
-        
-        [HttpPut]
-        [Route("{id}/tw/start")]
-        public ActionResult ChangeTimeOfTwReviewStart(int id ,string twReviewStart)
-        {
-            Team team = TeamCollector.Instance.GetTeamById(id);
-            if (team == null)
-            {
-                return NotFound();
-            }
-            team.TwReviewStart =twReviewStart;
-            return NoContent();
-        }
 
         [HttpPut]
-        [Route("{id}/tw/finish")]
-        public ActionResult ChangeTimeOfTwReviewFinish(int id, string twReviewFinish)
+        [Route("{id}/review")]
+        public ActionResult ChangeTimeOfTwReviewStart(int id, string reviewTime, string type)
         {
             Team team = TeamCollector.Instance.GetTeamById(id);
             if (team == null)
             {
                 return NotFound();
             }
-            team.TwReviewFinish = twReviewFinish;
-            return NoContent();
-        }
-
-        [HttpPut]
-        [Route("{id}/si/start")]
-        public ActionResult ChangeTimeOfSiReviewStart(int id, string siReviewStart)
-        {
-            Team team = TeamCollector.Instance.GetTeamById(id);
-            if (team == null)
-            {
-                return NotFound();
-            }
-            team.SiReviewStart = siReviewStart;
-            return NoContent();
-        }
-
-        [HttpPut]
-        [Route("{id}/si/finish")]
-        public ActionResult ChangeTimeOfSiReviewFinish(int id, string siReviewFinish)
-        {
-            Team team = TeamCollector.Instance.GetTeamById(id);
-            if (team == null)
-            {
-                return NotFound();
-            }
-            team.SiReviewFinish = siReviewFinish;
+            if(type == "siStart")
+            team.SiReviewStart = reviewTime;
+            else if(type == "siFinish")   
+            team.SiReviewFinish = reviewTime;
+            else if(type == "twStart")   
+            team.TwReviewStart = reviewTime;
+            else
+            team.TwReviewFinish = reviewTime;
             return NoContent();
         }
 
