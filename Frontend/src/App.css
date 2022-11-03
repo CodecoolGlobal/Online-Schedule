@@ -95,7 +95,7 @@ h2 {
 
 .team{
   color : white;
-  background-color: #3c394f;
+  background-color: #646180;
   margin: 3px 3px;
   font-size: 20px;
   text-align: initial;
@@ -113,7 +113,7 @@ h2 {
 
 .teamName, .demoTime{
   color: White;
-  background-color: #3c394f;
+  background-color: #646180;
   width: 87%;
   padding: 5px 5px 12px 5px;
   margin: 20px 20px 0px 20px;
@@ -127,16 +127,23 @@ flex-wrap: wrap;
 
 .sub{
   color: white;
-  background-color: #3c394f;
+  background-color: #646180;
   border: none;
   margin: 10px;
   font-size: 17px;
   border-radius: 4px;
+  cursor: pointer;
+}
+.sub:hover{
+  background-color: #3c394f;
+}
+.sub:active{
+  background-color: black;
 }
 
 th{
   color:white;
-  background-color: #3c394f;
+  background-color: #646180;
 }
 tr{
   background-color: white;
@@ -149,7 +156,7 @@ table{
 
 .repo{
   color: white;
-  background-color: #3c394f;
+  background-color: #646180;
   margin: 0px 20px;
   font-size: 30px;
   border-radius: 8px;
@@ -190,7 +197,7 @@ p.statusMsg {
   border-radius: 8px 8px 0px 0px;
 }
 .listContainer{
-  background-color: #3c394f;
+  background-color: #646180;
   color: white;
   padding: 0px 0px 6px 0px ;
   border-radius: 18px 18px 8px 8px;
