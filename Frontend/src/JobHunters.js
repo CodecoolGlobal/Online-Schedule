@@ -4,7 +4,7 @@ const JobHunters = () => {
   return (
     <>
       <div className='design'></div>
-      <div>JobHunters</div>
+      <h3>JobHunters</h3>
     </>
   )
 }

@@ -6,6 +6,13 @@
   margin-left: 170px;
   height: 100vh;
 }
+.design{
+  background-color: #3c394f;
+  width: 180vh;
+  height: 1px;
+  padding: 13vh;
+  margin: 0px 0px -23vh -50px;
+}
 
 .header {
   overflow: hidden;
@@ -24,9 +31,7 @@
     font-size: 25px;
     font-weight: bold;
     float: left;
-    padding: 5px;
-    
-    
+    padding: 5px;   
 }
 .name{
 
@@ -83,7 +88,9 @@ h2 {
   padding: 5px 5px 12px 5px;
   margin: 20px;
 }
-
+h3{
+  color: white;
+}
 .teamContainer{
   background-color: white;
   width: 87%;
