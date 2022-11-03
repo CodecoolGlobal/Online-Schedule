@@ -107,45 +107,6 @@ namespace CodecoolAdvanced.Controller
             return NoContent();
         }
 
-        //[HttpPut]
-        //[Route("{id}/tw/finish")]
-        //public ActionResult ChangeTimeOfTwReviewFinish(int id, string twReviewFinish)
-        //{
-        //    Team team = TeamCollector.Instance.GetTeamById(id);
-        //    if (team == null)
-        //    {
-        //        return NotFound();
-        //    }
-        //    team.TwReviewFinish = twReviewFinish;
-        //    return NoContent();
-        //}
-
-        //[HttpPut]
-        //[Route("{id}/si/start")]
-        //public ActionResult ChangeTimeOfSiReviewStart(int id, string siReviewStart)
-        //{
-        //    Team team = TeamCollector.Instance.GetTeamById(id);
-        //    if (team == null)
-        //    {
-        //        return NotFound();
-        //    }
-        //    team.SiReviewStart = siReviewStart;
-        //    return NoContent();
-        //}
-
-        //[HttpPut]
-        //[Route("{id}/si/finish")]
-        //public ActionResult ChangeTimeOfSiReviewFinish(int id, string siReviewFinish)
-        //{
-        //    Team team = TeamCollector.Instance.GetTeamById(id);
-        //    if (team == null)
-        //    {
-        //        return NotFound();
-        //    }
-        //    team.SiReviewFinish = siReviewFinish;
-        //    return NoContent();
-        //}
-
         [HttpPut]
         [Route("{id}/add/{studentid}")]
         public ActionResult AddStudentToTeam(int id, int studentid)
