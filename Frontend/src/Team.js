@@ -108,6 +108,7 @@ const Team = () => {
             ))})</h1>
         </>
       )}
+      <div className='design'></div>
       <div className='teamContainer'>
       <div>Mentor: {data.mentor}</div>
       <a href={data.repo}><div className='repo'>Repository</div></a>

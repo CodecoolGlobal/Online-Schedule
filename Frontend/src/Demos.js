@@ -17,6 +17,7 @@ const Demos = () => {
       )}
       {!isLoading && !fetchError && (
         <>
+        <div className='design'></div>
           <h1 className="demoTime">Demos Start at 9:30</h1>
           <table className="DemoTabel">
             <tr>

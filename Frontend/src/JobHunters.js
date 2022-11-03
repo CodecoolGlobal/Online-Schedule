@@ -2,7 +2,10 @@ import React from 'react'
 
 const JobHunters = () => {
   return (
-    <div>JobHunters</div>
+    <>
+      <div className='design'></div>
+      <div>JobHunters</div>
+    </>
   )
 }
 

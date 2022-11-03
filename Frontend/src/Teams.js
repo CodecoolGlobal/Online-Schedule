@@ -17,6 +17,7 @@ const Teams = () => {
       )}
       {!isLoading && !fetchError && (
         <>
+        <div className='design'></div>
         <div className='teamContainer'>
         <h2>Teams<div className='add'><Link to='add'>+</Link></div></h2>
           {data?.map((team) => (
