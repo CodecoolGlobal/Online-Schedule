@@ -1,7 +1,13 @@
 import {useEffect} from 'react';
 import { Link } from 'react-router-dom';
+import { useContext, useState } from 'react';
+import DataContext from './dataContext/dataContext';
+
 
 const Nav = () => {
+
+
+  
   useEffect(()=> {
 function NavBar(){
   var btnContainer = document.getElementsByClassName("sideNav")[0];
@@ -20,15 +26,16 @@ function NavBar(){
 
 NavBar();
 },[])
+const {colorTheme} = useContext(DataContext);
   return ( 
     
-    <nav className='sideNav'>
-          <Link to="/"><div className='navElement active' >Home</div></Link>
-          <Link to="teams"><div className='navElement'>Teams</div></Link>
-          <Link to="demos"><div className='navElement'>Demos</div></Link>
-          <Link to="jobhunters"><div className='navElement'>Job Hunters</div></Link>
-          <Link to="interviewprep"><div className='navElement'>InterviewPrep</div></Link>
-          <Link to="about"><div className='navElement'>About</div></Link>
+    <nav className={`sideNav ${colorTheme}`}>
+          <Link to="/"><div className={`navElement ${colorTheme} active`} >Home</div></Link>
+          <Link to="teams"><div className={`navElement ${colorTheme}`}>Teams</div></Link>
+          <Link to="demos"><div className={`navElement ${colorTheme}`}>Demos</div></Link>
+          <Link to="jobhunters"><div className={`navElement ${colorTheme}`}>Job Hunters</div></Link>
+          <Link to="interviewprep"><div className={`navElement ${colorTheme}`}>InterviewPrep</div></Link>
+          <Link to="about"><div className={`navElement ${colorTheme}`}>About</div></Link>
     </nav>
   )
 }

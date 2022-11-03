@@ -3,7 +3,7 @@
   background-color: #eae8e8;
 }
 .App.Dark{
- background-color: black;
+ background-color: rgb(96, 94, 94);
  color: white;
 }
 
@@ -138,7 +138,9 @@ h3{
   margin: 1px 2px;
   font-size: 20px;
 }
-
+.time.Dark{
+  background-color: #507b83;
+}
 .teamName, .demoTime{
   color: White;
   background-color: #646180;
@@ -177,6 +179,9 @@ th{
 tr{
   background-color: white;
 }
+tr.Dark{
+  background-color: darkgray;
+}
 table{  
   width: 87%;
   padding: 5px 5px 8px 0px;
@@ -210,6 +215,10 @@ p.statusMsg {
 }
 .active, .navElement:hover {
   background-color: #eae8e8;
+}
+
+.navElement.Dark.active, .navElement.Dark:hover {
+  background-color:darkgray;
 }
 
 .App-link {
