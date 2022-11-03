@@ -23,12 +23,12 @@ NavBar();
   return ( 
     
     <nav className='sideNav'>
-          <div className='navElement active'><Link to="/">Home</Link></div>
-          <div className='navElement'><Link to="teams">Teams</Link></div>
-          <div className='navElement'><Link to="demos">Demos</Link></div>
-          <div className='navElement'><Link to="jobhunters">Job Hunters</Link></div>
-          <div className='navElement'><Link to="interviewprep">InterviewPrep</Link></div>
-          <div className='navElement'><Link to="about">About</Link></div>
+          <Link to="/"><div className='navElement active' >Home</div></Link>
+          <Link to="teams"><div className='navElement'>Teams</div></Link>
+          <Link to="demos"><div className='navElement'>Demos</div></Link>
+          <Link to="jobhunters"><div className='navElement'>Job Hunters</div></Link>
+          <Link to="interviewprep"><div className='navElement'>InterviewPrep</div></Link>
+          <Link to="about"><div className='navElement'>About</div></Link>
     </nav>
   )
 }
