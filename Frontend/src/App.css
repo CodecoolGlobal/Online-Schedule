@@ -2,6 +2,11 @@
   text-align: center;
   background-color: #eae8e8;
 }
+.App.Dark{
+ background-color: black;
+ color: white;
+}
+
 .mainPart{
   margin-left: 170px;
   height: 100vh;
@@ -26,7 +31,10 @@
   border-radius: 4px;
   position: relative;
 }
-
+.header.Dark{
+  background-color: black;
+  color: white;
+}
 .logo {
     font-size: 25px;
     font-weight: bold;
@@ -52,7 +60,9 @@
   padding: 5px;
   float: right;
 }
-
+.log.Dark{
+  color: white;
+}
 :link {
   text-decoration: none;
 }
@@ -69,6 +79,11 @@
   cursor: pointer;
 }
 
+.sideNav.Dark{
+  background-color: black;
+  color: white;
+}
+
 .navElement{
   padding: 5px;
   cursor: pointer;
@@ -81,6 +96,9 @@
   padding: 0px 9px 7px 9px;
   margin: -32px 0px;
 }
+.add.Dark{
+  background-color: darkgray;
+}
 .main
 h2 {
   background-color: cadetblue;
@@ -91,6 +109,7 @@ h2 {
 h3{
   color: white;
 }
+
 .teamContainer{
   background-color: white;
   width: 87%;
@@ -99,7 +118,9 @@ h3{
   border-radius: 8px;
 
 }
-
+.teamContainer.Dark{
+  background-color: black;
+}
 .team{
   color : white;
   background-color: #646180;
@@ -126,6 +147,7 @@ h3{
   margin: 20px 20px 0px 20px;
   border-radius: 8px;
 }
+
 
 .flex{
 display: block;
@@ -203,6 +225,11 @@ p.statusMsg {
   padding: 6px; 
   border-radius: 8px 8px 0px 0px;
 }
+.interview.Dark{
+  background-color: black;
+  color: white;
+}
+
 .listContainer{
   background-color: #646180;
   color: white;
