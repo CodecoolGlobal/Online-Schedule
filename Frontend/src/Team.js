@@ -1,12 +1,14 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect,useContext  } from 'react';
 import { useParams } from 'react-router';
 import useAxiosFetch from './hooks/useAxiosFetch';
 import api from './hooks/api';
+import DataContext from './dataContext/dataContext';
 
 const Team = () => {
   const { id } = useParams();
   let url = `https://localhost:7086/api/teams/${id}`;
 
+  const {colorTheme } = useContext(DataContext);
   const { data, fetchError, isLoading } = useAxiosFetch(url);
   console.log(data);
 
@@ -61,18 +63,18 @@ const Team = () => {
 
       {!isLoading && !fetchError && (
         <>
-        <div className='design'></div>
+        <div className={`design ${colorTheme}`}></div>
           <h1 className='teamName'>{data.name} ({data.students?.map((student) => (
               student.name + " "
             ))})</h1>
         </>
       )}
       
-      <div className='teamContainer'>
+      <div className={`teamContainer ${colorTheme}`}>
       <div>Mentor: {data.mentor}</div>
       <a href={data.repo}><div className='repo'>Repository</div></a>
       <div className='flex'>
-      <div className='time'>
+      <div className={`time ${colorTheme}`}>
       <form onSubmit={handleReviewTime} className='siStart'>
         <label>
           SI review start:
@@ -87,7 +89,7 @@ const Team = () => {
         <input type="submit" value="Submit" className='sub' />
       </form>
       </div>
-      <div className='time'>
+      <div className={`time ${colorTheme}`}>
       <form onSubmit={handleReviewTime} className='siFinish'>
         <label>
           SI review finish:
@@ -102,7 +104,7 @@ const Team = () => {
         <input type="submit" value="Submit" className='sub' />
       </form>
       </div>
-      <div className='time'>
+      <div className={`time ${colorTheme}`}>
         <form onSubmit={handleReviewTime} className='twStart'>
         <label>
           TW review start:
@@ -117,7 +119,7 @@ const Team = () => {
         <input type="submit" value="Submit" className='sub' />
       </form>
       </div>
-      <div className='time'>
+      <div className={`time ${colorTheme}`}>
         <form onSubmit={handleReviewTime} className='twFinish'>
         <label>
           TW review finish:

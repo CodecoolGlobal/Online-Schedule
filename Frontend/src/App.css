@@ -2,6 +2,11 @@
   text-align: center;
   background-color: #eae8e8;
 }
+.App.Dark{
+ background-color: rgb(45 43 64);;
+ color: white;
+}
+
 .mainPart{
   margin-left: 170px;
   height: 100vh;
@@ -12,6 +17,9 @@
   height: 1px;
   padding: 13vh;
   margin: 0px 0px -23vh -50px;
+}
+.design.Dark{
+  background-color: #423f58;
 }
 
 .header {
@@ -26,7 +34,10 @@
   border-radius: 4px;
   position: relative;
 }
-
+.header.Dark{
+  background-color: black;
+  color: white;
+}
 .logo {
     font-size: 25px;
     font-weight: bold;
@@ -52,7 +63,9 @@
   padding: 5px;
   float: right;
 }
-
+.log.Dark{
+  color: white;
+}
 :link {
   text-decoration: none;
 }
@@ -69,9 +82,17 @@
   cursor: pointer;
 }
 
+.sideNav.Dark{
+  background-color: #3c394f;
+  color: white;
+}
+
 .navElement{
   padding: 5px;
   cursor: pointer;
+}
+.navElement.Dark{
+  color: white;
 }
 
 .add {
@@ -80,6 +101,9 @@
   background-color: #f1f1f1;
   padding: 0px 9px 7px 9px;
   margin: -32px 0px;
+}
+.add.Dark{
+  background-color: darkgray;
 }
 .main
 h2 {
@@ -91,6 +115,7 @@ h2 {
 h3{
   color: white;
 }
+
 .teamContainer{
   background-color: white;
   width: 87%;
@@ -99,7 +124,9 @@ h3{
   border-radius: 8px;
 
 }
-
+.teamContainer.Dark{
+  background-color: black;
+}
 .team{
   color : white;
   background-color: #646180;
@@ -109,7 +136,15 @@ h3{
   padding: 2px 3px 3px 10px;
   border-radius: 8px;
 }
+.darkMode{
+  display: inline-block;
+}
 
+img.Dark{
+  -webkit-filter: invert(1);
+  filter: invert(1);
+    
+}
 .time{
   display: inline-block;
   background-color: #9fe6f2;
@@ -117,7 +152,9 @@ h3{
   margin: 1px 2px;
   font-size: 20px;
 }
-
+.time.Dark{
+  background-color: #507b83;
+}
 .teamName, .demoTime{
   color: White;
   background-color: #646180;
@@ -126,6 +163,7 @@ h3{
   margin: 20px 20px 0px 20px;
   border-radius: 8px;
 }
+
 
 .flex{
 display: block;
@@ -154,6 +192,9 @@ th{
 }
 tr{
   background-color: white;
+}
+tr.Dark{
+  background-color: darkgray;
 }
 table{  
   width: 87%;
@@ -190,6 +231,10 @@ p.statusMsg {
   background-color: #eae8e8;
 }
 
+.navElement.Dark.active, .navElement.Dark:hover {
+  background-color:darkgray;
+}
+
 .App-link {
   color: #eae8e8;
 }
@@ -203,6 +248,11 @@ p.statusMsg {
   padding: 6px; 
   border-radius: 8px 8px 0px 0px;
 }
+.interview.Dark{
+  background-color: black;
+  color: white;
+}
+
 .listContainer{
   background-color: #646180;
   color: white;

@@ -9,10 +9,11 @@ import JobHunters from "./JobHunters";
 import InterviewPrep from "./InterviewPrep";
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
-
+import {DataProvider} from "./dataContext/dataContext";
 
 function App() {
   return (
+    <DataProvider>
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
@@ -31,6 +32,7 @@ function App() {
         <Route path="*" element={<Missing />} />
       </Route>
     </Routes>
+    </DataProvider>
   );
 }
 
