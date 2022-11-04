@@ -19,7 +19,7 @@ const Teams = () => {
       )}
       {!isLoading && !fetchError && (
         <>
-        <div className='design'></div>
+        <div className={`design ${colorTheme}`}></div>
         <div className={`teamContainer ${colorTheme}`}>
         <h2>Teams<div className={`add ${colorTheme}`}><Link to='add'>+</Link></div></h2>
           {data?.map((team) => (

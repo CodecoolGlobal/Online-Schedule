@@ -63,7 +63,7 @@ const Team = () => {
 
       {!isLoading && !fetchError && (
         <>
-        <div className='design'></div>
+        <div className={`design ${colorTheme}`}></div>
           <h1 className='teamName'>{data.name} ({data.students?.map((student) => (
               student.name + " "
             ))})</h1>
