@@ -19,7 +19,7 @@ const Header = () => {
     <div className={`header ${colorTheme}`}>
       <div className="logo">
         <div className='name'>
-          <img src='/SeeSharp_logo.png' width="50" ></img>
+          <img className={`${colorTheme}`} src='/SeeSharp_logo.png' width="50" ></img>
         </div>
         <div className='name Space'>Codecool Advanced</div>
       </div>

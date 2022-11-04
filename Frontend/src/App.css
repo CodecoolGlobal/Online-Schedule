@@ -130,7 +130,11 @@ h3{
   padding: 2px 3px 3px 10px;
   border-radius: 8px;
 }
-
+img.Dark{
+    -webkit-filter: invert(1);
+    filter: invert(1);
+    
+}
 .time{
   display: inline-block;
   background-color: #9fe6f2;
