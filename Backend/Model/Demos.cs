@@ -4,7 +4,7 @@ namespace CodecoolAdvanced.Model;
 
 public class Demos
 {
-    public DateTime DemoStart { get; set; } = DateTime.Now;
+    public DateTime DemoStart { get; set; } = DateTime.Parse("10:30");
     public List<Team> DemoOrder { get; private set; } 
 
     private static Demos instance = null;

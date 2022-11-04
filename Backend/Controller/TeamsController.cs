@@ -26,9 +26,17 @@ namespace CodecoolAdvanced.Controller
         public ActionResult<HashSet<Team>> GetDemos()
         {
             Demos demo = Demos.Instance ?? throw new ArgumentNullException("Demos.Instance");
-            DateTime time = Demos.Instance.DemoStart;
-            List<Team> actualTeams = Demos.Instance.shafelOrder();
+           //DateTime time = Demos.Instance.DemoStart;
+           Demos.Instance.shafelOrder();
             return Ok(demo);
+        }
+
+        [HttpPut]
+        [Route("demos/{time}")]
+        public ActionResult setDemoTime(DateTime time)
+        {
+            Demos.Instance.DemoStart = time;
+            return NoContent();
         }
 
         [HttpGet]
