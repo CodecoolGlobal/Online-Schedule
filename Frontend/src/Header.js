@@ -30,13 +30,13 @@ const Header = () => {
         <div className='name Space'>Codecool Advanced</div>
     
       </div>
-      <div onClick={ ()=>clickHandler()}> <DarkModeSwitch
-      style={{ marginBottom: '2rem' }}
+      
+      <div className={`log ${colorTheme}`}><Link className={`log ${colorTheme}`} to="login">login</Link>
+      <div className='darkMode' onClick={ ()=>clickHandler()}> <DarkModeSwitch
       checked={isDarkMode}
       onChange={toggleDarkMode}
       size={30}
-    /></div>
-      <div className={`log ${colorTheme}`}><Link className={`log ${colorTheme}`} to="login">login</Link></div>
+    /></div></div>
     </div>
   )
 }

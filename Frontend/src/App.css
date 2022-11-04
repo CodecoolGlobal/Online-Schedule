@@ -130,9 +130,14 @@ h3{
   padding: 2px 3px 3px 10px;
   border-radius: 8px;
 }
+.darkMode{
+  display: inline-block;
+  
+}
+
 img.Dark{
-    -webkit-filter: invert(1);
-    filter: invert(1);
+  -webkit-filter: invert(1);
+  filter: invert(1);
     
 }
 .time{
