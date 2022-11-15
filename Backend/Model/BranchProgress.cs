@@ -1,6 +1,7 @@
 using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace CodecoolAvence.Model
+namespace CodecoolAdvanced.Model
 {
     public class BranchProgress
     {
@@ -10,6 +11,9 @@ namespace CodecoolAvence.Model
             ActualWeek = 2;
             _weekChanged = 0;
         }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public long ID { get; set; }
+
         public Branch Branch { get; }
         public string Progresess { get; private set; }
         public int ActualWeek { get; set; }

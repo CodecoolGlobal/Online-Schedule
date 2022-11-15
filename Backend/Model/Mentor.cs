@@ -1,10 +1,13 @@
 using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace CodecoolAvence.Model {
+namespace CodecoolAdvanced.Model {
 	public class Mentor : User {
         public Mentor(string name, string email) : base(name, email)
         {
         }
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public long ID { get; set; }
 
         public HashSet<Branch> _Specialisation { get; }
 		public HashSet<Team> _Teams {get; }

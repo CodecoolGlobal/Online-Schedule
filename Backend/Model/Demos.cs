@@ -1,6 +1,4 @@
-﻿using CodecoolAvence.Model;
-
-namespace CodecoolAdvanced.Model;
+﻿namespace CodecoolAdvanced.Model;
 
 public class Demos
 {

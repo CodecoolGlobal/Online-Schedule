@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace CodecoolAvence.Model {
+namespace CodecoolAdvanced.Model {
 	public class ProgressLists {
 
 		private static ProgressLists instance = null;

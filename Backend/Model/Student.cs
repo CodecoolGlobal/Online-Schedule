@@ -1,6 +1,6 @@
 using System;
 
-namespace CodecoolAvence.Model {
+namespace CodecoolAdvanced.Model {
     public class Student : User
     {
         

@@ -1,6 +1,6 @@
 using System;
 
-namespace CodecoolAvence.Model {
+namespace CodecoolAdvanced.Model {
 	public class TeamCollector {
 		private static TeamCollector instance = null;
 

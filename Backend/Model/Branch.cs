@@ -1,6 +1,6 @@
 using System;
 
-namespace CodecoolAvence.Model {
+namespace CodecoolAdvanced.Model {
 	public enum Branch {
 		C_sharp,
 		Java,
