@@ -25,10 +25,10 @@ namespace CodecoolAdvanced.Model {
 		private HashSet<Team> _teams;
 
 		public void SetCourentWeekForAllTeam() {
-			foreach (Team team in _teams)
-            {
-				team._branchProgress.AutoSetActualWeek(team.StartDate);
-            }
+			//foreach (Team team in _teams)
+   //         {
+			//	team.BranchProgress.AutoSetActualWeek(team.StartDate);
+   //         }
 		}
 		public bool AddTeam(Team team) {
 			return _teams.Add(team);
@@ -59,10 +59,10 @@ namespace CodecoolAdvanced.Model {
 		public HashSet<Team> GetCurrentWeekTeam() {
 			HashSet<Team> result = new HashSet<Team>();
 			foreach (Team team in _teams) { 
-				if (team._branchProgress.ActualWeek % 2 == 0)
-                {
-					result.Add(team);
-                }
+				//if (team.BranchProgress.ActualWeek % 2 == 0)
+    //            {
+				//	result.Add(team);
+    //            }
 			}
 			return result;
 		}

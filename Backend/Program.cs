@@ -1,5 +1,7 @@
+using CodecoolAdvanced.Controller;
 using CodecoolAdvanced.Model;
-using CodecoolAvence.Model;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Hosting;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -17,22 +19,20 @@ builder.Services.AddCors(options =>
 });
 
 // Add services to the container.
-
+builder.Services.AddDbContext<CodecoolContext>(options =>
+                options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
-Student student = new Student("alma", Branch.Java, "alama@alama.hu");
-Student student1 = new Student("korte", Branch.C_sharp, "korte@korte.hu");
-Team team = new Team(student, "almak", "https://github.com/CodecoolGlobal/el-proyecte-grande-sprint-1-csharp-nagyD88");
-TeamCollector.Instance.AddTeam(team);
-UserCollector.Instance.AddUsersToCollector(student);
-UserCollector.Instance.AddUsersToCollector(student1);
-EducationalMaterial material = new EducationalMaterial("Books to read");
-EducationMaterialCollector.Instance.AddToMaterials(material);
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
 
+    DBInitializer.Initialize(services);
+}
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
