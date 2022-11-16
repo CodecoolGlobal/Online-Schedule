@@ -1,37 +1,34 @@
-import React, { Component } from "react";
-import Missing from "./Missing.js";
+import React from "react";
+import { useState } from "react";
 import Modal from './modal.js';
 
-class Dashboard extends Component {
-  constructor() {
-    super();
-    this.state = {
-      show: false
-    };
-    this.showModal = this.showModal.bind(this);
-    this.hideModal = this.hideModal.bind(this);
-  }
+const Dashboard= ({children})=> {
 
-  showModal = () => {
-    this.setState({ show: true });
+  const [show, setShow]= useState(false);
+
+   
+    
+  
+
+  const showModal = () => {
+    setShow(true);
   };
 
-  hideModal = () => {
-    this.setState({ show: false });
+  const hideModal = () => {
+    setShow(false)
   };
-  render() {
     return (
       <>
-        <Modal show={this.state.show} handleClose={this.hideModal} children={<Missing></Missing>} >
+        <Modal show={show} handleClose={hideModal} children={children}>
           
         </Modal>
-        <button type="button" onClick={this.showModal}>
+        <button type="button" onClick={showModal}>
           +
         </button>
       </>
     );
   }
-}
+
 
 
 export default Dashboard

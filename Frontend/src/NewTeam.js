@@ -2,6 +2,10 @@ import React from 'react';
 import { useState } from 'react';
 const NewTeam = () => {
     const [teamName, setTeamName] = useState('');
+
+    const handleNewTeam = ()=>{
+        console.log("siker");
+    }
   return (
   <>
     <h2>New Team</h2>
