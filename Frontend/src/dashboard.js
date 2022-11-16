@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Missing from "./Missing.js";
 import Modal from './modal.js';
 
 class Dashboard extends Component {
@@ -21,8 +22,8 @@ class Dashboard extends Component {
   render() {
     return (
       <>
-        <Modal show={this.state.show} handleClose={this.hideModal}>
-          <p>Modal</p>
+        <Modal show={this.state.show} handleClose={this.hideModal} children={<Missing></Missing>} >
+          
         </Modal>
         <button type="button" onClick={this.showModal}>
           +

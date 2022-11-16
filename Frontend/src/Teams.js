@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { useContext, useState } from 'react';
 import DataContext from './dataContext/dataContext';
 import Dashboard from './dashboard';
+import Missing from './Missing';
 
 const Teams = () => {
   let url = 'https://localhost:7086/api/teams';
