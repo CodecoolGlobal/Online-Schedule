@@ -11,6 +11,8 @@ html {
 
 
 section {
+    position: relative;
+    left: 32%;
     width: 100%;
     max-width: 420px;
     min-height: 400px;
