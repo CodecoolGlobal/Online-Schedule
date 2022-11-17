@@ -1,5 +1,4 @@
 ﻿using CodecoolAdvanced.Model;
-using CodecoolAvence.Model;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CodecoolAdvanced.Controller
@@ -33,23 +32,23 @@ namespace CodecoolAdvanced.Controller
             return Ok(students);
         }
 
-        [HttpPost]
-        [Route("/mentor")]
-        public ActionResult<Mentor> CreateNewMentor(string name, string email)
-        {
-            Mentor mentor = new Mentor(name, email);
-            UserCollector.Instance.AddUsersToCollector(mentor);
-            return Ok(mentor);
-        }
+        //[HttpPost]
+        //[Route("/mentor")]
+        //public ActionResult<Mentor> CreateNewMentor(string name, string email)
+        //{
+        //    Mentor mentor = new Mentor(name, email);
+        //    UserCollector.Instance.AddUsersToCollector(mentor);
+        //    return Ok(mentor);
+        //}
 
-        [HttpPost]
-        [Route("/Student")]
-        public ActionResult<Student> CreateNewStudnet(string name, Branch branch, string email)
-        {
-            Student student = new Student(name, branch, email);
-            UserCollector.Instance.AddUsersToCollector(student);
-            return Ok(student);
-        }
+        //[HttpPost]
+        //[Route("/Student")]
+        //public ActionResult<Student> CreateNewStudnet(string name, Branch branch, string email)
+        //{
+        //    Student student = new Student(name, branch, email);
+        //    UserCollector.Instance.AddUsersToCollector(student);
+        //    return Ok(student);
+        //}
 
         [HttpDelete]
         [Route("/{id}")]

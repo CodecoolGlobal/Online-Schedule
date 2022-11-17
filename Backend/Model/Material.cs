@@ -2,12 +2,10 @@
 
 namespace CodecoolAdvanced.Model
 {
-    public class EducationalMaterial
+    public class Material
     {
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public long ID { get; set; }
         public string Name { get; set; }
-        public HashSet<Material> Materials { get; set; }
-
     }
 }
