@@ -35,7 +35,7 @@ namespace CodecoolAdvanced.Controller
             modelBuilder.Entity<Demo>().ToTable("Demo");
             modelBuilder.Entity<Material>().ToTable("Material");
         }
-
+        // TEAM
         public Task<List<Team>> GetTeams()
         {
             return Teams.Include(team => team.Students).Include(team => team.Progress).ToListAsync();
@@ -106,6 +106,8 @@ namespace CodecoolAdvanced.Controller
             Teams.Remove(Teams.Include(t => t.Students).First(x => x.Id == id));
             await SaveChangesAsync();
         }
+
+        // USERS
         //get users
         public async Task<Mentor> GetMentor(int id)
         {
@@ -156,6 +158,40 @@ namespace CodecoolAdvanced.Controller
             {
                 student.Name = newName;
             }
+            await SaveChangesAsync();
+        }
+        //MATERIAL
+        public async Task<List<EducationalMaterial>> GetMaterial()
+        {
+            return await EducationalMaterials.Include(m => m.Materials).ToListAsync();
+        }
+        public async Task<EducationalMaterial> GetMaterialById(int id)
+        {
+            return await EducationalMaterials.Include(m => m.Materials).FirstOrDefaultAsync(x => x.ID == id);
+        }
+        public async Task<EducationalMaterial> CreateEMaterial(EducationalMaterial EM)
+        {
+            EducationalMaterials.Add(EM);
+            await SaveChangesAsync();
+            return EM;
+        }
+        public async Task AddMaterial(string M, int EMID)
+        {
+            Material material = new(){ Name = M};
+            Materials.Add(material);
+            EducationalMaterials.Include(em => em.Materials).FirstOrDefault(x => x.ID == EMID).Materials.Add(material);
+            await SaveChangesAsync();
+        }
+        public async Task RemoveMaterial(int id)
+        {
+            Materials.Remove(Materials.FirstOrDefault(x => x.ID == id));
+            await SaveChangesAsync();
+        }
+        public async Task RemoveEm(int id)
+        {
+            EducationalMaterial EM = EducationalMaterials.Include(em => em.Materials).FirstOrDefault(x => x.ID == id);
+            Materials.RemoveRange(EM.Materials.ToList());
+            EducationalMaterials.Remove(EM);
             await SaveChangesAsync();
         }
     }
