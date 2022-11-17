@@ -1,5 +1,4 @@
 ﻿using CodecoolAdvanced.Model;
-using CodecoolAvence.Model;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -21,15 +20,15 @@ namespace CodecoolAdvanced.Controller
             return Ok(actualTeams); 
         }
 
-        [HttpGet]
-        [Route("demos")]
-        public ActionResult<HashSet<Team>> GetDemos()
-        {
-            Demos demo = Demos.Instance ?? throw new ArgumentNullException("Demos.Instance");
-            DateTime time = Demos.Instance.DemoStart;
-            List<Team> actualTeams = Demos.Instance.shafelOrder();
-            return Ok(demo);
-        }
+        //[HttpGet]
+        //[Route("demos")]
+        //public ActionResult<HashSet<Team>> GetDemos()
+        //{
+        //    Demo demo = Demo.Instance ?? throw new ArgumentNullException("Demos.Instance");
+        //    DateTime time = Demo.Instance.DemoStart;
+        //    List<Team> actualTeams = Demo.Instance.shafelOrder();
+        //    return Ok(demo);
+        //}
 
         [HttpGet]
         public ActionResult<HashSet<Team>> GetAllTeams()
@@ -67,7 +66,7 @@ namespace CodecoolAdvanced.Controller
             }
             if (user is Student)
             {
-                Team team = new Team((Student)user, name, repo);
+                Team team = new Team();
                 TeamCollector.Instance.AddTeam(team);
                 return Ok(team);
             }

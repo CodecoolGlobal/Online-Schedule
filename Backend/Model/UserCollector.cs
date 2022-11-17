@@ -1,4 +1,4 @@
-﻿using CodecoolAvence.Model;
+﻿
 
 namespace CodecoolAdvanced.Model
 {
@@ -47,7 +47,7 @@ namespace CodecoolAdvanced.Model
         } 
 		public User? GetUserById(int Id)
         {
-			User user = _Users.FirstOrDefault(s => s.Id == Id);
+			User user = _Users.FirstOrDefault(s => s.ID == Id);
 			return user;
         }
 
