@@ -9,6 +9,7 @@ import {
   faInfoCircle,
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import './register.css';
 
 const USER_REGEX = /^[A-z][A-z0-9-_]{3,23}$/;
 const PWD_REGEX =
@@ -130,12 +131,10 @@ const register = () => {
 
             <label htmlFor="password">
               Password:
-              <span className={validName ? 'valid' : 'hide'}>
+              <span className={validPwd ? 'valid' : 'hide'}>
                 <FontAwesomeIcon icon={faCheck} />
               </span>
-              <span
-                className={validName || !user ? 'hide' : 'invalid'}
-              >
+              <span className={validPwd || !pwd ? 'hide' : 'invalid'}>
                 <FontAwesomeIcon icon={faTimes} />
               </span>
             </label>
@@ -171,14 +170,16 @@ const register = () => {
 
             <label htmlFor="confirm_pwd">
               Confirm Password:
-              <span className={validName ? 'valid' : 'hide'}>
-                <FontAwesomeIcon icon={faCheck} />
-              </span>
-              <span
-                className={validName || !user ? 'hide' : 'invalid'}
-              >
-                <FontAwesomeIcon icon={faTimes} />
-              </span>
+              <FontAwesomeIcon
+                icon={faCheck}
+                className={validMatch && matchPwd ? 'valid' : 'hide'}
+              />
+              <FontAwesomeIcon
+                icon={faTimes}
+                className={
+                  validMatch || !matchPwd ? 'hide' : 'invalid'
+                }
+              />
             </label>
             <input
               type="password"
