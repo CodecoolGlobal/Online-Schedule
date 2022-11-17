@@ -13,6 +13,7 @@ namespace CodecoolAdvanced.Model
         public string Name { get; set; }
         public DateTime StartDate { get; set; }
         public Branch Progress { get; set; }
+        public int WeekChanged { get; set; }
 
         public string Repo { get; set; }
         public string SiReviewStart { get; set; }
@@ -27,6 +28,10 @@ namespace CodecoolAdvanced.Model
         public bool RemoveStudent(Student student)
         {
             return Students.Remove(student);
+        }
+        public int GetCurrentWeek()
+        {
+            return (int)((StartDate - DateTime.Now).TotalDays / 7) + WeekChanged;
         }
     }
 
