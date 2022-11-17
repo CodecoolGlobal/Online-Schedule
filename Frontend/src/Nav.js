@@ -46,9 +46,6 @@ const Nav = () => {
       <div className="navElement">
         <Link to="about">About</Link>
       </div>
-      <div className="navElement">
-        <Link to="Register">Register</Link>
-      </div>
     </nav>
   );
 };

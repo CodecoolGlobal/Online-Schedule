@@ -8,6 +8,7 @@ import Demos from './Demos';
 import JobHunters from './JobHunters';
 import InterviewPrep from './InterviewPrep';
 import Register from './Register';
+import Login from './Login';
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
 import { DataProvider } from './dataContext/dataContext';
@@ -31,6 +32,7 @@ function App() {
           <Route path="interviewprep" element={<InterviewPrep />} />
           <Route path="about" element={<About />} />
           <Route path="Register" element={<Register />} />
+          <Route path="Login" element={<Login />} />
           <Route path="*" element={<Missing />} />
         </Route>
       </Routes>
