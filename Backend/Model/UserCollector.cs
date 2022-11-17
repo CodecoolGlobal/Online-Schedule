@@ -51,18 +51,18 @@ namespace CodecoolAdvanced.Model
 			return user;
         }
 
-		public HashSet<Student> GetActualStudents()
-        {
-			HashSet<Student> students = new HashSet<Student>();
-			HashSet<Team> teams=TeamCollector.Instance.GetCurrentWeekTeam();
-			foreach (Team team in teams)
-            {
-				foreach( Student student in team.Students)
-                {
-					students.Add(student);
-                }
-            }
-			return students;
-        }
+		//public HashSet<Student> GetActualStudents()
+  //      {
+		//	HashSet<Student> students = new HashSet<Student>();
+		//	//HashSet<Team> teams=TeamCollector.Instance.GetCurrentWeekTeam();
+		//	foreach (Team team in teams)
+  //          {
+		//		foreach( Student student in team.Students)
+  //              {
+		//			students.Add(student);
+  //              }
+  //          }
+		//	return students;
+  //      }
 	}
 }

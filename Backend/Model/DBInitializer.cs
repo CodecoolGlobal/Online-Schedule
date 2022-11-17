@@ -122,7 +122,8 @@ namespace CodecoolAdvanced.Model
                         SiReviewFinish = "0",
                         TwReviewStart = "0",
                         TwReviewFinish = "0",
-                        WeekChanged = 0
+                        WeekChanged = 0,
+                        StartDate = DateTime.Now
                     }
                 );
                 context.SaveChanges();

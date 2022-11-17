@@ -36,12 +36,12 @@ namespace CodecoolAdvanced.Controller
 
         public Task<List<Team>> GetTeams()
         {
-            return Teams.ToListAsync();
+            return Teams.Include(team => team.Students).ToListAsync();
         }
 
-        public Task<List<Team>> GetDemos()
+        public async Task<List<Team>> GetDemos()
         {
-            return Teams.Where(x => x.GetCurrentWeek()%2 == 1).ToListAsync();
+            return (await Teams.ToListAsync()).Where(x => x.GetIfTw()).ToList();
         }
 
         public Task<Team> GetTeam(int id)
@@ -57,8 +57,8 @@ namespace CodecoolAdvanced.Controller
 
         public async Task<Team> AddTeam(Team team, int studentId)
         {
-            Teams.Add(team);
             team.AddStudent(Students.Where(x =>x.ID == studentId).First());
+            Teams.Add(team);
             await SaveChangesAsync();
             return team;
         }

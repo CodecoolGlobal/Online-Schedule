@@ -8,8 +8,7 @@ namespace CodecoolAdvanced.Model
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
-        public HashSet<Student> Students { get; set; }
-        public Mentor? Mentor { get; set; }
+        public HashSet<Student> Students { get; set; } = new HashSet<Student>();
         public string Name { get; set; }
         public DateTime StartDate { get; set; }
         public Branch Progress { get; set; }
@@ -23,6 +22,10 @@ namespace CodecoolAdvanced.Model
 
         public bool AddStudent(Student student)
         {
+            if (Students == null)
+            {
+                Students = new HashSet<Student>();
+            }
             return Students.Add(student);
         }
         public bool RemoveStudent(Student student)
@@ -32,6 +35,10 @@ namespace CodecoolAdvanced.Model
         public int GetCurrentWeek()
         {
             return (int)((StartDate - DateTime.Now).TotalDays / 7) + WeekChanged;
+        }
+        public bool GetIfTw()
+        {
+            return (int)((StartDate - DateTime.Now).TotalDays / 7) + WeekChanged % 2 == 0;
         }
     }
 
