@@ -57,10 +57,21 @@ namespace CodecoolAdvanced.Controller
         [HttpPost]
         public async Task<Team> CreateNewTeam(int studentId, string name, string repo)
         {
-            Team t = new Team();
-            t.Name = name;
-            t.Repo = repo;
-            return await _context.AddTeam(t, studentId);
+            Student student = _context.Students.Include(s => s.SBranch).Where(s => s.ID == studentId).First();
+            Team t = new()
+            {
+                Name = name,
+                Students = new HashSet<Student>() {student},
+                Progress = student.SBranch,
+                Repo = repo,
+                SiReviewStart = "0",
+                SiReviewFinish = "0",
+                TwReviewStart = "0",
+                TwReviewFinish = "0",
+                WeekChanged = 0,
+                StartDate = DateTime.Now
+            };
+            return await _context.AddTeam(t);
         }
         
         [HttpPut]

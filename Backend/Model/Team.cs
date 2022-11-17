@@ -15,10 +15,10 @@ namespace CodecoolAdvanced.Model
         public int WeekChanged { get; set; }
 
         public string Repo { get; set; }
-        public string SiReviewStart { get; set; }
-        public string SiReviewFinish { get; set; }
-        public string TwReviewStart { get; set; }
-        public string TwReviewFinish { get; set; }
+        public string? SiReviewStart { get; set; }
+        public string? SiReviewFinish { get; set; }
+        public string? TwReviewStart { get; set; }
+        public string? TwReviewFinish { get; set; }
 
         public bool AddStudent(Student student)
         {

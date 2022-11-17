@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using CodecoolAdvanced.Model;
 using Microsoft.EntityFrameworkCore;
@@ -36,28 +38,27 @@ namespace CodecoolAdvanced.Controller
 
         public Task<List<Team>> GetTeams()
         {
-            return Teams.Include(team => team.Students).ToListAsync();
+            return Teams.Include(team => team.Students).Include(team => team.Progress).ToListAsync();
         }
 
         public async Task<List<Team>> GetDemos()
         {
-            return (await Teams.ToListAsync()).Where(x => x.GetIfTw()).ToList();
+            return (await Teams.Include(team => team.Students).Include(team => team.Progress).ToListAsync()).Where(x => x.GetIfTw()).ToList();
         }
 
         public Task<Team> GetTeam(int id)
         {
-            return Teams.FirstOrDefaultAsync(x => x.Id == id);
+            return Teams.Include(team => team.Students).Include(team => team.Progress).ThenInclude(p => p.Progress).FirstOrDefaultAsync(x => x.Id == id);
         }
 
         public async Task<List<Student>> GetStudentsFromTeam(int id)
         {
-            Team t = await Teams.Where(x => x.Id == id).FirstAsync();
+            Team t = await Teams.Include(team => team.Students).Where(x => x.Id == id).FirstAsync();
             return t.Students.ToList();
         }
 
-        public async Task<Team> AddTeam(Team team, int studentId)
+        public async Task<Team> AddTeam(Team team)
         {
-            team.AddStudent(Students.Where(x =>x.ID == studentId).First());
             Teams.Add(team);
             await SaveChangesAsync();
             return team;
@@ -102,7 +103,7 @@ namespace CodecoolAdvanced.Controller
 
         public async Task DeleteTeam(int id)
         {
-            Teams.Remove(Teams.First(x => x.Id == id));
+            Teams.Remove(Teams.Include(t => t.Students).First(x => x.Id == id));
             await SaveChangesAsync();
         }
     }
