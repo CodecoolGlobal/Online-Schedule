@@ -1,80 +1,95 @@
-﻿//using CodecoolAdvanced.Model;
-//using Microsoft.AspNetCore.Mvc;
+﻿using CodecoolAdvanced.Model;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
-//namespace CodecoolAdvanced.Controller
-//{
-//    [ApiController]
-//    [Route("api/Users")]
-//    public class UsersController : ControllerBase
-//    {
-//        [HttpGet]
-//        public ActionResult<HashSet<User>> GetAllUsers() 
-//        {
-//            HashSet<User> users = UserCollector.Instance.GetAllUsers();
-//            return Ok(users);
-//        }
-//        [HttpGet]
-//        [Route("/{id}")]
-//        public ActionResult<User> GetUserById(int id)
-//        {
-//            User user = UserCollector.Instance.GetUserById(id);
-//            if (user == null)
-//            {
-//                return NotFound();
-//            }
-//            return Ok(user);
-//        }
-//        [HttpGet]
-//        [Route("/actual")]
-//        public ActionResult<HashSet<Student>> GetActualStudents()
-//        {
-//            HashSet<Student> students = UserCollector.Instance.GetActualStudents();
-//            return Ok(students);
-//        }
+namespace CodecoolAdvanced.Controller
+{
+    [ApiController]
+    [Route("api/Users")]
+    public class UsersController : ControllerBase
+    {
+        private readonly CodecoolContext _context;
 
-        //[HttpPost]
-        //[Route("/mentor")]
-        //public ActionResult<Mentor> CreateNewMentor(string name, string email)
-        //{
-        //    Mentor mentor = new Mentor(name, email);
-        //    UserCollector.Instance.AddUsersToCollector(mentor);
-        //    return Ok(mentor);
-        //}
+        public UsersController(CodecoolContext context)
+        {
+            _context = context;
+        }
 
-        //[HttpPost]
-        //[Route("/Student")]
-        //public ActionResult<Student> CreateNewStudnet(string name, Branch branch, string email)
-        //{
-        //    Student student = new Student(name, branch, email);
-        //    UserCollector.Instance.AddUsersToCollector(student);
-        //    return Ok(student);
-        //}
+        [HttpGet]
+        [Route("/mentors")]
+        public async Task<List<Mentor>> GetAllMentors()
+        {
+            return await _context.Mentors.ToListAsync();
+        }
+        [HttpGet]
+        [Route("/mentor/{id}")]
+        public async Task<Mentor> GetMentorById(int id)
+        {
+            return await _context.GetMentor(id);
+        }
+        [HttpGet]
+        [Route("/student/{id}")]
+        public async Task<Student> GetStudentById(int id)
+        {
+            return await _context.GetStudent(id);
+        }
+        [HttpGet]
+        [Route("/students")]
+        public async Task<List<Student>> GetAllStudents()
+        {
+            return await _context.Students.ToListAsync();
+        }
 
-//        [HttpDelete]
-//        [Route("/{id}")]
-//        public ActionResult DeleteUser(int id)
-//        {
-//            User user = UserCollector.Instance.GetUserById(id);
-//            if (user == null)
-//            {
-//                return NotFound();
-//            }
-//            UserCollector.Instance.RemoveFromStudents(user);
-//            return NoContent();
-//        }
+        [HttpPost]
+        [Route("/mentor")]
+        public async Task<Mentor> CreateNewMentor(string name, string email)
+        {
+            Mentor mentor = new()
+            {
+                Name = name,
+                Email = email
+            };
+            return await _context.AddMentor(mentor);
+        }
 
-//        [HttpPut]
-//        [Route("/{id}")]
-//        public ActionResult ReNameUser(int id, string newName)
-//        {
-//            User user = UserCollector.Instance.GetUserById(id);
-//            if (user == null)
-//            {
-//                return NotFound();
-//            }
-//            user.Name = newName;
-//            return NoContent();
+        [HttpPost]
+        [Route("/student")]
+        public async Task<Student> CreateNewStudnet(string name, Branch branch, string email)
+        {
+            Student student = new()
+            {
+                Name = name,
+                SBranch = branch,
+                Email = email
+            };
+            return await _context.AddStudent(student);
+        }
 
-//        }
-//    }
-//}
+        [HttpDelete]
+        [Route("/student/{id}")]
+        public async Task DeleteStudentById(int id)
+        {
+            _context.DeleteStudent(id);
+        }
+
+        [HttpDelete]
+        [Route("/mentor/{id}")]
+        public async Task DeleteMentrtById(int id)
+        {
+            _context.DeleteMentor(id);
+        }
+
+        [HttpPut]
+        [Route("/mentor/{id}")]
+        public async Task ReNameMentor(int id, string newName)
+        {
+            _context.RenameMentor(id, newName);
+        }
+        [HttpPut]
+        [Route("/student/{id}")]
+        public async Task ReNameStudent(int id, string newName)
+        {
+            _context.RenameStudent(id, newName);
+        }
+    }
+}

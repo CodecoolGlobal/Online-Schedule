@@ -106,5 +106,57 @@ namespace CodecoolAdvanced.Controller
             Teams.Remove(Teams.Include(t => t.Students).First(x => x.Id == id));
             await SaveChangesAsync();
         }
+        //get users
+        public async Task<Mentor> GetMentor(int id)
+        {
+            return Mentors.FirstOrDefault(x => x.ID == id);
+        }
+        public async Task<Student> GetStudent(int id)
+        {
+            return Students.FirstOrDefault(x => x.ID == id);
+        }
+        //add users
+        public async Task<Mentor> AddMentor(Mentor mentor)
+        {
+            Mentors.Add(mentor);
+            await SaveChangesAsync();
+            return mentor;
+        }
+        public async Task<Student> AddStudent(Student student)
+        {
+            Students.Add(student);
+            await SaveChangesAsync();
+            return student;
+        }
+        //delete users
+        public async Task DeleteStudent(int id)
+        {
+            Students.Remove(Students.FirstOrDefault(s => s.ID == id));
+            await SaveChangesAsync();
+        }
+        public async Task DeleteMentor(int id)
+        {
+            Mentors.Remove(Mentors.FirstOrDefault(s => s.ID == id));
+            await SaveChangesAsync();
+        }
+        //rename users
+        public async Task RenameMentor(int id, string newName)
+        {
+            Mentor mentor = Mentors.FirstOrDefault(s => s.ID == id);
+            if (mentor != null)
+            {
+                mentor.Name = newName;
+            }
+            await SaveChangesAsync();
+        }
+        public async Task RenameStudent(int id, string newName)
+        {
+            Student student = Students.FirstOrDefault(s => s.ID == id);
+            if (student != null)
+            {
+                student.Name = newName;
+            }
+            await SaveChangesAsync();
+        }
     }
 }
