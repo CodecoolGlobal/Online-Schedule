@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System.Web.Helpers;
 
 namespace CodecoolAdvanced.Controller
@@ -11,149 +12,90 @@ namespace CodecoolAdvanced.Controller
     [Route("api/teams")]
     public class TeamsController : ControllerBase
     {
-        [HttpGet]
-        [Route("actual")]
-        public ActionResult<HashSet<Team>> GetTeamsForActualWeek()
-        {
+        private readonly CodecoolContext _context;
 
-            HashSet<Team> actualTeams = TeamCollector.Instance.GetCurrentWeekTeam();
-            return Ok(actualTeams); 
+        public TeamsController(CodecoolContext context)
+        {
+            _context = context;
         }
 
-        //[HttpGet]
-        //[Route("demos")]
-        //public ActionResult<HashSet<Team>> GetDemos()
-        //{
-        //    Demo demo = Demo.Instance ?? throw new ArgumentNullException("Demos.Instance");
-        //    DateTime time = Demo.Instance.DemoStart;
-        //    List<Team> actualTeams = Demo.Instance.shafelOrder();
-        //    return Ok(demo);
-        //}
+        [HttpGet]
+        [Route("actual")]
+        public async Task<List<Team>> GetTeamsForActualWeek()
+        {
+            // I dont know what actual should return...
+            throw new NotImplementedException();
+        }
 
         [HttpGet]
-        public ActionResult<HashSet<Team>> GetAllTeams()
+        [Route("demos")]
+        public async Task<List<Team>> GetDemos()
         {
-            HashSet<Team> allteams = TeamCollector.Instance.GetTeams();
-            return Ok(allteams);
+            return await _context.GetDemos();
+        }
+
+        [HttpGet]
+        public async Task<List<Team>> GetAllTeams()
+        {
+
+            return await _context.GetTeams();
         }
 
         [HttpGet]
         [Route("{id}")]
-        public ActionResult<Team> GetTeamById(int id)
+        public async Task<Team> GetTeamById(int id)
         {
-            Team team = TeamCollector.Instance.GetTeamById(id);
-            if (team == null)
-            {
-                return NotFound();
-            }
-            return Ok(team);
+            return await _context.GetTeam(id);
         }
         [HttpGet]
         [Route("{id}/students")]
-        public ActionResult<HashSet<Student>> GetStudentsFromTeamById(int id)
+        public async Task<List<Student>> GetStudentsFromTeamById(int id)
         {
-            HashSet<Student> students = TeamCollector.Instance.GetStudentsFromTeamById(id);
-            return Ok(students);
+            return await _context.GetStudentsFromTeam(id);
         }
 
         [HttpPost]
-        public ActionResult<Team> CreateNewTeam(int studentId, string name, string repo)
+        public async Task<Team> CreateNewTeam(int studentId, string name, string repo)
         {
-            User user=UserCollector.Instance.GetUserById(studentId);
-            if (user == null)
-            {
-                return NotFound();
-            }
-            if (user is Student)
-            {
-                Team team = new Team();
-                TeamCollector.Instance.AddTeam(team);
-                return Ok(team);
-            }
-            return NotFound();
+            Team t = new Team();
+            t.Name = name;
+            t.Repo = repo;
+            return await _context.AddTeam(t, studentId);
         }
         
         [HttpPut]
         [Route("{id}")]
-        public ActionResult RenameTeam(int id, string newName)
+        public async Task RenameTeam(int id, string newName)
         {
-            Team team = TeamCollector.Instance.GetTeamById(id);
-            if (team == null)
-            {
-                return NotFound();
-            }
-            team.Name = newName;
-            return NoContent();
+            await _context.RenameTeamById(id, newName);
         }
 
         [HttpPut]
         [Route("{id}/review")]
-        public ActionResult ChangeTimeOfTwReviewStart(int id, string reviewTime, string type)
+        public async Task ChangeTimeOfReviewt(int id, string reviewTime, string type)
         {
-            Team team = TeamCollector.Instance.GetTeamById(id);
-            if (team == null)
-            {
-                return NotFound();
-            }
-            if(type == "siStart")
-            team.SiReviewStart = reviewTime;
-            else if(type == "siFinish")   
-            team.SiReviewFinish = reviewTime;
-            else if(type == "twStart")   
-            team.TwReviewStart = reviewTime;
-            else
-            team.TwReviewFinish = reviewTime;
-            return NoContent();
+            await _context.ChangeReviewTime(id, reviewTime, type);
         }
 
         [HttpPut]
         [Route("{id}/add/{studentid}")]
-        public ActionResult AddStudentToTeam(int id, int studentid)
+        public async Task AddStudentToTeam(int id, int studentid)
         {
-            Team team = TeamCollector.Instance.GetTeamById(id);
-            User user = UserCollector.Instance.GetUserById(studentid);
-            if (team == null || user == null)
-            {
-                return NotFound();
-            }
-            if (user is Student)
-            {
-                team.AddStudent((Student)user);
-                return NoContent();
-            }
-            return NotFound();
+            await _context.AddStudentToTeam(id, studentid);
         }
         
         [HttpPut]
         [Route("{id}/remove/{studentid}")]
-        public ActionResult RemoveStudentFromTeam(int id, int studentid)
+        public async Task RemoveStudentFromTeam(int id, int studentid)
         {
-            Team team = TeamCollector.Instance.GetTeamById(id);
-            User user = UserCollector.Instance.GetUserById(studentid);
-            if (team == null || user == null)
-            {
-                return NotFound();
-            }
-            if (user is Student)
-            {
-                team.RemoveStudent((Student)user);
-                return NoContent();
-            }
-            return NotFound();
+            await _context.RemoveStudentFromTeam(id, studentid);
         }
 
         [HttpDelete]
         [Route("{id}")]
-        public ActionResult DeleteTeam(int id)
+        public async Task DeleteTeam(int id)
         {
-            Team team = TeamCollector.Instance.GetTeamById(id);
-            if (team == null)
-            {
-                return NotFound();
-            }
-
-            TeamCollector.Instance.DeleteTeam(team);
-            return NoContent();
+            await _context.DeleteTeam(id);
         }
 
         

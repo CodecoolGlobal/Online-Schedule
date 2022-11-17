@@ -121,9 +121,10 @@ namespace CodecoolAdvanced.Model
                         SiReviewStart = "0",
                         SiReviewFinish = "0",
                         TwReviewStart = "0",
-                        TwReviewFinish = "0"
+                        TwReviewFinish = "0",
+                        WeekChanged = 0
                     }
-                ); ;
+                );
                 context.SaveChanges();
                 context.Mentors.AddRange(
                     new Mentor
