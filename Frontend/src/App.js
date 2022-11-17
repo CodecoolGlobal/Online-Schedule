@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import About from './About';
 import Missing from './Missing';
 import Layout from './Layout';
@@ -10,9 +11,24 @@ import InterviewPrep from './InterviewPrep';
 import Register from './Register';
 import './App.css';
 import { Route, Routes } from 'react-router-dom';
+=======
+import About from "./About";
+import Missing from "./Missing";
+import Layout from "./Layout";
+import Teams from "./Teams";
+import Team from "./Team";
+import Home from "./Home";
+import Demos from "./Demos";
+import JobHunters from "./JobHunters";
+import InterviewPrep from "./InterviewPrep";
+import "./App.css";
+import { Route, Routes } from "react-router-dom";
+import {DataProvider} from "./dataContext/dataContext";
+>>>>>>> development
 
 function App() {
   return (
+    <DataProvider>
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
@@ -32,6 +48,7 @@ function App() {
         <Route path="*" element={<Missing />} />
       </Route>
     </Routes>
+    </DataProvider>
   );
 }
 

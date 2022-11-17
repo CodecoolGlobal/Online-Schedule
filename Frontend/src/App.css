@@ -1,21 +1,30 @@
 .App {
   text-align: center;
+  background-color: #eae8e8;
+}
+.App.Dark{
+ background-color: rgb(45 43 64);;
+ color: white;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.mainPart{
+  margin-left: 170px;
+  height: 100vh;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.design{
+  background-color: #3c394f;
+  width: 180vh;
+  height: 1px;
+  padding: 13vh;
+  margin: 0px 0px -23vh -50px;
+}
+.design.Dark{
+  background-color: #423f58;
 }
 
 .header {
   overflow: hidden;
-  background-color: #f1f1f1;
+  background-color: white;
   padding: 20px 10px;
   color: black;
   text-align: center;
@@ -23,41 +32,67 @@
   font-size: 18px;
   line-height: 25px;
   border-radius: 4px;
+  position: relative;
 }
-
+.header.Dark{
+  background-color: black;
+  color: white;
+}
 .logo {
     font-size: 25px;
     font-weight: bold;
     float: left;
-    padding: 5px;
-    background-color: #b1e4f1;
+    padding: 5px;   
+}
+.name{
+
+  display:inline-block;
 }
 
+.Space{
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+  
+  
+}
 .log {
-  float: right;
   color: black;
   padding: 5px;
-  background-color: #b1e4f1;
+  float: right;
 }
-
+.log.Dark{
+  color: white;
+}
 :link {
   text-decoration: none;
 }
 
 .sideNav {
+
   height: 100%;
+  width: 130px;
   width: -moz-fit-content;
   position: absolute;
   z-index: 1 !important;
-  right: 0;
-  background-color: #f9f9f9;
-  padding: 10px;
+  background-color: white;
+  padding: 0px;
   cursor: pointer;
+}
+
+.sideNav.Dark{
+  background-color: #3c394f;
+  color: white;
 }
 
 .navElement{
   padding: 5px;
   cursor: pointer;
+}
+.navElement.Dark{
+  color: white;
 }
 
 .add {
@@ -67,70 +102,112 @@
   padding: 0px 9px 7px 9px;
   margin: -32px 0px;
 }
-
+.add.Dark{
+  background-color: darkgray;
+}
+.main
 h2 {
   background-color: cadetblue;
   width: 87%;
   padding: 5px 5px 12px 5px;
   margin: 20px;
 }
+h3{
+  color: white;
+}
 
 .teamContainer{
-  background-color: #f9f9f9;;
+  background-color: white;
   width: 87%;
   padding: 5px 5px 12px 5px;
-  margin: 0px 20px 20px 20px;
-}
+  margin: 20px 0px 0px 20px;
+  border-radius: 8px;
 
+}
+.teamContainer.Dark{
+  background-color: black;
+}
 .team{
-  background-color: #00ee6a;
-  margin: 16px 57px;
-  font-size: 28px;
+  color : white;
+  background-color: #646180;
+  margin: 3px 3px;
+  font-size: 20px;
   text-align: initial;
-  padding: 0px 24px;
+  padding: 2px 3px 3px 10px;
+  border-radius: 8px;
+}
+.darkMode{
+  display: inline-block;
 }
 
+img.Dark{
+  -webkit-filter: invert(1);
+  filter: invert(1);
+    
+}
 .time{
+  display: inline-block;
   background-color: #9fe6f2;
   width: 45%;
-  margin: 16px 29px;
+  margin: 1px 2px;
   font-size: 20px;
 }
-
+.time.Dark{
+  background-color: #507b83;
+}
 .teamName, .demoTime{
-  background-color: cadetblue;
+  color: White;
+  background-color: #646180;
   width: 87%;
   padding: 5px 5px 12px 5px;
   margin: 20px 20px 0px 20px;
+  border-radius: 8px;
 }
 
+
 .flex{
-display: flex;
+display: block;
 flex-wrap: wrap;
 }
 
 .sub{
-  background-color: #60eb5d;
+  color: white;
+  background-color: #646180;
   border: none;
   margin: 10px;
   font-size: 17px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.sub:hover{
+  background-color: #3c394f;
+}
+.sub:active{
+  background-color: black;
 }
 
 th{
-  background-color: #00ee6a;
+  color:white;
+  background-color: #646180;
 }
-
-table{
-  background-color: #9fe6f2;
+tr{
+  background-color: white;
+}
+tr.Dark{
+  background-color: darkgray;
+}
+table{  
   width: 87%;
   padding: 5px 5px 8px 0px;
   margin: 20px 20px 0px 26px;
 }
 
 .repo{
-  background-color: #00ee6a;
+  color: white;
+  background-color: #646180;
   margin: 0px 20px;
   font-size: 30px;
+  border-radius: 8px;
 }
 
 p.statusMsg.err {
@@ -151,18 +228,39 @@ p.statusMsg {
   font-size: 25px;
 }
 .active, .navElement:hover {
-  background-color: #b1e4f1;
+  background-color: #eae8e8;
+}
+
+.navElement.Dark.active, .navElement.Dark:hover {
+  background-color:darkgray;
 }
 
 .App-link {
-  color: #61dafb;
+  color: #eae8e8;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.educationLink{
+  color:white
+}
+.interview{
+  background-color: white;
+  color: black;
+  padding: 6px; 
+  border-radius: 8px 8px 0px 0px;
+}
+.interview.Dark{
+  background-color: black;
+  color: white;
+}
+
+.listContainer{
+  background-color: #646180;
+  color: white;
+  padding: 0px 0px 6px 0px ;
+  border-radius: 18px 18px 8px 8px;
+  margin: 30px 30px 0px 0px;
+}
+
+ul{
+  text-align: left; 
 }

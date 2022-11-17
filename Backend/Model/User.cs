@@ -1,20 +1,15 @@
 using System;
+using System.ComponentModel.DataAnnotations.Schema;
 
-namespace CodecoolAvence.Model {
+namespace CodecoolAdvanced.Model {
 	public abstract class User {
-		public string Name { get; set; }
-        private static int studentCounter = 0;
-        
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+        public long ID { get; set; }
 
-        public string Email { get; }
-        public int Id { get; private set; }
-        protected User(string name, string email)
-        {
-            Email = email;
-            Name = name;
-            Id = studentCounter;
-            studentCounter++;
-        }
+		public string Name { get; set; }
+        public string Email { get; set; }
+        public string Password { get; set; }
+
 
     }
 

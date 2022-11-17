@@ -2,7 +2,7 @@
 {
     public class EducationMaterialCollector
     {
-		private static EducationMaterialCollector instance = null;
+		private static EducationMaterialCollector? instance = null;
 
 		private EducationMaterialCollector()
 		{
@@ -29,7 +29,7 @@
 
 		public EducationalMaterial GetEducationalMaterialById(int id)
         {
-			return _materials.FirstOrDefault(x => x.Id == id);
+			return _materials.FirstOrDefault(x => x.ID == id);
         }
 
 		public bool AddToMaterials(EducationalMaterial material)

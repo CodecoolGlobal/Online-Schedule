@@ -1,17 +1,16 @@
 using System;
 
-namespace CodecoolAvence.Model {
+namespace CodecoolAdvanced.Model {
     public class Student : User
     {
-        
-        public Student(string name, Branch branch, string email) : base(name, email)
+        public Branch SBranch { get; set; }
+        public DateTime Start { get; set; }
+        public int WeekChanged { get; set; }
+
+        public int GetCurrentWeek()
         {
-            BranchProgress = new BranchProgress(branch);
-            
+            return (int)((Start - DateTime.Now).TotalDays/7) + WeekChanged;
         }
-
-        public BranchProgress BranchProgress { get; set; }
-
-	}
+    }
 
 }

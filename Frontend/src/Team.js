@@ -1,12 +1,14 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect,useContext  } from 'react';
 import { useParams } from 'react-router';
 import useAxiosFetch from './hooks/useAxiosFetch';
 import api from './hooks/api';
+import DataContext from './dataContext/dataContext';
 
 const Team = () => {
   const { id } = useParams();
   let url = `https://localhost:7086/api/teams/${id}`;
 
+  const {colorTheme } = useContext(DataContext);
   const { data, fetchError, isLoading } = useAxiosFetch(url);
   console.log(data);
 
@@ -21,63 +23,21 @@ const Team = () => {
     setTwStart(data.twReviewStart);
     setTwFinish(data.twReviewFinish);
   }, [data]);
-  const handleSiStart = async (e) => {
+  const handleReviewTime = async (e) => {
     e.preventDefault();
-    try {
-      const review = siStart.replace(':', '%3A');
-      const response = await api.put(
-        `/teams/${id}/si/start?siReviewStart=${review}`
-      );
-    } catch (err) {
-      if (err.response) {
-        console.log(err.response.data);
-        console.log(err.response.status);
-        console.log(err.response.headers);
-      } else {
-        console.log(`Error: ${err.message}`);
-      }
-    }
-  };
-  const handleSiFinish = async (e) => {
-    e.preventDefault();
-    try {
-      const review = siFinish.replace(':', '%3A');
-      const response = await api.put(
-        `/teams/${id}/si/finish?siReviewFinish=${review}`
-      );
-    } catch (err) {
-      if (err.response) {
-        console.log(err.response.data);
-        console.log(err.response.status);
-        console.log(err.response.headers);
-      } else {
-        console.log(`Error: ${err.message}`);
-      }
-    }
-  };
-  const handleTwStart = async (e) => {
-    e.preventDefault();
-    try {
-      const review = twStart.replace(':', '%3A');
-      const response = await api.put(
-        `/teams/${id}/tw/start?twReviewStart=${review}`
-      );
-    } catch (err) {
-      if (err.response) {
-        console.log(err.response.data);
-        console.log(err.response.status);
-        console.log(err.response.headers);
-      } else {
-        console.log(`Error: ${err.message}`);
-      }
-    }
-  };
-  const handleTwFinish = async (e) => {
-    e.preventDefault();
-    try {
-      const review = twFinish.replace(':', '%3A');
-      const response = await api.put(
-        `/teams/${id}/tw/finish?twReviewFinish=${review}`
+      try {
+          var reviewTime = null;
+          if (e.currentTarget.className === "siStart") {
+              reviewTime = siStart.replace(':', '%3A');
+          } else if (e.currentTarget.className === 'siFinish') {
+              reviewTime = siFinish.replace(':', '%3A');
+          } else if (e.currentTarget.className === 'twStart'){
+              reviewTime = twStart.replace(':', '%3A');
+          } else{
+            reviewTime = twFinish.replace(':', '%3A');
+          }
+        const response = await api.put(
+         `/teams/${id}/review?reviewTime=${reviewTime}&type=${e.currentTarget.className}`
       );
     } catch (err) {
       if (err.response) {
@@ -103,20 +63,22 @@ const Team = () => {
 
       {!isLoading && !fetchError && (
         <>
+        <div className={`design ${colorTheme}`}></div>
           <h1 className='teamName'>{data.name} ({data.students?.map((student) => (
               student.name + " "
             ))})</h1>
         </>
       )}
-      <div className='teamContainer'>
+      
+      <div className={`teamContainer ${colorTheme}`}>
       <div>Mentor: {data.mentor}</div>
       <a href={data.repo}><div className='repo'>Repository</div></a>
       <div className='flex'>
-      <div className='time'>
-      <form onSubmit={handleSiStart}>
+      <div className={`time ${colorTheme}`}>
+      <form onSubmit={handleReviewTime} className='siStart'>
         <label>
           SI review start:
-          <input
+          <input 
             id="siStart"
             type="time"
             required
@@ -127,8 +89,8 @@ const Team = () => {
         <input type="submit" value="Submit" className='sub' />
       </form>
       </div>
-      <div className='time'>
-      <form onSubmit={handleSiFinish}>
+      <div className={`time ${colorTheme}`}>
+      <form onSubmit={handleReviewTime} className='siFinish'>
         <label>
           SI review finish:
           <input
@@ -142,8 +104,8 @@ const Team = () => {
         <input type="submit" value="Submit" className='sub' />
       </form>
       </div>
-      <div className='time'>
-      <form onSubmit={handleTwStart}>
+      <div className={`time ${colorTheme}`}>
+        <form onSubmit={handleReviewTime} className='twStart'>
         <label>
           TW review start:
           <input
@@ -157,8 +119,8 @@ const Team = () => {
         <input type="submit" value="Submit" className='sub' />
       </form>
       </div>
-      <div className='time'>
-      <form onSubmit={handleTwFinish}>
+      <div className={`time ${colorTheme}`}>
+        <form onSubmit={handleReviewTime} className='twFinish'>
         <label>
           TW review finish:
           <input

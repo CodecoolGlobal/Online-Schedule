@@ -1,5 +1,8 @@
 import React from 'react';
 import useAxiosFetch from './hooks/useAxiosFetch';
+import { useContext, useState } from 'react';
+import DataContext from './dataContext/dataContext';
+
 
 const Demos = () => {
   let url = 'https://localhost:7086/api/teams/demos';
@@ -7,19 +10,18 @@ const Demos = () => {
   const demoStart = new Date(
     `${data.demoStart}`
   ).toLocaleTimeString();
-  console.log(data);
+  const {colorTheme} = useContext(DataContext);
 
   return (
     <>
       {isLoading && <p className="statusMsg">Loading ...</p>}
       {!isLoading && fetchError && (
-        <p className="statusMsg err">
-          {fetchError}
-        </p>
+        <p className="statusMsg err">{fetchError}</p>
       )}
       {!isLoading && !fetchError && (
         <>
-          <h1 className='demoTime'>Demos Start at {demoStart}</h1>
+        <div className={`design ${colorTheme}`}></div>
+          <h1 className="demoTime">Demos Start at 9:30</h1>
           <table className="DemoTabel">
             <tr>
               <th></th>
@@ -28,7 +30,7 @@ const Demos = () => {
               <th>Git</th>
             </tr>
             {data.demoOrder?.map((team, index) => (
-              <tr key={team.id}>
+              <tr key={team.id} className={colorTheme}>
                 <td>{(index = index + 1)}</td>
                 <td>{team.name}</td>
                 <td>

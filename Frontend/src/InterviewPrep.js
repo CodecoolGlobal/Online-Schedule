@@ -1,10 +1,14 @@
 import React from 'react';
 import useAxiosFetch from './hooks/useAxiosFetch';
+import { useContext, useState } from 'react';
+import DataContext from './dataContext/dataContext';
 
 const InterviewPrep = () => {
   let url = 'https://localhost:7086/api/material';
   const { data, fetchError, isLoading } = useAxiosFetch(url);
-  console.log(data);
+  
+  const {colorTheme } = useContext(DataContext);
+
   return (
     <>
       {isLoading && <p className="statusMsg">Loading ...</p>}
@@ -15,6 +19,9 @@ const InterviewPrep = () => {
       )}
       {!isLoading && !fetchError && (
         <>
+        <div className={`design ${colorTheme}`}></div>
+        <div className='listContainer'>
+          <h2 className={`interview ${colorTheme}`}>Interview Preparation</h2>
           <ul>
             {data?.map((material) => (
               <li key={material.id}>
@@ -22,13 +29,14 @@ const InterviewPrep = () => {
                 <ul>
                   {material.material?.map((submaterial) => (
                     <li key={submaterial}>
-                      <a href={submaterial}>{submaterial}</a>
+                      <a className='educationLink' href={submaterial}>{submaterial}</a>
                     </li>
                   ))}
                 </ul>
               </li>
             ))}
           </ul>
+          </div>
         </>
       )}
     </>

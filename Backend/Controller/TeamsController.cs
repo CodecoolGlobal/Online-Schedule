@@ -1,5 +1,4 @@
 ﻿using CodecoolAdvanced.Model;
-using CodecoolAvence.Model;
 using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -21,15 +20,15 @@ namespace CodecoolAdvanced.Controller
             return Ok(actualTeams); 
         }
 
-        [HttpGet]
-        [Route("demos")]
-        public ActionResult<HashSet<Team>> GetDemos()
-        {
-            Demos demo = Demos.Instance ?? throw new ArgumentNullException("Demos.Instance");
-            DateTime time = Demos.Instance.DemoStart;
-            List<Team> actualTeams = Demos.Instance.shafelOrder();
-            return Ok(demo);
-        }
+        //[HttpGet]
+        //[Route("demos")]
+        //public ActionResult<HashSet<Team>> GetDemos()
+        //{
+        //    Demo demo = Demo.Instance ?? throw new ArgumentNullException("Demos.Instance");
+        //    DateTime time = Demo.Instance.DemoStart;
+        //    List<Team> actualTeams = Demo.Instance.shafelOrder();
+        //    return Ok(demo);
+        //}
 
         [HttpGet]
         public ActionResult<HashSet<Team>> GetAllTeams()
@@ -67,7 +66,7 @@ namespace CodecoolAdvanced.Controller
             }
             if (user is Student)
             {
-                Team team = new Team((Student)user, name, repo);
+                Team team = new Team();
                 TeamCollector.Instance.AddTeam(team);
                 return Ok(team);
             }
@@ -86,56 +85,24 @@ namespace CodecoolAdvanced.Controller
             team.Name = newName;
             return NoContent();
         }
-        
-        [HttpPut]
-        [Route("{id}/tw/start")]
-        public ActionResult ChangeTimeOfTwReviewStart(int id ,string twReviewStart)
-        {
-            Team team = TeamCollector.Instance.GetTeamById(id);
-            if (team == null)
-            {
-                return NotFound();
-            }
-            team.TwReviewStart =twReviewStart;
-            return NoContent();
-        }
 
         [HttpPut]
-        [Route("{id}/tw/finish")]
-        public ActionResult ChangeTimeOfTwReviewFinish(int id, string twReviewFinish)
+        [Route("{id}/review")]
+        public ActionResult ChangeTimeOfTwReviewStart(int id, string reviewTime, string type)
         {
             Team team = TeamCollector.Instance.GetTeamById(id);
             if (team == null)
             {
                 return NotFound();
             }
-            team.TwReviewFinish = twReviewFinish;
-            return NoContent();
-        }
-
-        [HttpPut]
-        [Route("{id}/si/start")]
-        public ActionResult ChangeTimeOfSiReviewStart(int id, string siReviewStart)
-        {
-            Team team = TeamCollector.Instance.GetTeamById(id);
-            if (team == null)
-            {
-                return NotFound();
-            }
-            team.SiReviewStart = siReviewStart;
-            return NoContent();
-        }
-
-        [HttpPut]
-        [Route("{id}/si/finish")]
-        public ActionResult ChangeTimeOfSiReviewFinish(int id, string siReviewFinish)
-        {
-            Team team = TeamCollector.Instance.GetTeamById(id);
-            if (team == null)
-            {
-                return NotFound();
-            }
-            team.SiReviewFinish = siReviewFinish;
+            if(type == "siStart")
+            team.SiReviewStart = reviewTime;
+            else if(type == "siFinish")   
+            team.SiReviewFinish = reviewTime;
+            else if(type == "twStart")   
+            team.TwReviewStart = reviewTime;
+            else
+            team.TwReviewFinish = reviewTime;
             return NoContent();
         }
 
