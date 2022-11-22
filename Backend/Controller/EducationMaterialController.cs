@@ -1,81 +1,58 @@
-﻿//using Microsoft.AspNetCore.Mvc;
-//using CodecoolAdvanced.Model;
+﻿using Microsoft.AspNetCore.Mvc;
+using CodecoolAdvanced.Model;
 
-//namespace CodecoolAdvanced.Controller
-//{
-//    [ApiController]
-//    [Route("api/material")]
-//    public class EducationMaterialController : ControllerBase
-//    {
-//        [HttpGet]
-//        public ActionResult<HashSet<EducationalMaterial>> GetAllMaterials()
-//        {
-//            HashSet<EducationalMaterial> materials = EducationMaterialCollector.Instance.GetEducationalMaterials();
-//            return Ok(materials);
-//        }
+namespace CodecoolAdvanced.Controller
+{
+    [ApiController]
+    [Route("api/material")]
+    public class EducationMaterialController : ControllerBase
+    {
+        private readonly CodecoolContext _context;
 
-//        [HttpGet]
-//        [Route("{id}")]
-//        public ActionResult<EducationalMaterial> GetMaterialById(int id)
-//        {
-//            EducationalMaterial material = EducationMaterialCollector.Instance.GetEducationalMaterialById(id);
-//            if (material == null)
-//            {
-//                return NotFound();
-//            }
-//            return Ok(material);
-//        }
+        public EducationMaterialController(CodecoolContext context)
+        {
+            _context = context;
+        }
+        [HttpGet]
+        public async Task<List<EducationalMaterial>> GetAllMaterials()
+        {
+            return await _context.GetMaterial();
+        }
 
-//        [HttpPost]
-//        public ActionResult<EducationalMaterial> CreateNewEducationMaterial(string name)
-//        {
-//            EducationalMaterial material = new EducationalMaterial(name);
-//            EducationMaterialCollector.Instance.AddToMaterials(material);
-//            return Ok(material);
-//        }
+        [HttpGet]
+        [Route("{id}")]
+        public async Task<EducationalMaterial> GetMaterialById(int id)
+        {
+            return await _context.GetMaterialById(id);
+        }
 
-//        [HttpPut]
-//        [Route("{id}/add")]
-//        public ActionResult AddMaterialToEducationMaterial(int id, string material)
-//        {
-//            EducationalMaterial EduMaterial = EducationMaterialCollector.Instance.GetEducationalMaterialById(id);
-//            if (EduMaterial == null)
-//            {
-//                return NotFound();
-//            }
-//            if (EduMaterial.Material.Add(material))
-//            {
-//                return NoContent();
-//            }
-//            return BadRequest();
-//        }
-//        [HttpPut]
-//        [Route("{id}/remove")]
-//        public ActionResult RemoveMaterialToEducationMaterial(int id, string material)
-//        {
-//            EducationalMaterial EduMaterial = EducationMaterialCollector.Instance.GetEducationalMaterialById(id);
-//            if (EduMaterial == null)
-//            {
-//                return NotFound();
-//            }
-//            if (EduMaterial.Material.Remove(material))
-//            {
-//                return NoContent();
-//            }
-//            return BadRequest();
-//        }
+        [HttpPost]
+        public async Task<EducationalMaterial> CreateNewEducationMaterial(string name)
+        {
+            EducationalMaterial ematerial = new() { 
+            Name = name
+            };
+            return await _context.CreateEMaterial(ematerial);
+        }
 
-//        [HttpDelete]
-//        [Route("{id}")]
-//        public ActionResult DeleteEducationMaterial(int id)
-//        {
-//            EducationalMaterial EduMaterial = EducationMaterialCollector.Instance.GetEducationalMaterialById(id);
-//            if (EduMaterial == null)
-//            {
-//                return NotFound();
-//            }
-//            EducationMaterialCollector.Instance.deleteFromMaterials(EduMaterial);
-//            return NoContent();
-//        }
-//    }
-//}
+        [HttpPut]
+        [Route("{id}/add")]
+        public async Task AddMaterialToEducationMaterial(int id, string material)
+        {
+            _context.AddMaterial(material, id);
+        }
+        [HttpDelete]
+        [Route("{id}/remove")]
+        public async Task RemoveMaterial(int id)
+        {
+            _context.RemoveMaterial(id);
+        }
+
+        [HttpDelete]
+        [Route("{id}")]
+        public async Task DeleteEducationMaterial(int id)
+        {
+            _context.RemoveEm(id);
+        }
+    }
+}

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
 using CodecoolAdvanced.Model;
 using Microsoft.EntityFrameworkCore;
@@ -33,32 +35,31 @@ namespace CodecoolAdvanced.Controller
             modelBuilder.Entity<Demo>().ToTable("Demo");
             modelBuilder.Entity<Material>().ToTable("Material");
         }
-
+        // TEAM
         public Task<List<Team>> GetTeams()
         {
-            return Teams.ToListAsync();
+            return Teams.Include(team => team.Students).Include(team => team.Progress).ToListAsync();
         }
 
-        public Task<List<Team>> GetDemos()
+        public async Task<List<Team>> GetDemos()
         {
-            return Teams.Where(x => x.GetCurrentWeek()%2 == 1).ToListAsync();
+            return (await Teams.Include(team => team.Students).Include(team => team.Progress).ToListAsync()).Where(x => x.GetIfTw()).ToList();
         }
 
         public Task<Team> GetTeam(int id)
         {
-            return Teams.FirstOrDefaultAsync(x => x.Id == id);
+            return Teams.Include(team => team.Students).Include(team => team.Progress).ThenInclude(p => p.Progress).FirstOrDefaultAsync(x => x.Id == id);
         }
 
         public async Task<List<Student>> GetStudentsFromTeam(int id)
         {
-            Team t = await Teams.Where(x => x.Id == id).FirstAsync();
+            Team t = await Teams.Include(team => team.Students).Where(x => x.Id == id).FirstAsync();
             return t.Students.ToList();
         }
 
-        public async Task<Team> AddTeam(Team team, int studentId)
+        public async Task<Team> AddTeam(Team team)
         {
             Teams.Add(team);
-            team.AddStudent(Students.Where(x =>x.ID == studentId).First());
             await SaveChangesAsync();
             return team;
         }
@@ -102,7 +103,95 @@ namespace CodecoolAdvanced.Controller
 
         public async Task DeleteTeam(int id)
         {
-            Teams.Remove(Teams.First(x => x.Id == id));
+            Teams.Remove(Teams.Include(t => t.Students).First(x => x.Id == id));
+            await SaveChangesAsync();
+        }
+
+        // USERS
+        //get users
+        public async Task<Mentor> GetMentor(int id)
+        {
+            return Mentors.FirstOrDefault(x => x.ID == id);
+        }
+        public async Task<Student> GetStudent(int id)
+        {
+            return Students.FirstOrDefault(x => x.ID == id);
+        }
+        //add users
+        public async Task<Mentor> AddMentor(Mentor mentor)
+        {
+            Mentors.Add(mentor);
+            await SaveChangesAsync();
+            return mentor;
+        }
+        public async Task<Student> AddStudent(Student student)
+        {
+            Students.Add(student);
+            await SaveChangesAsync();
+            return student;
+        }
+        //delete users
+        public async Task DeleteStudent(int id)
+        {
+            Students.Remove(Students.FirstOrDefault(s => s.ID == id));
+            await SaveChangesAsync();
+        }
+        public async Task DeleteMentor(int id)
+        {
+            Mentors.Remove(Mentors.FirstOrDefault(s => s.ID == id));
+            await SaveChangesAsync();
+        }
+        //rename users
+        public async Task RenameMentor(int id, string newName)
+        {
+            Mentor mentor = Mentors.FirstOrDefault(s => s.ID == id);
+            if (mentor != null)
+            {
+                mentor.Name = newName;
+            }
+            await SaveChangesAsync();
+        }
+        public async Task RenameStudent(int id, string newName)
+        {
+            Student student = Students.FirstOrDefault(s => s.ID == id);
+            if (student != null)
+            {
+                student.Name = newName;
+            }
+            await SaveChangesAsync();
+        }
+        //MATERIAL
+        public async Task<List<EducationalMaterial>> GetMaterial()
+        {
+            return await EducationalMaterials.Include(m => m.Materials).ToListAsync();
+        }
+        public async Task<EducationalMaterial> GetMaterialById(int id)
+        {
+            return await EducationalMaterials.Include(m => m.Materials).FirstOrDefaultAsync(x => x.ID == id);
+        }
+        public async Task<EducationalMaterial> CreateEMaterial(EducationalMaterial EM)
+        {
+            EducationalMaterials.Add(EM);
+            await SaveChangesAsync();
+            return EM;
+        }
+        public async Task AddMaterial(string M, int EMID)
+        {
+            Material material = new(){ Name = M};
+            Materials.Add(material);
+            EducationalMaterials.Include(em => em.Materials).FirstOrDefault(x => x.ID == EMID).Materials.Add(material);
+            await SaveChangesAsync();
+        }
+        public async Task RemoveMaterial(int id)
+        {
+            Materials.Remove(Materials.FirstOrDefault(x => x.ID == id));
+            await SaveChangesAsync();
+        }
+        public async Task RemoveEm(int id)
+        {
+            EducationalMaterial EM = EducationalMaterials.Include(em => em.Materials).FirstOrDefault(x => x.ID == id);
+            Materials.RemoveRange(EM.Materials.ToList());
+            EducationalMaterials.Remove(EM);
             await SaveChangesAsync();
         }
     }
