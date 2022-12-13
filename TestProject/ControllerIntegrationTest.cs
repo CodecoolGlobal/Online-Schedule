@@ -24,7 +24,7 @@ namespace TestProject
         [InlineData("api/teams")]
         [InlineData("api/teams/1")]
         [InlineData("api/teams/1/students")]
-        [InlineData("api/teams/demos")]
+        
         public async Task Get_EndpointsReturnSuccessAndCorrectContentType(string url)
         {
             // Arrange
