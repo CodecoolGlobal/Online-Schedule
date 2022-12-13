@@ -1,30 +1,41 @@
 using CodecoolAdvanced.Controller;
+using CodecoolAdvanced.Model;
+using Microsoft.EntityFrameworkCore;
 using NSubstitute;
-using NUnit.Framework;
+using System.Threading.Tasks;
+using Xunit;
 
-namespace TestProject
+/*namespace TestProject
 {
-    public class UsersControllerTests
+    /*public class UsersControllerTests
     {
+  
+        private readonly UsersController _usersController;
+        private readonly CodecoolContext _context = Substitute.For<CodecoolContext>(DbContextOptions < CodecoolContext > options);
 
-        private UsersController _usersController;
-        private readonly CodecoolContext _context = Substitute.For<CodecoolContext>();
- 
         public UsersControllerTests()
         {
             _usersController = new UsersController(_context);
         }
 
-        [SetUp]
-        public void Setup()
-        {
-            
-        }
+        [Fact]
 
-        [Test]
-        public void Test1()
+        public async Task GetStudent_By_Id_If_Exist()
         {
-            Assert.Pass();
+            var studentID = 1;
+            string studentName = "kata";
+            Student student = new Student
+            {
+                ID = studentID,
+                Name = studentName
+            };
+            _usersController.GetStudentById(studentID).Returns(student);
+            
+            Student student2 = await _usersController.GetStudentById(studentID);
+
+            Assert.Equal(student2.ID, studentID);
+            Assert.Equal(student2.Name, studentName);
+        
         }
-    }
-}
+    }/*
+}*/
