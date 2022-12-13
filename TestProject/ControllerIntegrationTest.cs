@@ -4,17 +4,27 @@ using Xunit;
 
 namespace TestProject
 {
-    public class BasicTests: IClassFixture<WebApplicationFactory<Program>>
+    public class ControllerIntegrationTest: IClassFixture<WebApplicationFactory<Program>>
     {
         private readonly WebApplicationFactory<Program> _factory;
 
-        public BasicTests(WebApplicationFactory<Program> factory)
+        public ControllerIntegrationTest(WebApplicationFactory<Program> factory)
         {
             _factory = factory;
         }
 
         [Theory]
+        [InlineData("api/material")]
         [InlineData("api/users/mentors")]
+        [InlineData("api/users/mentors/1")]
+        [InlineData("api/users/student/1")]
+        [InlineData("api/users/students")]
+        [InlineData("api/material/1")]
+        [InlineData("api/teams/demos")]
+        [InlineData("api/teams")]
+        [InlineData("api/teams/1")]
+        [InlineData("api/teams/1/students")]
+        [InlineData("api/teams/demos")]
         public async Task Get_EndpointsReturnSuccessAndCorrectContentType(string url)
         {
             // Arrange
