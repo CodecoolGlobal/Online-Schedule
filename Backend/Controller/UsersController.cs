@@ -23,7 +23,7 @@ namespace CodecoolAdvanced.Controller
             return await _context.Mentors.ToListAsync();
         }
         [HttpGet]
-        [Route("mentor/{id}")]
+        [Route("mentors/{id}")]
         public async Task<Mentor> GetMentorById(int id)
         {
             return await _context.GetMentor(id);
