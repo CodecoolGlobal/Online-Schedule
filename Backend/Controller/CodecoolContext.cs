@@ -131,12 +131,12 @@ namespace CodecoolAdvanced.Controller
             return student;
         }
         //delete users
-        public async Task DeleteStudent(int id)
+        public async Task DeleteStudent(long id)
         {
             Students.Remove(Students.FirstOrDefault(s => s.ID == id));
             await SaveChangesAsync();
         }
-        public async Task DeleteMentor(int id)
+        public async Task DeleteMentor(long id)
         {
             Mentors.Remove(Mentors.FirstOrDefault(s => s.ID == id));
             await SaveChangesAsync();
