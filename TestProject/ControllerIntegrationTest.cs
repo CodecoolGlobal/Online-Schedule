@@ -111,6 +111,36 @@ namespace TestProject
             response2.EnsureSuccessStatusCode();
             Assert.Equal(null, response2.Content.Headers.ContentType?.ToString());
         }
+
+        [Fact]
+        public async Task Post_Api_TeamReturnSuccessAndCorrectContentType()
+        {
+            HttpContent content = new StringContent("");
+            var client = _factory.CreateClient();
+            var response = await client.PostAsync("api/teams?studentId=1&name=haki&repo=github.com", content);
+            response.EnsureSuccessStatusCode(); // Status Code 200-299
+            string json = await response.Content.ReadAsStringAsync();
+            Team team = JsonSerializer.Deserialize<Team>(json, options)!;
+            Assert.Equal("application/json; charset=utf-8", response.Content.Headers.ContentType?.ToString());
+            Assert.Equal("haki", team.Name);
+        }
         
+
+        [Fact]
+        public async Task Put_Api_TeamsReturnSuccessAndCorrectContentType()
+        {
+            HttpContent content = new StringContent("");
+            var client = _factory.CreateClient();
+            var response = await client.PostAsync("api/teams?studentId=1&name=haki&repo=github.com", content);
+            string json = await response.Content.ReadAsStringAsync();
+            Team team = JsonSerializer.Deserialize<Team>(json, options)!;
+            var response2 = await client.PutAsync($"api/teams/{team.Id}?newName=Tancosok", content);
+            response2.EnsureSuccessStatusCode();
+            var response3 = await client.GetAsync($"api/teams/{team.Id}");
+            string json2 = await response3.Content.ReadAsStringAsync();
+            Team team2 = JsonSerializer.Deserialize<Team>(json2, options)!;
+            Assert.Equal("Tancosok",team2.Name);
+            Assert.Equal(null, response2.Content.Headers.ContentType?.ToString());
+        }
     }
 }
