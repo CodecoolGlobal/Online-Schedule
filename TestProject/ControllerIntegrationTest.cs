@@ -265,5 +265,26 @@ namespace TestProject
             Assert.Equal(null, students.FirstOrDefault(x=>x.ID==student.ID));
             Assert.Equal(null, response2.Content.Headers.ContentType?.ToString());
         }
+
+        [Fact]
+        public async Task Put_Api_Student_New_Name_ReturnSuccessAndCorrectContentType()
+        {
+            // Arrange
+            HttpContent content = new StringContent("");
+            var client = _factory.CreateClient();
+            var response = await client.PostAsync("api/users/student?name=Sanya&email=email@amail.hu&password=jijiji", content);
+            string json2 = await response.Content.ReadAsStringAsync();
+            Student student = JsonSerializer.Deserialize<Student>(json2, options)!;
+            // Act
+            var response2 = await client.PutAsync($"api/users/student/{student.ID}?newName=Tomi", content);
+            var response3 = await client.GetAsync($"api/users/student/{student.ID}");
+            string json3 = await response3.Content.ReadAsStringAsync();
+            Student student2 = JsonSerializer.Deserialize<Student>(json3, options)!;
+
+            // Assert
+            response2.EnsureSuccessStatusCode();
+            Assert.Equal("Tomi", student2.Name);
+            Assert.Equal(null, response2.Content.Headers.ContentType?.ToString());
+        }
     }
 }
