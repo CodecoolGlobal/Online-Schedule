@@ -197,5 +197,31 @@ namespace TestProject
             Assert.Equal("Sanya", team2.Students.FirstOrDefault(x=> x.ID == student.ID).Name);
             Assert.Equal(null, response2.Content.Headers.ContentType?.ToString());
         }
+
+        [Fact]
+        public async Task Put_Api_Teams_delete_member_ReturnSuccessAndCorrectContentType()
+        {
+            // Arrange
+            HttpContent content = new StringContent("");
+            var client = _factory.CreateClient();
+            var response = await client.PostAsync("api/teams?studentId=1&name=haki&repo=github.com", content);
+            string json = await response.Content.ReadAsStringAsync();
+            Team team = JsonSerializer.Deserialize<Team>(json, options)!;
+
+            var responseStudent = await client.PostAsync("api/users/student?name=Sanya&email=email@amail.hu&password=jijiji", content);
+            string json2 = await responseStudent.Content.ReadAsStringAsync();
+            Student student = JsonSerializer.Deserialize<Student>(json2, options)!;
+            
+            var response2 = await client.PutAsync($"api/teams/{team.Id}/add/{student.ID}", content);
+            // Act
+            var responseDelete = await client.PutAsync($"api/teams/{team.Id}/remove/{student.ID}", content);
+            var response3 = await client.GetAsync($"api/teams/{team.Id}");
+            string json3 = await response3.Content.ReadAsStringAsync();
+            Team team2 = JsonSerializer.Deserialize<Team>(json3, options)!;
+            // Assert
+            responseDelete.EnsureSuccessStatusCode();
+            Assert.Equal(null, team2.Students.FirstOrDefault(x => x.ID == student.ID));
+            Assert.Equal(null, response2.Content.Headers.ContentType?.ToString());
+        }
     }
 }
