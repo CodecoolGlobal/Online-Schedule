@@ -142,5 +142,18 @@ namespace TestProject
             Assert.Equal("Tancosok",team2.Name);
             Assert.Equal(null, response2.Content.Headers.ContentType?.ToString());
         }
+
+        [Fact]
+        public async Task Delete_Api_TeamReturnSuccessAndCorrectContentType()
+        {
+            HttpContent content = new StringContent("");
+            var client = _factory.CreateClient();
+            var response = await client.PostAsync("api/teams?studentId=1&name=haki&repo=github.com", content);
+            string json = await response.Content.ReadAsStringAsync();
+            Team team = JsonSerializer.Deserialize<Team>(json, options)!;
+            var response2 = await client.DeleteAsync($"api/teams/{team.Id}");
+            response2.EnsureSuccessStatusCode();
+            Assert.Equal(null, response2.Content.Headers.ContentType?.ToString());
+        }
     }
 }
