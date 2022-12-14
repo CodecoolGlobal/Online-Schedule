@@ -183,7 +183,7 @@ namespace TestProject
             string json = await response.Content.ReadAsStringAsync();
             Team team = JsonSerializer.Deserialize<Team>(json, options)!;
 
-            var responseStudent = await client.PostAsync("api/Users/student?name=Sanya&email=kol@kol.hu", content);
+            var responseStudent = await client.PostAsync("api/users/student?name=Sanya&email=email@amail.hu&password=jijiji", content);
             string json2 = await responseStudent.Content.ReadAsStringAsync();
             Student student = JsonSerializer.Deserialize<Student>(json2, options)!;
             // Act
