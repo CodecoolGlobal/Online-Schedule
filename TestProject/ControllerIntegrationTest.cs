@@ -334,5 +334,32 @@ namespace TestProject
             Assert.Equal(null, response3.Content.Headers.ContentType?.ToString());
             
         }
+
+        [Fact]
+        public async Task put_Api_Mentor_New_Name_ReturnSuccessAndCorrectContentType()
+        {
+            // Arrange
+            HttpContent content = new StringContent("");
+            var client = _factory.CreateClient();
+            var response = await client.PostAsync("api/users/student?name=Sanya&email=email@amail.hu&password=jijiji", content);
+            string json2 = await response.Content.ReadAsStringAsync();
+            Student student = JsonSerializer.Deserialize<Student>(json2, options)!;
+
+            var response2 = await client.PostAsync($"api/users/mentor?id={student.ID}", content);
+
+            string json3 = await response2.Content.ReadAsStringAsync();
+            Mentor mentor = JsonSerializer.Deserialize<Mentor>(json3, options)!;
+            // Act
+            var response3 = await client.PutAsync($"api/users/mentor/{mentor.ID}?newName=Tomi", content);
+            var response4 = await client.GetAsync($"api/users/mentors/{mentor.ID}");
+            string json4 = await response4.Content.ReadAsStringAsync();
+            Mentor mentor2 = JsonSerializer.Deserialize<Mentor>(json4, options)!;
+
+            // Assert
+            response3.EnsureSuccessStatusCode();
+            Assert.Equal("Tomi", mentor2.Name);
+            Assert.Equal(null, response3.Content.Headers.ContentType?.ToString());
+
+        }
     }
     }
