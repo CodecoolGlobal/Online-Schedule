@@ -3,7 +3,7 @@ using System;
 namespace CodecoolAdvanced.Model {
     public class Student : User
     {
-        public Branch SBranch { get; set; }
+        public Branch? SBranch { get; set; }
         public DateTime Start { get; set; }
         public int WeekChanged { get; set; }
 
