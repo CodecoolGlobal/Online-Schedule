@@ -127,7 +127,7 @@ namespace TestProject
         
 
         [Fact]
-        public async Task Put_Api_TeamsReturnSuccessAndCorrectContentType()
+        public async Task Put_Api_Teams_Name_Change_ReturnSuccessAndCorrectContentType()
         {
             HttpContent content = new StringContent("");
             var client = _factory.CreateClient();
@@ -153,6 +153,23 @@ namespace TestProject
             Team team = JsonSerializer.Deserialize<Team>(json, options)!;
             var response2 = await client.DeleteAsync($"api/teams/{team.Id}");
             response2.EnsureSuccessStatusCode();
+            Assert.Equal(null, response2.Content.Headers.ContentType?.ToString());
+        }
+
+        [Fact]
+        public async Task Put_Api_Teams_reviewTime_change_ReturnSuccessAndCorrectContentType()
+        {
+            HttpContent content = new StringContent("");
+            var client = _factory.CreateClient();
+            var response = await client.PostAsync("api/teams?studentId=1&name=haki&repo=github.com", content);
+            string json = await response.Content.ReadAsStringAsync();
+            Team team = JsonSerializer.Deserialize<Team>(json, options)!;
+            var response2 = await client.PutAsync($"api/teams/{team.Id}/review?reviewTime=2022-12-14T10%3A54%3A39.6374337&type=siStart", content);
+            response2.EnsureSuccessStatusCode();
+            var response3 = await client.GetAsync($"api/teams/{team.Id}");
+            string json2 = await response3.Content.ReadAsStringAsync();
+            Team team2 = JsonSerializer.Deserialize<Team>(json2, options)!;
+            Assert.Equal("2022-12-14T10:54:39.6374337", team2.SiReviewStart);
             Assert.Equal(null, response2.Content.Headers.ContentType?.ToString());
         }
     }
