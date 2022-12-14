@@ -1,6 +1,7 @@
 ﻿using CodecoolAdvanced.Model;
 using Microsoft.AspNetCore.Mvc.Testing;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Net.Http;
 using System.Text.Json;
@@ -242,6 +243,27 @@ namespace TestProject
             response.EnsureSuccessStatusCode();
             Assert.Equal("Sanya", student.Name);
             Assert.Equal("application/json; charset=utf-8", response.Content.Headers.ContentType?.ToString());
+        }
+
+        [Fact]
+        public async Task Delete_Api_Student_ReturnSuccessAndCorrectContentType()
+        {
+            // Arrange
+            HttpContent content = new StringContent("");
+            var client = _factory.CreateClient();
+            var response = await client.PostAsync("api/users/student?name=Sanya&email=email@amail.hu&password=jijiji", content);
+            string json2 = await response.Content.ReadAsStringAsync();
+            Student student = JsonSerializer.Deserialize<Student>(json2, options)!;
+            // Act
+            var response2 = await client.DeleteAsync($"api/users/student/{student.ID}");
+            var response3 = await client.GetAsync("api/users/students");
+            string json3 = await response3.Content.ReadAsStringAsync();
+            List<Student> students = JsonSerializer.Deserialize<List<Student>>(json3, options)!;
+
+            // Assert
+            response2.EnsureSuccessStatusCode();
+            Assert.Equal(null, students.FirstOrDefault(x=>x.ID==student.ID));
+            Assert.Equal(null, response2.Content.Headers.ContentType?.ToString());
         }
     }
 }
