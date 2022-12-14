@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore;
 namespace CodecoolAdvanced.Controller
 {
     [ApiController]
+
     [Route("api/Users")]
     public class UsersController : ControllerBase
     {
@@ -16,32 +17,32 @@ namespace CodecoolAdvanced.Controller
         }
 
         [HttpGet]
-        [Route("/mentors")]
+        [Route("mentors")]
         public async Task<List<Mentor>> GetAllMentors()
         {
             return await _context.Mentors.ToListAsync();
         }
         [HttpGet]
-        [Route("/mentor/{id}")]
+        [Route("mentors/{id}")]
         public async Task<Mentor> GetMentorById(int id)
         {
             return await _context.GetMentor(id);
         }
         [HttpGet]
-        [Route("/student/{id}")]
+        [Route("student/{id}")]
         public async Task<Student> GetStudentById(int id)
         {
             return await _context.GetStudent(id);
         }
         [HttpGet]
-        [Route("/students")]
+        [Route("students")]
         public async Task<List<Student>> GetAllStudents()
         {
             return await _context.Students.ToListAsync();
         }
 
         [HttpPost]
-        [Route("/mentor")]
+        [Route("mentor")]
         public async Task<Mentor> CreateNewMentor(string name, string email)
         {
             Mentor mentor = new()
@@ -53,7 +54,7 @@ namespace CodecoolAdvanced.Controller
         }
 
         [HttpPost]
-        [Route("/student")]
+        [Route("student")]
         public async Task<Student> CreateNewStudnet(string name, Branch branch, string email)
         {
             Student student = new()
@@ -66,27 +67,27 @@ namespace CodecoolAdvanced.Controller
         }
 
         [HttpDelete]
-        [Route("/student/{id}")]
+        [Route("student/{id}")]
         public async Task DeleteStudentById(int id)
         {
             _context.DeleteStudent(id);
         }
 
         [HttpDelete]
-        [Route("/mentor/{id}")]
+        [Route("mentor/{id}")]
         public async Task DeleteMentrtById(int id)
         {
             _context.DeleteMentor(id);
         }
 
         [HttpPut]
-        [Route("/mentor/{id}")]
+        [Route("mentor/{id}")]
         public async Task ReNameMentor(int id, string newName)
         {
             _context.RenameMentor(id, newName);
         }
         [HttpPut]
-        [Route("/student/{id}")]
+        [Route("student/{id}")]
         public async Task ReNameStudent(int id, string newName)
         {
             _context.RenameStudent(id, newName);

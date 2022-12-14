@@ -37,9 +37,9 @@ namespace CodecoolAdvanced.Controller
 
         [HttpPut]
         [Route("{id}/add")]
-        public async Task AddMaterialToEducationMaterial(int id, string material)
+        public async Task<EducationalMaterial> AddMaterialToEducationMaterial(int id, string material)
         {
-            _context.AddMaterial(material, id);
+            return await _context.AddMaterial(material, id);
         }
         [HttpDelete]
         [Route("{id}/remove")]
