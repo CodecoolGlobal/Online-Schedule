@@ -175,12 +175,22 @@ namespace CodecoolAdvanced.Controller
             await SaveChangesAsync();
             return EM;
         }
-        public async Task AddMaterial(string M, int EMID)
+        public async Task<EducationalMaterial> AddMaterial(string M, int EMID)
         {
-            Material material = new(){ Name = M};
-            Materials.Add(material);
-            EducationalMaterials.Include(em => em.Materials).FirstOrDefault(x => x.ID == EMID).Materials.Add(material);
-            await SaveChangesAsync();
+            if (EducationalMaterials.FirstOrDefault(x=> x.ID == EMID)== null)
+            {
+                return null;
+            }
+            else 
+            {
+                Material material = new() { Name = M };
+                Materials.Add(material);
+                EducationalMaterials.Include(em => em.Materials).FirstOrDefault(x => x.ID == EMID).Materials.Add(material);
+                EducationalMaterial edu = EducationalMaterials.Include(em => em.Materials).FirstOrDefault(x => x.ID == EMID);
+                await SaveChangesAsync();
+                return edu;
+            }
+            
         }
         public async Task RemoveMaterial(int id)
         {
