@@ -69,7 +69,9 @@
 :link {
   text-decoration: none;
 }
-
+#sure {
+  color: black;
+}
 .sideNav {
 
   height: 100%;
