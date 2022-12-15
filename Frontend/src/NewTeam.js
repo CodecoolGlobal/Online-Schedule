@@ -18,7 +18,7 @@ const NewTeam = () => {
                 value={teamName}
                 onChange={(e) => setTeamName(e.target.value)}
             />
-            <button type="submit" onClick={()=> handleNewTeam()}>Create</button>
+            <button className='regbutton'type="submit" onClick={()=> handleNewTeam()}>Create</button>
         </form>
     </>
   )
