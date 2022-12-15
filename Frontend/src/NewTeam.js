@@ -59,6 +59,7 @@ const NewTeam = () => {
           onChange={(e) => setTeamName(e.target.value)}
         />
 
+
         <label htmlFor="teamRepo">Repo Link:</label>
         <input
           id="teamRepo"
@@ -69,6 +70,8 @@ const NewTeam = () => {
         />
         <button
           disabled={!validName || !validRepo ? true : false}
+
+          className="regbutton"
           type="submit"
           onClick={() => handleNewTeam()}
         >
