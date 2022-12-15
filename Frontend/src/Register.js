@@ -203,7 +203,7 @@ const register = () => {
               Must match the first password input field.
             </p>
 
-            <button
+            <button className='regbutton'
               disabled={
                 !validName || !validPwd || !validMatch ? true : false
               }

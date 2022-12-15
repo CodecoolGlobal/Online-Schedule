@@ -11,28 +11,31 @@ const Teams = () => {
   let url = 'https://localhost:7086/api/teams';
   const { data, fetchError, isLoading } = useAxiosFetch(url);
 
-  const {colorTheme } = useContext(DataContext);
+  const { colorTheme } = useContext(DataContext);
   return (
     <>
-    
       {isLoading && <p className="statusMsg">Loading ...</p>}
       {!isLoading && fetchError && (
-        <p className="statusMsg err">
-          {fetchError}
-        </p>
+        <p className="statusMsg err">{fetchError}</p>
       )}
       {!isLoading && !fetchError && (
         <>
-        <div className={`design ${colorTheme}`}></div>
-        <div className={`teamContainer ${colorTheme}`}>
-        <h2>Teams<div className={`add ${colorTheme}`}>
-        <Dashboard children={<NewTeam/>}/>
-        </div></h2>
-          {data?.map((team) => (
-              <Link to={`/teams/${team.id}`}><div key={team.id} className='team' >
-                <p>{team.name}</p>
-              </div></Link>
-          ))}
+          <div className={`design ${colorTheme}`}></div>
+          <div className={`teamContainer ${colorTheme}`}>
+            <h2>
+            <Dashboard children={<NewTeam />} />
+            Teams
+              
+                
+              
+            </h2>
+            {data?.map((team) => (
+              <Link to={`/teams/${team.id}`}>
+                <div key={team.id} className="team">
+                  <p>{team.name}</p>
+                </div>
+              </Link>
+            ))}
           </div>
         </>
       )}

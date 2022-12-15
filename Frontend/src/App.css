@@ -69,7 +69,9 @@
 :link {
   text-decoration: none;
 }
-
+#sure {
+  color: black;
+}
 .sideNav {
 
   height: 100%;
@@ -263,4 +265,10 @@ p.statusMsg {
 
 ul{
   text-align: left; 
+}
+
+#modalbutton{
+  float: left;
+  margin-top: 0;
+  padding: 0,12  rem;
 }

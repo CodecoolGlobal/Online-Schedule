@@ -3,6 +3,8 @@ import { useParams } from 'react-router';
 import useAxiosFetch from './hooks/useAxiosFetch';
 import api from './hooks/api';
 import DataContext from './dataContext/dataContext';
+import Dashboard from './dashboard';
+import AreYouSure from './AreYouSure';
 
 const Team = () => {
   const { id } = useParams();
@@ -64,7 +66,9 @@ const Team = () => {
       {!isLoading && !fetchError && (
         <>
         <div className={`design ${colorTheme}`}></div>
-          <h1 className='teamName'>{data.name} ({data.students?.map((student) => (
+          <h1 className='teamName'>
+            <Dashboard children={<AreYouSure/>} />
+           {data.name} ({data.students?.map((student) => (
               student.name + " "
             ))})</h1>
         </>

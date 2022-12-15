@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import Modal from './modal.js';
+import "./Dashboard.css";
 
 const Dashboard= ({children})=> {
 
@@ -22,7 +23,7 @@ const Dashboard= ({children})=> {
         <Modal show={show} handleClose={hideModal} children={children}>
           
         </Modal>
-        <button type="button" onClick={showModal}>
+        <button id="modalbutton" type="button" onClick={showModal}>
           +
         </button>
       </>
