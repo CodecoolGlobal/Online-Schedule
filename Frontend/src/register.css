@@ -1,16 +1,11 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 
-html {
-    font-family: 'Nunito', sans-serif;
-    font-size: 22px;
-}
+
 
 
 section {
+    font-family: 'Nunito', sans-serif;
+    font-size: 22px;
+
     position: relative;
     left: 32%;
     width: 100%;
@@ -34,7 +29,7 @@ form {
 
 input[type="text"],
 input[type="password"],
-button,
+.regbutton,
 textarea {
   font-family: 'Nunito', sans-serif;
   font-size: 22px;
